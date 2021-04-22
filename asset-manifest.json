@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/simbirsoft-practicum/static/css/main.7688bbe4.chunk.css",
+    "main.js": "/simbirsoft-practicum/static/js/main.8100f112.chunk.js",
+    "main.js.map": "/simbirsoft-practicum/static/js/main.8100f112.chunk.js.map",
+    "runtime-main.js": "/simbirsoft-practicum/static/js/runtime-main.c80e0b35.js",
+    "runtime-main.js.map": "/simbirsoft-practicum/static/js/runtime-main.c80e0b35.js.map",
+    "static/js/2.d49c17a9.chunk.js": "/simbirsoft-practicum/static/js/2.d49c17a9.chunk.js",
+    "static/js/2.d49c17a9.chunk.js.map": "/simbirsoft-practicum/static/js/2.d49c17a9.chunk.js.map",
+    "index.html": "/simbirsoft-practicum/index.html",
+    "static/css/main.7688bbe4.chunk.css.map": "/simbirsoft-practicum/static/css/main.7688bbe4.chunk.css.map",
+    "static/js/2.d49c17a9.chunk.js.LICENSE.txt": "/simbirsoft-practicum/static/js/2.d49c17a9.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c80e0b35.js",
+    "static/js/2.d49c17a9.chunk.js",
+    "static/css/main.7688bbe4.chunk.css",
+    "static/js/main.8100f112.chunk.js"
+  ]
+}

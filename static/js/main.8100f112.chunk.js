@@ -1,0 +1,2 @@
+(this["webpackJsonpsimbirsoft-practicum"]=this["webpackJsonpsimbirsoft-practicum"]||[]).push([[0],{10:function(t,c,i){},11:function(t,c,i){"use strict";i.r(c);var n=i(1),r=i.n(n),e=i(3),s=i.n(e),o=(i(8),i(0));var a=function(){return Object(o.jsx)("div",{className:"App",children:"Simbirsoft-practicum"})};i(10);s.a.render(Object(o.jsx)(r.a.StrictMode,{children:Object(o.jsx)(a,{})}),document.getElementById("root"))},8:function(t,c,i){}},[[11,1,2]]]);
+//# sourceMappingURL=main.8100f112.chunk.js.map
