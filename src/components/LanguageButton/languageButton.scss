@@ -1,0 +1,15 @@
+@import '../../scss/variables.scss';
+
+.language-btn {
+  border: none;
+  background: none;
+  color: $color-main-accent;
+
+  &:hover {
+    color: $color-gray-light;
+  }
+
+  &:active {
+    color: $color-white;
+  }
+}
