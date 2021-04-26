@@ -1,0 +1,11 @@
+@import '../../scss/variables.scss';
+
+.side-bar {
+  height: 100%;
+  background-color: $background-color-dark;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 16px;
+}

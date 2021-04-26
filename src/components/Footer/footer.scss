@@ -1,0 +1,42 @@
+@import '../../scss/variables.scss';
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+
+  &__licence {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    color: $color-gray;
+
+    @media screen and (max-width: $mobile) {
+      color: $color-gray-light;
+      margin: 8px 16px 16px;
+    }
+  }
+
+  &__phone {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    color: $color-black;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-main-accent;
+    }
+
+    @media screen and (max-width: $mobile) {
+      color: $color-main-accent;
+      margin: 16px 16px 0;
+    }
+  }
+
+  @media screen and (max-width: $mobile) {
+    background-color: $background-color-dark;
+    margin: -16px;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+  }
+}
