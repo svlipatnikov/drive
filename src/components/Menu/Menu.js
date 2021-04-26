@@ -1,11 +1,11 @@
-import CloseButton from 'components/CloseButton';
+import CloseButton from 'components/ButtonClose';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import telegramLogo from 'assets/svg/telegram_white.svg';
 import instagramLogo from 'assets/svg/instagram_white.svg';
 import facebookLogo from 'assets/svg/facebook_white.svg';
 import './menu.scss';
-import LanguageButton from 'components/LanguageButton';
+import LanguageButton from 'components/ButtonLanguage';
 
 const menuItems = [
   { title: 'ПАРКОВКА', link: '/' },
@@ -42,9 +42,7 @@ const Menu = ({ setOpen }) => {
         </div>
       </div>
 
-      <div className="menu__language-btn-wrapper">
-        <LanguageButton />
-      </div>
+      <LanguageButton className="menu__language-btn" />
     </nav>
   );
 };

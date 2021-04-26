@@ -1,13 +1,12 @@
 import Menu from 'components/Menu';
 import React, { useState } from 'react';
-import './menuButton.scss';
+import './buttonMenu.scss';
 
-const MenuButton = () => {
+const ButtonMenu = ({ className }) => {
   const [open, setOpen] = useState(false);
 
   const handleclick = () => {
     setOpen(true);
-    console.log('handleclick MenuButton');
   };
 
   return (
@@ -15,7 +14,7 @@ const MenuButton = () => {
       {open ? (
         <Menu setOpen={setOpen} />
       ) : (
-        <div className="hamburger-btn" onClick={handleclick}>
+        <div className={`hamburger-btn ${!!className ? className : ''}`} onClick={handleclick}>
           <div />
           <div />
           <div />
@@ -25,4 +24,4 @@ const MenuButton = () => {
   );
 };
 
-export default MenuButton;
+export default ButtonMenu;

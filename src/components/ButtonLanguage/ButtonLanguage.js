@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './languageButton.scss';
+import './buttonLanguage.scss';
 
-const LanguageButton = () => {
+const ButtonLanguage = ({ className }) => {
   const [english, setEnglish] = useState(true);
 
   const handleClick = () => {
@@ -9,10 +9,10 @@ const LanguageButton = () => {
   };
 
   return (
-    <button className="language-btn" onClick={handleClick}>
+    <button className={`language-btn ${!!className ? className : ''}`} onClick={handleClick}>
       {english ? 'Eng' : 'Rus'}
     </button>
   );
 };
 
-export default LanguageButton;
+export default ButtonLanguage;

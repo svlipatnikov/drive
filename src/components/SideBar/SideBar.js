@@ -1,4 +1,4 @@
-import LanguageButton from 'components/LanguageButton';
+import LanguageButton from 'components/ButtonLanguage';
 import React from 'react';
 import './sideBar.scss';
 
