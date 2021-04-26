@@ -20,7 +20,7 @@ const MainPage = () => {
         <SideBar />
       </section>
 
-      <section className="content wrapper__content">
+      <section className="wrapper__content content">
         <Header />
         <main className="main">
           <h1 className="main__title">Каршеринг</h1>

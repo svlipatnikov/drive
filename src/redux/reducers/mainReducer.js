@@ -1,7 +1,14 @@
-const mainReducedInit = {};
+import { SET_LANGUAGE } from 'redux/types';
+
+const mainReducedInit = {
+  language: 'Eng',
+};
 
 const mainReducer = (state = mainReducedInit, action) => {
   switch (action.type) {
+    case SET_LANGUAGE:
+      return { ...state, language: action.payload };
+
     default:
       return state;
   }

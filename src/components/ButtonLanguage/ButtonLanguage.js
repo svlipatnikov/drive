@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLanguageAction } from 'redux/actions/mainActions';
+import { languageSelector } from 'redux/selectors/mainSelectors';
 import './buttonLanguage.scss';
 
 const ButtonLanguage = ({ className }) => {
-  const [english, setEnglish] = useState(true);
+  const language = useSelector(languageSelector);
+  const dispatch = useDispatch();
+  console.log(language);
 
   const handleClick = () => {
-    setEnglish((english) => !english);
+    language === 'Eng' ? dispatch(setLanguageAction('Рус')) : dispatch(setLanguageAction('Eng'));
   };
 
   return (
     <button className={`language-btn ${!!className ? className : ''}`} onClick={handleClick}>
-      {english ? 'Eng' : 'Rus'}
+      {language}
     </button>
   );
 };

@@ -1,11 +1,11 @@
 import CloseButton from 'components/ButtonClose';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import telegramLogo from 'assets/svg/telegram_white.svg';
-import instagramLogo from 'assets/svg/instagram_white.svg';
-import facebookLogo from 'assets/svg/facebook_white.svg';
-import './menu.scss';
+import { ReactComponent as TelegramLogo } from 'assets/svg/telegram.svg';
+import { ReactComponent as InstagramLogo } from 'assets/svg/instagram.svg';
+import { ReactComponent as FacebookLogo } from 'assets/svg/facebook.svg';
 import LanguageButton from 'components/ButtonLanguage';
+import './menu.scss';
 
 const menuItems = [
   { title: 'ПАРКОВКА', link: '/' },
@@ -16,7 +16,6 @@ const menuItems = [
 
 const Menu = ({ setOpen }) => {
   const handleClose = () => {
-    console.log('handleClose');
     setOpen(false);
   };
 
@@ -25,10 +24,10 @@ const Menu = ({ setOpen }) => {
       <CloseButton onClick={handleClose} />
 
       <div className="menu__wrapper">
-        <ul className="menu__list">
+        <ul className="nav-list">
           {menuItems.map((item) => (
-            <li className="menu__item" key={item.title}>
-              <Link to={item.link} className="menu__item__link">
+            <li className="nav-list__item" key={item.title}>
+              <Link to={item.link} className="nav-list__item__link">
                 {item.title}
               </Link>
             </li>
@@ -36,13 +35,19 @@ const Menu = ({ setOpen }) => {
         </ul>
 
         <div className="social">
-          <img src={telegramLogo} alt="telegram" className="social__item" />
-          <img src={facebookLogo} alt="facebook" className="social__item" />
-          <img src={instagramLogo} alt="instagram" className="social__item" />
+          <a href="/#" className="social__item">
+            <TelegramLogo />
+          </a>
+          <a href="/#" className="social__item">
+            <FacebookLogo />
+          </a>
+          <a href="/#" className="social__item">
+            <InstagramLogo />
+          </a>
         </div>
       </div>
 
-      <LanguageButton className="menu__language-btn" />
+      <LanguageButton className="language-btn--menu" />
     </nav>
   );
 };

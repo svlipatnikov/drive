@@ -46,10 +46,10 @@
       align-self: flex-start;
     }
   }
+}
 
-  &__list {
-    padding: 0;
-  }
+.nav-list {
+  padding: 0;
 
   &__item {
     list-style: none;
@@ -72,17 +72,6 @@
       }
     }
   }
-
-  &__language-btn {
-    display: none;
-    position: absolute;
-    left: 28px;
-    bottom: 28px;
-
-    @media screen and (max-width: $mobile) {
-      display: block;
-    }
-  }
 }
 
 .social {
@@ -90,9 +79,22 @@
 
   &__item {
     margin-right: 24px;
+    fill: $color-white;
 
     &:hover {
       cursor: pointer;
+      fill: $color-main-accent;
     }
+  }
+}
+
+.language-btn--menu {
+  display: none;
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+
+  @media screen and (max-width: $mobile) {
+    display: block;
   }
 }

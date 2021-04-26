@@ -1,11 +1,11 @@
-import LanguageButton from 'components/ButtonLanguage';
+import ButtonLanguage from 'components/ButtonLanguage';
 import React from 'react';
 import './sideBar.scss';
 
 const SideBar = () => {
   return (
     <div className="side-bar">
-      <LanguageButton />
+      <ButtonLanguage />
     </div>
   );
 };
