@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/simbirsoft-practicum/static/css/main.a7f3212e.chunk.css",
-    "main.js": "/simbirsoft-practicum/static/js/main.61b81381.chunk.js",
-    "main.js.map": "/simbirsoft-practicum/static/js/main.61b81381.chunk.js.map",
+    "main.css": "/simbirsoft-practicum/static/css/main.9b8b88b4.chunk.css",
+    "main.js": "/simbirsoft-practicum/static/js/main.d36f8dbc.chunk.js",
+    "main.js.map": "/simbirsoft-practicum/static/js/main.d36f8dbc.chunk.js.map",
     "runtime-main.js": "/simbirsoft-practicum/static/js/runtime-main.c80e0b35.js",
     "runtime-main.js.map": "/simbirsoft-practicum/static/js/runtime-main.c80e0b35.js.map",
     "static/js/2.3e73caca.chunk.js": "/simbirsoft-practicum/static/js/2.3e73caca.chunk.js",
     "static/js/2.3e73caca.chunk.js.map": "/simbirsoft-practicum/static/js/2.3e73caca.chunk.js.map",
     "index.html": "/simbirsoft-practicum/index.html",
-    "static/css/main.a7f3212e.chunk.css.map": "/simbirsoft-practicum/static/css/main.a7f3212e.chunk.css.map",
+    "static/css/main.9b8b88b4.chunk.css.map": "/simbirsoft-practicum/static/css/main.9b8b88b4.chunk.css.map",
     "static/js/2.3e73caca.chunk.js.LICENSE.txt": "/simbirsoft-practicum/static/js/2.3e73caca.chunk.js.LICENSE.txt",
-    "static/media/facebook_white.c1876cc3.svg": "/simbirsoft-practicum/static/media/facebook_white.c1876cc3.svg",
-    "static/media/instagram_white.98094ec4.svg": "/simbirsoft-practicum/static/media/instagram_white.98094ec4.svg",
+    "static/media/facebook_white.01c0ca6a.svg": "/simbirsoft-practicum/static/media/facebook_white.01c0ca6a.svg",
+    "static/media/instagram_white.5e14e95a.svg": "/simbirsoft-practicum/static/media/instagram_white.5e14e95a.svg",
     "static/media/header.scss": "/simbirsoft-practicum/static/media/location.f3752f17.svg",
     "static/media/index.scss": "/simbirsoft-practicum/static/media/roboto-v27-cyrillic-regular.e909875f.ttf",
-    "static/media/telegram_white.e8137bbe.svg": "/simbirsoft-practicum/static/media/telegram_white.e8137bbe.svg"
+    "static/media/telegram_white.09f73cfe.svg": "/simbirsoft-practicum/static/media/telegram_white.09f73cfe.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.c80e0b35.js",
     "static/js/2.3e73caca.chunk.js",
-    "static/css/main.a7f3212e.chunk.css",
-    "static/js/main.61b81381.chunk.js"
+    "static/css/main.9b8b88b4.chunk.css",
+    "static/js/main.d36f8dbc.chunk.js"
   ]
 }
