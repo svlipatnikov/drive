@@ -1,25 +1,31 @@
 {
   "files": {
-    "main.css": "/simbirsoft-practicum/static/css/main.a72e3b71.chunk.css",
-    "main.js": "/simbirsoft-practicum/static/js/main.e38279be.chunk.js",
-    "main.js.map": "/simbirsoft-practicum/static/js/main.e38279be.chunk.js.map",
+    "main.css": "/simbirsoft-practicum/static/css/main.76789509.chunk.css",
+    "main.js": "/simbirsoft-practicum/static/js/main.899f5cee.chunk.js",
+    "main.js.map": "/simbirsoft-practicum/static/js/main.899f5cee.chunk.js.map",
     "runtime-main.js": "/simbirsoft-practicum/static/js/runtime-main.c80e0b35.js",
     "runtime-main.js.map": "/simbirsoft-practicum/static/js/runtime-main.c80e0b35.js.map",
-    "static/js/2.e4453a70.chunk.js": "/simbirsoft-practicum/static/js/2.e4453a70.chunk.js",
-    "static/js/2.e4453a70.chunk.js.map": "/simbirsoft-practicum/static/js/2.e4453a70.chunk.js.map",
+    "static/js/2.bf0e3480.chunk.js": "/simbirsoft-practicum/static/js/2.bf0e3480.chunk.js",
+    "static/js/2.bf0e3480.chunk.js.map": "/simbirsoft-practicum/static/js/2.bf0e3480.chunk.js.map",
     "index.html": "/simbirsoft-practicum/index.html",
-    "static/css/main.a72e3b71.chunk.css.map": "/simbirsoft-practicum/static/css/main.a72e3b71.chunk.css.map",
-    "static/js/2.e4453a70.chunk.js.LICENSE.txt": "/simbirsoft-practicum/static/js/2.e4453a70.chunk.js.LICENSE.txt",
-    "static/media/facebook.eb41a377.svg": "/simbirsoft-practicum/static/media/facebook.eb41a377.svg",
-    "static/media/instagram.630c7615.svg": "/simbirsoft-practicum/static/media/instagram.630c7615.svg",
+    "static/css/main.76789509.chunk.css.map": "/simbirsoft-practicum/static/css/main.76789509.chunk.css.map",
+    "static/js/2.bf0e3480.chunk.js.LICENSE.txt": "/simbirsoft-practicum/static/js/2.bf0e3480.chunk.js.LICENSE.txt",
+    "static/media/arrowLeft.1752ae91.svg": "/simbirsoft-practicum/static/media/arrowLeft.1752ae91.svg",
+    "static/media/arrowRight.7591c327.svg": "/simbirsoft-practicum/static/media/arrowRight.7591c327.svg",
+    "static/media/facebook.21faf158.svg": "/simbirsoft-practicum/static/media/facebook.21faf158.svg",
+    "static/media/image1.3314e534.jpg": "/simbirsoft-practicum/static/media/image1.3314e534.jpg",
+    "static/media/image2.2fbc438d.jpg": "/simbirsoft-practicum/static/media/image2.2fbc438d.jpg",
+    "static/media/image3.e7a35110.jpg": "/simbirsoft-practicum/static/media/image3.e7a35110.jpg",
+    "static/media/image4.dde6305b.jpg": "/simbirsoft-practicum/static/media/image4.dde6305b.jpg",
+    "static/media/instagram.d838f436.svg": "/simbirsoft-practicum/static/media/instagram.d838f436.svg",
     "static/media/header.scss": "/simbirsoft-practicum/static/media/location.f3752f17.svg",
     "static/media/index.scss": "/simbirsoft-practicum/static/media/roboto-v27-cyrillic-regular.e909875f.ttf",
-    "static/media/telegram.c7352bec.svg": "/simbirsoft-practicum/static/media/telegram.c7352bec.svg"
+    "static/media/telegram.6f819788.svg": "/simbirsoft-practicum/static/media/telegram.6f819788.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.c80e0b35.js",
-    "static/js/2.e4453a70.chunk.js",
-    "static/css/main.a72e3b71.chunk.css",
-    "static/js/main.e38279be.chunk.js"
+    "static/js/2.bf0e3480.chunk.js",
+    "static/css/main.76789509.chunk.css",
+    "static/js/main.899f5cee.chunk.js"
   ]
 }
