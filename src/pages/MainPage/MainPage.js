@@ -4,23 +4,26 @@ import Footer from 'components/Footer';
 import Carousel from 'components/Carousel';
 import Header from 'components/Header';
 import MenuButton from 'components/ButtonMenu';
-import './mainPage.scss';
 import ButtonAccent from 'components/ButtonAccent';
+import { useHistory } from 'react-router';
+import './mainPage.scss';
 
 const MainPage = () => {
+  const history = useHistory();
+
   const handleClick = () => {
-    //TODO
+    history.push('/order');
   };
 
   return (
-    <div className="wrapper">
+    <div className="wrapper-main">
       <MenuButton />
 
-      <section className="wrapper__side-bar">
+      <section className="wrapper-main__side-bar">
         <SideBar />
       </section>
 
-      <section className="wrapper__content content">
+      <section className="wrapper-main__content content">
         <Header />
         <main className="main">
           <h1 className="main__title">Каршеринг</h1>
@@ -31,7 +34,7 @@ const MainPage = () => {
         <Footer />
       </section>
 
-      <section className="wrapper__carousel">
+      <section className="wrapper-main__carousel">
         <Carousel />
       </section>
     </div>

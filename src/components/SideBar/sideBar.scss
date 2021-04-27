@@ -2,10 +2,15 @@
 
 .side-bar {
   height: 100%;
+  width: 64px;
   background-color: $background-color-dark;
 
   display: flex;
   align-items: flex-end;
   justify-content: center;
   padding-bottom: 16px;
+
+  @media screen and (max-width: $mobile) {
+    display: none;
+  }
 }

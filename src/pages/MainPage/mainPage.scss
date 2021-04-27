@@ -1,6 +1,6 @@
 @import '../../scss/variables.scss';
 
-.wrapper {
+.wrapper-main {
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -8,10 +8,6 @@
 
   &__side-bar {
     flex: 0 0 64px;
-
-    @media screen and (max-width: $mobile) {
-      display: none;
-    }
   }
 
   &__content {
@@ -29,17 +25,16 @@
 
 .content {
   padding: 32px 64px;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   @media screen and (max-width: $desktop-min) {
-    padding: 32px 32px;
+    padding: 32px;
   }
 
   @media screen and (max-width: $mobile) {
-    padding: 16px 16px;
+    padding: 16px;
   }
 }
 

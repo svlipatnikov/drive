@@ -1,0 +1,24 @@
+@import '../../scss/variables.scss';
+
+.wrapper-order {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+}
+
+.order-container {
+  width: 100%;
+  padding: 32px;
+
+  &__inner {
+    max-width: 1248px;
+    margin: 0 auto;
+    background-color: rgb(199, 221, 199);
+  }
+
+  @media screen and (max-width: $mobile) {
+    padding: 16px;
+  }
+}
