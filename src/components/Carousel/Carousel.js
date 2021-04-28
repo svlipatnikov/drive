@@ -53,6 +53,7 @@ const Carousel = () => {
       <div className="carousel__dots">
         {items.map((item, index) => (
           <button
+            key={index}
             className={`carousel__dots__item ${
               index === current ? 'carousel__dots__item--current' : ''
             }`}

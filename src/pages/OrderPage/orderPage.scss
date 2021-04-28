@@ -4,21 +4,40 @@
   position: relative;
   height: 100vh;
   width: 100vw;
-
   display: flex;
+
+  &__container {
+    width: 100%;
+    padding: 32px 0;
+  }
 }
 
-.order-container {
-  width: 100%;
-  padding: 32px;
-
-  &__inner {
-    max-width: 1248px;
-    margin: 0 auto;
-    background-color: rgb(199, 221, 199);
-  }
+.inner-container {
+  max-width: 1248px;
+  margin: 0 auto;
+  padding: 0 32px;
 
   @media screen and (max-width: $mobile) {
     padding: 16px;
   }
+}
+
+.horizont-line {
+  background-color: $color-gray-light;
+  height: 1px;
+}
+
+.vertical-line {
+  background-color: $color-gray-light;
+  height: 100%;
+  width: 1px;
+}
+
+.header--order {
+  margin-bottom: 32px;
+}
+
+.order-content {
+  display: flex;
+  height: 100%;
 }
