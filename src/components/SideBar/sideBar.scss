@@ -9,8 +9,4 @@
   align-items: flex-end;
   justify-content: center;
   padding-bottom: 16px;
-
-  @media screen and (max-width: $mobile) {
-    display: none;
-  }
 }

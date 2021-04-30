@@ -8,10 +8,27 @@
 
   &__side-bar {
     flex: 0 0 64px;
+
+    @media screen and (max-width: $mobile) {
+      display: none;
+    }
   }
 
   &__content {
     flex: 1 1 688px;
+
+    padding: 32px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media screen and (max-width: $desktop-min) {
+      padding: 32px;
+    }
+
+    @media screen and (max-width: $mobile) {
+      padding: 16px;
+    }
   }
 
   &__carousel {
@@ -23,20 +40,20 @@
   }
 }
 
-.content {
-  padding: 32px 64px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+// .content {
+// padding: 32px 64px;
+// display: flex;
+// flex-direction: column;
+// justify-content: space-between;
 
-  @media screen and (max-width: $desktop-min) {
-    padding: 32px;
-  }
+// @media screen and (max-width: $desktop-min) {
+//   padding: 32px;
+// }
 
-  @media screen and (max-width: $mobile) {
-    padding: 16px;
-  }
-}
+// @media screen and (max-width: $mobile) {
+//   padding: 16px;
+// }
+// }
 
 .main {
   &__title {

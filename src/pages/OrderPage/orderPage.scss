@@ -6,9 +6,19 @@
   width: 100vw;
   display: flex;
 
-  &__container {
+  &__side-bar {
+    @media screen and (max-width: $mobile) {
+      display: none;
+    }
+  }
+
+  &__content {
     width: 100%;
     padding: 32px 0;
+
+    @media screen and (max-width: $mobile) {
+      padding: 16px;
+    }
   }
 }
 

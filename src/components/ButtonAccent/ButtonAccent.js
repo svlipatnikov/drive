@@ -1,10 +1,7 @@
 import React from 'react';
 import './buttonAccent.scss';
 
-const ButtonAccent = ({ text, className, onClick }) => {
-  const handleClick = () => {
-    onClick();
-  };
+const ButtonAccent = ({ text, className, handleClick }) => {
   return (
     <button className={`button ${!!className ? className : ''}`} onClick={handleClick}>
       {text}

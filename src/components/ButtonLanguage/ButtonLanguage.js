@@ -7,7 +7,6 @@ import './buttonLanguage.scss';
 const ButtonLanguage = ({ className }) => {
   const language = useSelector(languageSelector);
   const dispatch = useDispatch();
-  console.log(language);
 
   const handleClick = () => {
     language === 'Eng' ? dispatch(setLanguageAction('Рус')) : dispatch(setLanguageAction('Eng'));

@@ -11,9 +11,12 @@ const OrderPage = () => {
   return (
     <div className="wrapper-order">
       <MenuButton />
-      <SideBar />
 
-      <div className="wrapper-order__container">
+      <section className="wrapper-order__side-bar">
+        <SideBar />
+      </section>
+
+      <section className="wrapper-order__content">
         <Header className="inner-container header--order" />
 
         <div className="horizont-line" />
@@ -25,7 +28,7 @@ const OrderPage = () => {
           <div className="vertical-line" />
           <OrderInfo />
         </div>
-      </div>
+      </section>
     </div>
   );
 };
