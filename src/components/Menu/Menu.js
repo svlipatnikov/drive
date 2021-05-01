@@ -1,11 +1,11 @@
-import CloseButton from 'components/ButtonClose';
+import ButtonClose from 'components/ButtonClose';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as TelegramLogo } from 'assets/svg/telegram.svg';
 import { ReactComponent as InstagramLogo } from 'assets/svg/instagram.svg';
 import { ReactComponent as FacebookLogo } from 'assets/svg/facebook.svg';
 import LanguageButton from 'components/ButtonLanguage';
-import './menu.scss';
+import styles from './menu.module.scss';
 
 const menuItems = [
   { title: 'ПАРКОВКА', link: '/' },
@@ -20,34 +20,34 @@ const Menu = ({ setOpen }) => {
   };
 
   return (
-    <nav className="menu">
-      <CloseButton onClick={handleClose} />
+    <nav className={styles.wrapper}>
+      <ButtonClose handleClose={handleClose} />
 
-      <div className="menu__wrapper">
-        <ul className="nav-list">
+      <div className={styles.menu}>
+        <ul className={styles.navList}>
           {menuItems.map((item) => (
-            <li className="nav-list__item" key={item.title}>
-              <Link to={item.link} className="nav-list__item__link">
+            <li className={styles.navItem} key={item.title}>
+              <Link to={item.link} className={styles.navLink}>
                 {item.title}
               </Link>
             </li>
           ))}
         </ul>
 
-        <div className="social">
-          <a href="/#" className="social__item">
+        <div className={styles.social}>
+          <a href="/#" className={styles.socialItem}>
             <TelegramLogo />
           </a>
-          <a href="/#" className="social__item">
+          <a href="/#" className={styles.socialItem}>
             <FacebookLogo />
           </a>
-          <a href="/#" className="social__item">
+          <a href="/#" className={styles.socialItem}>
             <InstagramLogo />
           </a>
         </div>
       </div>
 
-      <LanguageButton className="language-btn--menu" />
+      <LanguageButton className={styles.languageBtnMenu} />
     </nav>
   );
 };

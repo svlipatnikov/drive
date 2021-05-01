@@ -2,7 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLanguageAction } from 'redux/actions/mainActions';
 import { languageSelector } from 'redux/selectors/mainSelectors';
-import './buttonLanguage.scss';
+import styles from './buttonLanguage.module.scss';
+import cn from 'classnames';
 
 const ButtonLanguage = ({ className }) => {
   const language = useSelector(languageSelector);
@@ -13,7 +14,7 @@ const ButtonLanguage = ({ className }) => {
   };
 
   return (
-    <button className={`language-btn ${!!className ? className : ''}`} onClick={handleClick}>
+    <button className={cn(styles.languageBtn, className)} onClick={handleClick}>
       {language}
     </button>
   );

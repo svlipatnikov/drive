@@ -1,0 +1,25 @@
+@import '../../scss/variables.scss';
+
+.wrapper {
+  padding: 8px 0;
+}
+
+.item {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  color: $color-gray;
+
+  &Active {
+    color: $color-main-accent;
+  }
+
+  &Filled {
+    color: $color-black;
+  }
+}
+
+.tringle {
+  margin: 0 16px;
+}

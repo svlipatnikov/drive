@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import items from './items';
 import { ReactComponent as ArrowLeft } from 'assets/svg/arrowLeft.svg';
 import { ReactComponent as ArrowRight } from 'assets/svg/arrowRight.svg';
-import './carousel.scss';
+import styles from './carousel.module.scss';
+import cn from 'classnames';
 
 const Carousel = () => {
   const [current, setCurrent] = useState(0);
@@ -24,44 +25,42 @@ const Carousel = () => {
   };
 
   return (
-    <section className="carousel">
+    <div className={styles.carousel}>
       {items.map((item, index) => (
         <img
           key={items[index].src}
           src={items[index].src}
           alt="background"
-          className={`carousel__img ${index === current ? 'carousel__img--current' : ''}`}
+          className={cn(styles.img, { [styles.imgCurrent]: index === current })}
         />
       ))}
 
-      <button className="carousel__arrow-btn carousel__arrow-btn--left" onClick={handlePrevClick}>
+      <button className={styles.arrowBtnLeft} onClick={handlePrevClick}>
         <ArrowLeft />
       </button>
 
-      <div className="carousel__content">
-        <h3 className="carousel__content__header">{items[current].header}</h3>
-        <p className="carousel__content__text">{items[current].text}</p>
-        <button className="carousel__content__button" style={btnGradient}>
+      <div className={styles.content}>
+        <h3 className={styles.header}>{items[current].header}</h3>
+        <p className={styles.text}>{items[current].text}</p>
+        <button className={styles.button} style={btnGradient}>
           Подробнее
         </button>
       </div>
 
-      <button className="carousel__arrow-btn carousel__arrow-btn--right" onClick={handleNextClick}>
+      <button className={styles.arrowBtnRight} onClick={handleNextClick}>
         <ArrowRight />
       </button>
 
-      <div className="carousel__dots">
+      <div className={styles.dots}>
         {items.map((item, index) => (
           <button
             key={index}
-            className={`carousel__dots__item ${
-              index === current ? 'carousel__dots__item--current' : ''
-            }`}
+            className={cn(styles.dotsItem, { [styles.dotsItemCurrent]: index === current })}
             onClick={handleDotClick(index)}
           />
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 

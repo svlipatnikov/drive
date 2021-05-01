@@ -6,7 +6,7 @@ import Header from 'components/Header';
 import ButtonMenu from 'components/ButtonMenu';
 import ButtonAccent from 'components/ButtonAccent';
 import { useHistory } from 'react-router';
-import './mainPage.scss';
+import styles from './mainPage.module.scss';
 
 const MainPage = () => {
   const history = useHistory();
@@ -16,25 +16,26 @@ const MainPage = () => {
   };
 
   return (
-    <div className="wrapper-main">
+    <div className={styles.wrapper}>
       <ButtonMenu />
+      <SideBar />
 
-      <section className="wrapper-main__side-bar">
-        <SideBar />
-      </section>
-
-      <section className="wrapper-main__content">
+      <section className={styles.content}>
         <Header />
-        <main className="main">
-          <h1 className="main__title">Каршеринг</h1>
-          <h2 className="main__title main__title--green">Need for drive</h2>
-          <p className="main__subtitle">Поминутная аренда авто твоего города</p>
-          <ButtonAccent text="Забронировать" handleClick={handleClick} className="main__button" />
+        <main>
+          <h1 className={styles.titleBlack}>Каршеринг</h1>
+          <h2 className={styles.titleGreen}>Need for drive</h2>
+          <p className={styles.subtitle}>Поминутная аренда авто твоего города</p>
+          <ButtonAccent
+            text="Забронировать"
+            handleClick={handleClick}
+            className={styles.buttonOrder}
+          />
         </main>
         <Footer />
       </section>
 
-      <section className="wrapper-main__carousel">
+      <section className={styles.carousel}>
         <Carousel />
       </section>
     </div>

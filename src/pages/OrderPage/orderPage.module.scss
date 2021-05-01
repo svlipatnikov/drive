@@ -1,0 +1,48 @@
+@import '../../scss/variables.scss';
+
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  position: relative;
+}
+
+.content {
+  width: 100%;
+  padding-top: 32px;
+
+  @media screen and (max-width: $mobile) {
+    padding: 16px 0;
+  }
+}
+
+.container {
+  max-width: 1248px;
+  margin: 0 auto;
+
+  @media screen and (max-width: $desktop-min) {
+    margin: 0 64px;
+  }
+
+  @media screen and (max-width: $tablet) {
+    margin: 0 32px;
+  }
+
+  @media screen and (max-width: $mobile) {
+    margin: 0 16px;
+  }
+}
+
+.navBlock {
+  margin-top: 32px;
+}
+
+.order {
+  display: flex;
+  justify-content: space-between;
+}
+
+.horizontLine {
+  background-color: $color-gray-light;
+  height: 1px;
+}

@@ -1,33 +1,32 @@
 import React from 'react';
 import SideBar from 'components/SideBar';
 import MenuButton from 'components/ButtonMenu';
-import './orderPage.scss';
 import Header from 'components/Header';
 import BreadCrumps from 'components/BreadCrumps';
-import OrderPageLocation from 'pages/OrderPageLocation';
-import OrderInfo from 'components/OrderInfo';
+import Location from 'pages/OrderPage/Location';
+import OrderInfo from 'pages/OrderPage/OrderInfo';
+import styles from './orderPage.module.scss';
+import cn from 'classnames';
 
 const OrderPage = () => {
   return (
-    <div className="wrapper-order">
+    <div className={styles.wrapper}>
       <MenuButton />
+      <SideBar />
 
-      <section className="wrapper-order__side-bar">
-        <SideBar />
-      </section>
+      <section className={styles.content}>
+        <Header className={styles.container} />
 
-      <section className="wrapper-order__content">
-        <Header className="inner-container header--order" />
+        <nav className={styles.navBlock}>
+          <div className={styles.horizontLine} />
+          <BreadCrumps className={styles.container} />
+          <div className={styles.horizontLine} />
+        </nav>
 
-        <div className="horizont-line" />
-        <BreadCrumps className="inner-container" />
-        <div className="horizont-line" />
-
-        <div className="inner-container order-content">
-          <OrderPageLocation />
-          <div className="vertical-line" />
+        <main className={cn(styles.order, styles.container)}>
+          <Location />
           <OrderInfo />
-        </div>
+        </main>
       </section>
     </div>
   );

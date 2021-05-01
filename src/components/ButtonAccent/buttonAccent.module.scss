@@ -1,6 +1,6 @@
 @import '../../scss/variables.scss';
 
-.button {
+.accentBtn {
   border: none;
   border-radius: 8px;
 
@@ -17,8 +17,4 @@
   &:active {
     filter: brightness(80%);
   }
-
-  // &:focus {
-  //   filter: brightness(90%);
-  // }
 }
