@@ -1,11 +1,12 @@
 import React from 'react';
-import './header.scss';
+import styles from './header.module.scss';
+import cn from 'classnames';
 
-const Header = () => {
+const Header = ({ className }) => {
   return (
-    <header className="header">
-      <div className="header__logo">Need for drive</div>
-      <div className="header__location">Ульяновск</div>
+    <header className={cn(styles.wrapper, className)}>
+      <div className={styles.logo}>Need for drive</div>
+      <div className={styles.location}>Ульяновск</div>
     </header>
   );
 };

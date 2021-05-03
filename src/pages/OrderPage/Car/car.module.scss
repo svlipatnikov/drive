@@ -1,0 +1,42 @@
+@import '../../../scss/variables.scss';
+
+.filter {
+  list-style: none;
+  padding: 32px 0;
+  margin: 0;
+}
+
+.filterItem {
+  display: inline-block;
+  background: none;
+  margin-right: 16px;
+
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  color: $color-gray;
+}
+
+.checkBox {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: $color-gray solid 1px;
+  margin-right: 8px;
+}
+
+.checkBoxActive {
+  border: $color-main-accent solid 3px;
+}
+
+.itemText {
+  display: inline-block;
+}
+
+.itemTextActive {
+  color: $color-black;
+}
+
+.models {
+}

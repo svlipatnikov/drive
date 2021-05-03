@@ -1,6 +1,7 @@
 @import '../../scss/variables.scss';
 
-.side-bar {
+.sideBar {
+  flex: 0 0 64px;
   height: 100%;
   width: 64px;
   background-color: $background-color-dark;
@@ -9,4 +10,8 @@
   align-items: flex-end;
   justify-content: center;
   padding-bottom: 16px;
+
+  @media screen and (max-width: $mobile) {
+    display: none;
+  }
 }

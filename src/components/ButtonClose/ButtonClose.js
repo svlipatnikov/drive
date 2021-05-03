@@ -1,12 +1,13 @@
 import React from 'react';
-import './buttonClose.scss';
+import styles from './buttonClose.module.scss';
+import { ReactComponent as CloseBtn } from 'assets/svg/closeBtn.svg';
 
-const ButtonClose = ({ onClick, className }) => {
-  const handleClick = () => {
-    onClick();
-  };
-
-  return <div className={`close-btn ${!!className ? className : ''}`} onClick={handleClick} />;
+const ButtonClose = ({ handleClose }) => {
+  return (
+    <button className={styles.closeBtn} onClick={handleClose}>
+      <CloseBtn />
+    </button>
+  );
 };
 
 export default ButtonClose;

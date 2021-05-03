@@ -1,9 +1,9 @@
-import image1 from './images/image1.jpg';
-import image2 from './images/image2.jpg';
-import image3 from './images/image3.jpg';
-import image4 from './images/image4.jpg';
+import image1 from 'assets/images/image1.jpg';
+import image2 from 'assets/images/image2.jpg';
+import image3 from 'assets/images/image3.jpg';
+import image4 from 'assets/images/image4.jpg';
 
-const carouselItems = [
+const items = [
   {
     header: 'Бесплатная парковка',
     text:
@@ -34,4 +34,4 @@ const carouselItems = [
   },
 ];
 
-export default carouselItems;
+export default items;
