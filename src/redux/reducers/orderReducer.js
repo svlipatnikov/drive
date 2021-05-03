@@ -28,7 +28,7 @@ const orderReducer = (state = orderReducerInit, action) => {
       return { ...state, active: action.payload };
 
     case SET_CITY:
-      return { ...state, location: { ...state.location, city: action.payload } };
+      return { ...state, location: { ...state.location, city: action.payload, point: '' } };
 
     case SET_POINT:
       return { ...state, location: { ...state.location, point: action.payload } };

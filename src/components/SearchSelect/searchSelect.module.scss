@@ -39,18 +39,6 @@
   }
 }
 
-.selectList {
-  position: absolute;
-  top: 20px;
-  right: 0;
-  width: 224px;
-  z-index: 1;
-
-  height: 74px;
-  border: $color-gray-light solid 1px;
-  background-color: $color-white;
-}
-
 .closeBtn {
   position: absolute;
   background: none;
@@ -62,5 +50,35 @@
   svg {
     width: 1em;
     height: 1em;
+  }
+}
+
+.selectList {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  z-index: 1;
+
+  width: 224px;
+  max-height: 106px;
+
+  border: $color-gray-light solid 1px;
+  background-color: $color-white;
+
+  padding: 8px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.selectItem {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  color: $color-gray;
+  padding: 3px 0;
+
+  &:hover {
+    color: $color-main-accent;
+    cursor: pointer;
   }
 }

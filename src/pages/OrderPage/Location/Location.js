@@ -1,31 +1,31 @@
-import SearchSelect from 'components/SearchSelect';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import SearchSelectCity from 'components/SearchSelect/SearchSelectCity';
+import SearchSelectPoint from 'components/SearchSelect/SearchSelectPoint';
 import { setDbCitiesAction, setDbPointsAction } from 'redux/actions/dbActions';
-import { setCityAction, setPointAction } from 'redux/actions/orderActions';
-import { citySelector, pointSelector } from 'redux/selectors/orderSelectors';
+import { dbCitiesSelector, dbPointsSelector } from 'redux/selectors/dbSelector';
 import styles from './location.module.scss';
 import map from './map.jpg';
 
 const OrderPageLocation = () => {
-  const city = useSelector(citySelector);
-  const point = useSelector(pointSelector);
+  const dbCities = useSelector(dbCitiesSelector);
+  const dbPoints = useSelector(dbPointsSelector);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setDbCitiesAction());
-    dispatch(setDbPointsAction());
-  }, [dispatch]);
+    if (!dbCities.length) dispatch(setDbCitiesAction());
+    if (!dbPoints.length) dispatch(setDbPointsAction());
+  }, [dbCities.length, dbPoints.length, dispatch]);
 
   return (
     <section>
       <div className={styles.container}>
-        <SearchSelect label="Город" action={setCityAction} initData={city} />
-        <SearchSelect label="Пункт выдачи" action={setPointAction} initData={point} />
+        <SearchSelectCity />
+        <SearchSelectPoint />
       </div>
 
       <p className={styles.mapText}>Выбрать на карте:</p>
-
       <img src={map} alt="map" className={styles.map} />
     </section>
   );
