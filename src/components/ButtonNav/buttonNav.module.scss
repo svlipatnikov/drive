@@ -1,0 +1,23 @@
+@import '../../scss/variables.scss';
+
+.button {
+  background: none;
+  text-decoration: none;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  color: $color-gray;
+}
+
+.buttonFilled {
+  color: $color-black;
+}
+
+.buttonActive {
+  color: $color-main-accent;
+}
+
+.buttonDisabled {
+  cursor: auto;
+}

@@ -9,7 +9,7 @@ function App() {
     <HashRouter>
       <Switch>
         <Route path="/" exact component={MainPage} />
-        <Route path="/order" exact component={OrderPage} />
+        <Route path="/order" component={OrderPage} />
       </Switch>
     </HashRouter>
   );

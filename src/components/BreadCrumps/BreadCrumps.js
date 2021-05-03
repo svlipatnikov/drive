@@ -1,28 +1,60 @@
 import React from 'react';
 import cn from 'classnames';
 import styles from './breadCrumps.module.scss';
-import { Link } from 'react-router-dom';
 import { ReactComponent as Tringle } from 'assets/svg/tringle.svg';
+import ButtonNav from 'components/ButtonNav';
+import { useSelector } from 'react-redux';
+import {
+  activeSelector,
+  locationIsFilledSelector,
+  carIsFilledSelector,
+  additionIsFilledSelector,
+} from 'redux/selectors/orderSelectors';
 
 const BreadCrumps = ({ className }) => {
+  const active = useSelector(activeSelector);
+  const locationIsFilled = useSelector(locationIsFilledSelector);
+  const carIsFilled = useSelector(carIsFilledSelector);
+  const additionIsFilled = useSelector(additionIsFilledSelector);
+
   return (
-    <div className={cn(styles.wrapper, className)}>
-      <Link className={cn(styles.item, styles.itemActive)} to="/location">
-        Местоположение
-      </Link>
+    <nav className={cn(styles.wrapper, className)}>
+      <ButtonNav
+        text="Местоположение"
+        link="/order/location"
+        filled={locationIsFilled}
+        active={active === 'Местоположение'}
+      />
+
       <Tringle className={styles.tringle} />
-      <Link className={styles.item} to="/car">
-        Модель
-      </Link>
+
+      <ButtonNav
+        text="Модель"
+        link="/order/car"
+        filled={carIsFilled}
+        active={active === 'Модель'}
+        disabled={!locationIsFilled}
+      />
+
       <Tringle className={styles.tringle} />
-      <Link className={styles.item} to="/addition">
-        Дополнительно
-      </Link>
+
+      <ButtonNav
+        text="Дополнительно"
+        link="/order/addition"
+        filled={additionIsFilled}
+        active={active === 'Дополнительно'}
+        disabled={!carIsFilled}
+      />
+
       <Tringle className={styles.tringle} />
-      <Link className={styles.item} to="/result">
-        Итого
-      </Link>
-    </div>
+
+      <ButtonNav
+        text="Итого"
+        link="/order/result"
+        active={active === 'Итого'}
+        disabled={!additionIsFilled}
+      />
+    </nav>
   );
 };
 

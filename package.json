@@ -2,6 +2,7 @@
   "name": "simbirsoft-practicum",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3000/",
   "homepage": "https://svlipatnikov.github.io/simbirsoft-practicum",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.10",

@@ -1,0 +1,66 @@
+@import '../../scss/variables.scss';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+
+  position: relative;
+}
+
+.label {
+  margin: 0;
+
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  color: $color-black;
+}
+
+.inputField {
+  outline: none;
+  border: none;
+  border-bottom: $color-gray solid 1px;
+
+  width: 224px;
+  padding: 0 8px 3px;
+  margin-left: 8px;
+
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  color: $color-black;
+
+  &::placeholder {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    color: $color-gray;
+  }
+}
+
+.selectList {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  width: 224px;
+  z-index: 1;
+
+  height: 74px;
+  border: $color-gray-light solid 1px;
+  background-color: $color-white;
+}
+
+.closeBtn {
+  position: absolute;
+  background: none;
+  width: 1em;
+  height: 1em;
+  stroke: $color-black;
+  right: 4px;
+
+  svg {
+    width: 1em;
+    height: 1em;
+  }
+}

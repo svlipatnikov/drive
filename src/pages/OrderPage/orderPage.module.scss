@@ -10,6 +10,8 @@
 .content {
   width: 100%;
   padding-top: 32px;
+  display: flex;
+  flex-direction: column;
 
   @media screen and (max-width: $mobile) {
     padding: 16px 0;
@@ -17,10 +19,11 @@
 }
 
 .container {
-  max-width: 1248px;
+  width: 1248px;
   margin: 0 auto;
 
   @media screen and (max-width: $desktop-min) {
+    width: auto;
     margin: 0 64px;
   }
 
@@ -40,6 +43,7 @@
 .order {
   display: flex;
   justify-content: space-between;
+  flex-grow: 1;
 }
 
 .horizontLine {

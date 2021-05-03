@@ -12,7 +12,7 @@ const MainPage = () => {
   const history = useHistory();
 
   const handleClick = () => {
-    history.push('/order');
+    history.push('/order/location');
   };
 
   return (
