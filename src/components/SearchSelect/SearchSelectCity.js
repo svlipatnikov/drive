@@ -16,8 +16,10 @@ const SearchSelectCity = () => {
 
   useEffect(() => {
     const handleClose = (event) => {
-      if (!listRef.current.contains(event.target)) {
-        setOpen(false);
+      if (listRef.current) {
+        if (!listRef.current.contains(event.target)) {
+          setOpen(false);
+        }
       }
     };
 

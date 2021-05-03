@@ -10,3 +10,4 @@ export const SET_CAR_MODEL = 'SET_CAR_MODEL';
 // dbReducer
 export const SET_DB_CITIES = 'SET_DB_CITIES';
 export const SET_DB_POINTS = 'SET_DB_POINTS';
+export const SET_DB_CARS = 'SET_DB_CARS';

@@ -7,10 +7,6 @@
   font-weight: 700;
   font-size: 14px;
   line-height: 16px;
-  color: $color-gray;
-}
-
-.buttonFilled {
   color: $color-black;
 }
 
@@ -19,5 +15,6 @@
 }
 
 .buttonDisabled {
+  color: $color-gray;
   cursor: auto;
 }

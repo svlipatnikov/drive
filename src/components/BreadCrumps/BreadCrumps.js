@@ -22,7 +22,6 @@ const BreadCrumps = ({ className }) => {
       <ButtonNav
         text="Местоположение"
         link="/order/location"
-        filled={locationIsFilled}
         active={active === 'Местоположение'}
       />
 
@@ -31,7 +30,6 @@ const BreadCrumps = ({ className }) => {
       <ButtonNav
         text="Модель"
         link="/order/car"
-        filled={carIsFilled}
         active={active === 'Модель'}
         disabled={!locationIsFilled}
       />
@@ -41,7 +39,6 @@ const BreadCrumps = ({ className }) => {
       <ButtonNav
         text="Дополнительно"
         link="/order/addition"
-        filled={additionIsFilled}
         active={active === 'Дополнительно'}
         disabled={!carIsFilled}
       />

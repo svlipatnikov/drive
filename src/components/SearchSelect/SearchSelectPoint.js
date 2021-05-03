@@ -16,9 +16,15 @@ const SearchSelectPoint = () => {
   const listRef = useRef();
 
   useEffect(() => {
+    setInput(point);
+  }, [city, point]);
+
+  useEffect(() => {
     const handleClose = (event) => {
-      if (!listRef.current.contains(event.target)) {
-        setOpen(false);
+      if (listRef.current) {
+        if (!listRef.current.contains(event.target)) {
+          setOpen(false);
+        }
       }
     };
 

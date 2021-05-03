@@ -7,6 +7,7 @@ const orderReducerInit = {
     point: '',
   },
   car: {
+    filter: 'Все модели',
     model: null,
   },
   addition: {

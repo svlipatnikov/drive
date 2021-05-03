@@ -5,13 +5,12 @@ import cn from 'classnames';
 import { useDispatch } from 'react-redux';
 import { setActiveAction } from 'redux/actions/orderActions';
 
-const ButtonNav = ({ text, link, filled, active, disabled }) => {
+const ButtonNav = ({ text, link, active, disabled }) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
   const buttonStyle = cn({
     [styles.button]: true,
-    [styles.buttonFilled]: filled,
     [styles.buttonActive]: active,
     [styles.buttonDisabled]: disabled,
   });
