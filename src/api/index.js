@@ -1,4 +1,5 @@
-const apiUrl = 'https://api-factory.simbirsoft1.com/api';
+export const imagesUrl = 'https://api-factory.simbirsoft1.com';
+export const apiUrl = 'https://api-factory.simbirsoft1.com/api';
 
 const sendRequest = async (url, method, body) => {
   try {
