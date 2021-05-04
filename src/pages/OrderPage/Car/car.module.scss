@@ -1,0 +1,36 @@
+@import '../../../scss/variables.scss';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.category {
+  list-style: none;
+  padding: 32px 0;
+  margin: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container {
+  max-height: calc(100vh - 216px);
+  width: 100%;
+  overflow: hidden;
+}
+
+.models {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+
+  max-height: calc(100vh - 216px);
+  margin-right: -22px;
+  padding-right: 22px;
+
+  @media screen and (max-width: $tablet) {
+    display: block;
+  }
+}

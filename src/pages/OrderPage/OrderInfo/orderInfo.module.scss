@@ -1,0 +1,13 @@
+@import '../../../scss/variables.scss';
+
+.wrapper {
+  border-left: $color-gray-light 1px solid;
+  margin-left: 32px;
+  min-width: 320px;
+
+  @media screen and (max-width: $mobile) {
+    border: none;
+    margin: 0;
+    width: auto;
+  }
+}
