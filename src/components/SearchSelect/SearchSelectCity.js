@@ -4,7 +4,7 @@ import { ReactComponent as CloseBtn } from 'assets/svg/closeBtn.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { citySelector } from 'redux/selectors/orderSelectors';
 import { setCityAction } from 'redux/actions/orderActions';
-import { dbCitiesSelector } from 'redux/selectors/dbSelector';
+import { dbCitiesSelector } from 'redux/selectors/dbSelectors';
 
 const SearchSelectCity = () => {
   const city = useSelector(citySelector);

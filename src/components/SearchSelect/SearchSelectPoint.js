@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { citySelector, pointSelector } from 'redux/selectors/orderSelectors';
 import { setPointAction } from 'redux/actions/orderActions';
 import { ReactComponent as CloseBtn } from 'assets/svg/closeBtn.svg';
-import { dbPointsSelector } from 'redux/selectors/dbSelector';
+import { dbPointsSelector } from 'redux/selectors/dbSelectors';
 import styles from './searchSelect.module.scss';
 
 const SearchSelectPoint = () => {

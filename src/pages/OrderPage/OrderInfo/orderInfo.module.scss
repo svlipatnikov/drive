@@ -3,7 +3,7 @@
 .wrapper {
   border-left: $color-gray-light 1px solid;
   margin-left: 32px;
-  width: 320px;
+  min-width: 320px;
 
   @media screen and (max-width: $mobile) {
     border: none;

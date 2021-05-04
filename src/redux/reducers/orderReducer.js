@@ -1,4 +1,4 @@
-import { SET_ACTIVE, SET_CITY, SET_POINT, SET_CAR_MODEL } from 'redux/types';
+import { SET_ACTIVE, SET_CITY, SET_POINT, SET_CAR_CATEGORY, SET_CAR_MODEL } from 'redux/types';
 
 const orderReducerInit = {
   active: 'Местоположение',
@@ -7,8 +7,8 @@ const orderReducerInit = {
     point: '',
   },
   car: {
-    filter: 'Все модели',
-    model: null,
+    category: 'Все модели',
+    model: {},
   },
   addition: {
     color: 'any',
@@ -34,8 +34,11 @@ const orderReducer = (state = orderReducerInit, action) => {
     case SET_POINT:
       return { ...state, location: { ...state.location, point: action.payload } };
 
+    case SET_CAR_CATEGORY:
+      return { ...state, car: { ...state.car, category: action.payload } };
+
     case SET_CAR_MODEL:
-      return { ...state, car: { ...state.car, ...action.payload } };
+      return { ...state, car: { ...state.car, model: action.payload } };
 
     default:
       return state;
