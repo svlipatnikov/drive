@@ -1,4 +1,11 @@
-import { SET_ACTIVE, SET_CITY, SET_POINT, SET_CAR_CATEGORY, SET_CAR_MODEL } from 'redux/types';
+import {
+  SET_ACTIVE,
+  SET_CITY,
+  SET_POINT,
+  SET_CAR_CATEGORY,
+  SET_CAR_MODEL,
+  SET_COLOR,
+} from 'redux/types';
 
 const orderReducerInit = {
   active: 'Местоположение',
@@ -11,7 +18,7 @@ const orderReducerInit = {
     model: {},
   },
   addition: {
-    color: 'any',
+    color: 'Любой',
     dateFrom: null,
     dateTo: null,
     tariff: 'perDay',
@@ -39,6 +46,9 @@ const orderReducer = (state = orderReducerInit, action) => {
 
     case SET_CAR_MODEL:
       return { ...state, car: { ...state.car, model: action.payload } };
+
+    case SET_COLOR:
+      return { ...state, addition: { ...state.addition, color: action.payload } };
 
     default:
       return state;

@@ -6,10 +6,10 @@ import Header from 'components/Header';
 import BreadCrumps from 'components/BreadCrumps';
 import Location from 'pages/OrderPage/Location';
 import Car from 'pages/OrderPage/Car';
+import Addition from 'pages/OrderPage/Addition';
 import OrderInfo from 'pages/OrderPage/OrderInfo';
 import styles from './orderPage.module.scss';
 import cn from 'classnames';
-import Addition from './Addition/Addition';
 
 const OrderPage = () => {
   const history = useHistory();

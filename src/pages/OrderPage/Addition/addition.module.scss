@@ -1,0 +1,21 @@
+@import '../../../scss/variables.scss';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.colorList {
+  margin: 16px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.text {
+  color: $color-black;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  margin: 32px 0 0;
+}

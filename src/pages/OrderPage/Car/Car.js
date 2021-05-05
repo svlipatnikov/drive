@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setDbCarsAction, setDbCategoryAction } from 'redux/actions/dbActions';
 import { dbCarsSelector, dbCategorySelector } from 'redux/selectors/dbSelectors';
 import { categorySelector, modelSelector } from 'redux/selectors/orderSelectors';
-import ButtonCategory from 'components/ButtonCategory';
+import ButtonRadio from 'components/ButtonRadio';
 import styles from './car.module.scss';
 import CarCard from 'components/CarCard';
+import { setCategoryAction } from 'redux/actions/orderActions';
 
 const Car = () => {
   const dispatch = useDispatch();
@@ -19,15 +20,24 @@ const Car = () => {
     if (!dbCars.length) dispatch(setDbCarsAction());
   }, [dbCars.length, dbCategory.length, dispatch]);
 
+  const handleClick = (category) => () => {
+    dispatch(setCategoryAction(category));
+  };
+
   return (
     <section className={styles.wrapper}>
       <div className={styles.category}>
-        <ButtonCategory name="Все модели" active={curentCategory === 'Все модели'} />
+        <ButtonRadio
+          name="Все модели"
+          active={curentCategory === 'Все модели'}
+          onClick={handleClick('Все модели')}
+        />
         {dbCategory.map((category) => (
-          <ButtonCategory
+          <ButtonRadio
             key={category.id}
             name={category.name}
             active={category.name === curentCategory}
+            onClick={handleClick(category.name)}
           />
         ))}
       </div>
