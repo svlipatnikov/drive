@@ -7,6 +7,7 @@ export const categorySelector = (store) => store.orderReducer.car.category;
 export const modelSelector = (store) => store.orderReducer.car.model;
 
 export const colorSelector = (store) => store.orderReducer.addition.color;
+export const rateSelector = (store) => store.orderReducer.addition.rate;
 
 export const locationIsFilledSelector = (store) =>
   !!store.orderReducer.location.city && !!store.orderReducer.location.point;

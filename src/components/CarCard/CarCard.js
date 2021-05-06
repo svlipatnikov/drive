@@ -17,13 +17,18 @@ const CarCard = ({ carData, active }) => {
     dispatch(setModelAction(carData));
   };
 
+  const getImageSrc = (path) => {
+    if (path.indexOf('base64') !== -1) return path;
+    return imagesUrl + path;
+  };
+
   return (
     <div className={cardStyle} onClick={handleClick}>
       <div>
         <div className={styles.model}>{carData.name}</div>
-        <div className={styles.price}>{`${carData.priceMin} - ${carData.priceMax} `}&#x20bd;</div>
+        <div className={styles.price}>{`${carData.priceMin} - ${carData.priceMax} \u20bd`}</div>
       </div>
-      <img className={styles.img} src={imagesUrl + carData.thumbnail.path} alt="thumbnail" />
+      <img className={styles.img} src={getImageSrc(carData.thumbnail.path)} alt="thumbnail" />
     </div>
   );
 };

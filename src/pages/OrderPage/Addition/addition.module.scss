@@ -19,3 +19,13 @@
   line-height: 16px;
   margin: 32px 0 0;
 }
+
+.rateList {
+  margin: 8px 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.rateItem {
+  margin-top: 8px;
+}

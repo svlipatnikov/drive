@@ -5,6 +5,7 @@ import {
   SET_CAR_CATEGORY,
   SET_CAR_MODEL,
   SET_COLOR,
+  SET_RATE,
 } from 'redux/types';
 
 const orderReducerInit = {
@@ -21,7 +22,7 @@ const orderReducerInit = {
     color: 'Любой',
     dateFrom: null,
     dateTo: null,
-    tariff: 'perDay',
+    rate: null,
     services: {
       fullTank: false,
       babyChair: false,
@@ -49,6 +50,9 @@ const orderReducer = (state = orderReducerInit, action) => {
 
     case SET_COLOR:
       return { ...state, addition: { ...state.addition, color: action.payload } };
+
+    case SET_RATE:
+      return { ...state, addition: { ...state.addition, rate: action.payload } };
 
     default:
       return state;

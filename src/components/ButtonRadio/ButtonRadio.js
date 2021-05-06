@@ -2,7 +2,8 @@ import React from 'react';
 import styles from './buttonRadio.module.scss';
 import cn from 'classnames';
 
-const ButtonCategory = ({ name, active, onClick }) => {
+const ButtonRadio = ({ name, active, onClick, className }) => {
+  console.log('className', className);
   const checkBoxStyles = cn({
     [styles.checkBox]: true,
     [styles.checkBoxActive]: active,
@@ -14,11 +15,11 @@ const ButtonCategory = ({ name, active, onClick }) => {
   });
 
   return (
-    <button className={styles.button} onClick={onClick}>
+    <button className={cn(styles.button, className)} onClick={onClick}>
       <div className={checkBoxStyles} />
       <div className={textStyles}>{name}</div>
     </button>
   );
 };
 
-export default ButtonCategory;
+export default ButtonRadio;

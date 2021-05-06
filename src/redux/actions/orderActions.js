@@ -5,6 +5,7 @@ import {
   SET_CITY,
   SET_POINT,
   SET_COLOR,
+  SET_RATE,
 } from 'redux/types';
 
 export const setActiveAction = (active) => ({ type: SET_ACTIVE, payload: active });
@@ -16,3 +17,4 @@ export const setCategoryAction = (category) => ({ type: SET_CAR_CATEGORY, payloa
 export const setModelAction = (model) => ({ type: SET_CAR_MODEL, payload: model });
 
 export const setColorAction = (color) => ({ type: SET_COLOR, payload: color });
+export const setRateAction = (rate) => ({ type: SET_RATE, payload: rate });
