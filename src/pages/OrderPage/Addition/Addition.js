@@ -12,6 +12,7 @@ import {
   optionsSelector,
 } from 'redux/selectors/orderSelectors';
 import styles from './addition.module.scss';
+import DateInput from 'components/DateInput';
 
 const Addition = () => {
   const dispatch = useDispatch();
@@ -51,7 +52,8 @@ const Addition = () => {
           onClick={handleColorClick('Любой')}
           className={styles.colorItem}
         />
-        {!!colors.length &&
+        {colors &&
+          !!colors.length &&
           colors.map((color) => (
             <ButtonRadio
               key={color}
@@ -64,10 +66,15 @@ const Addition = () => {
       </div>
 
       <p className={styles.text}>Дата аренды</p>
+      <div className={styles.dateWrapper}>
+        <DateInput label="С" />
+        <DateInput label="По" />
+      </div>
 
       <p className={styles.text}>Тариф</p>
       <div className={styles.rateList}>
-        {!!dbRate.length &&
+        {dbRate &&
+          !!dbRate.length &&
           dbRate.map((rate) => (
             <ButtonRadio
               key={rate.id}

@@ -1,0 +1,31 @@
+@import '../../scss/variables.scss';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.label {
+  color: $color-black;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.input {
+  outline: none;
+  border: none;
+  border-bottom: $color-gray solid 1px;
+
+  width: 224px;
+  padding: 0 8px 3px;
+  margin-left: 8px;
+
+  &::placeholder {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    color: $color-gray;
+  }
+}
