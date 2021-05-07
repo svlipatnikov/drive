@@ -6,6 +6,7 @@ import {
   SET_CAR_MODEL,
   SET_COLOR,
   SET_RATE,
+  SET_OPTIONS,
 } from 'redux/types';
 
 const orderReducerInit = {
@@ -23,10 +24,10 @@ const orderReducerInit = {
     dateFrom: null,
     dateTo: null,
     rate: null,
-    services: {
-      fullTank: false,
-      babyChair: false,
-      rightSteering: false,
+    options: {
+      fullTank: { name: 'Полный бак, 500р', checked: false },
+      babyChair: { name: 'Детское кресло, 200р', checked: false },
+      rightSteering: { name: 'Правый руль, 1600р', checked: false },
     },
   },
 };
@@ -37,7 +38,7 @@ const orderReducer = (state = orderReducerInit, action) => {
       return { ...state, active: action.payload };
 
     case SET_CITY:
-      return { ...state, location: { ...state.location, city: action.payload, point: '' } };
+      return { ...state, location: { city: action.payload, point: '' } };
 
     case SET_POINT:
       return { ...state, location: { ...state.location, point: action.payload } };
@@ -53,6 +54,12 @@ const orderReducer = (state = orderReducerInit, action) => {
 
     case SET_RATE:
       return { ...state, addition: { ...state.addition, rate: action.payload } };
+
+    case SET_OPTIONS:
+      return {
+        ...state,
+        addition: { ...state.addition, options: { ...state.addition.options, ...action.payload } },
+      };
 
     default:
       return state;

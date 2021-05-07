@@ -8,6 +8,7 @@ export const modelSelector = (store) => store.orderReducer.car.model;
 
 export const colorSelector = (store) => store.orderReducer.addition.color;
 export const rateSelector = (store) => store.orderReducer.addition.rate;
+export const optionsSelector = (store) => store.orderReducer.addition.options;
 
 export const locationIsFilledSelector = (store) =>
   !!store.orderReducer.location.city && !!store.orderReducer.location.point;

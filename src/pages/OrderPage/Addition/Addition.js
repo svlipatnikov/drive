@@ -1,10 +1,16 @@
 import ButtonRadio from 'components/ButtonRadio';
+import ButtonCheckBox from 'components/ButtonCheckBox';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setDbRateAction } from 'redux/actions/dbActions';
-import { setColorAction, setRateAction } from 'redux/actions/orderActions';
+import { setColorAction, setRateAction, setOptionsAction } from 'redux/actions/orderActions';
 import { dbRateSelector } from 'redux/selectors/dbSelectors';
-import { colorSelector, modelSelector, rateSelector } from 'redux/selectors/orderSelectors';
+import {
+  colorSelector,
+  modelSelector,
+  rateSelector,
+  optionsSelector,
+} from 'redux/selectors/orderSelectors';
 import styles from './addition.module.scss';
 
 const Addition = () => {
@@ -12,6 +18,7 @@ const Addition = () => {
   const { colors } = useSelector(modelSelector);
   const curentColor = useSelector(colorSelector);
   const curentRate = useSelector(rateSelector);
+  const options = useSelector(optionsSelector);
   const dbRate = useSelector(dbRateSelector);
 
   useEffect(() => {
@@ -26,6 +33,14 @@ const Addition = () => {
     dispatch(setRateAction(rate));
   };
 
+  const handleOptionClick = (option) => () => {
+    dispatch(
+      setOptionsAction({
+        [option]: { name: options[option].name, checked: !options[option].checked },
+      })
+    );
+  };
+
   return (
     <section className={styles.wrapper}>
       <p className={styles.text}>Цвет</p>
@@ -34,33 +49,47 @@ const Addition = () => {
           name="Любой"
           active={curentColor === 'Любой'}
           onClick={handleColorClick('Любой')}
+          className={styles.colorItem}
         />
-        {colors.map((color) => (
-          <ButtonRadio
-            key={color}
-            name={color}
-            active={color === curentColor}
-            onClick={handleColorClick(color)}
-          />
-        ))}
+        {!!colors.length &&
+          colors.map((color) => (
+            <ButtonRadio
+              key={color}
+              name={color}
+              active={color === curentColor}
+              onClick={handleColorClick(color)}
+              className={styles.colorItem}
+            />
+          ))}
       </div>
 
       <p className={styles.text}>Дата аренды</p>
 
       <p className={styles.text}>Тариф</p>
       <div className={styles.rateList}>
-        {dbRate.map((rate) => (
-          <ButtonRadio
-            key={rate.id}
-            name={`${rate.rateTypeId.name}, ${rate.price} \u20bd\\сутки`}
-            onClick={handleRateClick(rate.rateTypeId.name)}
-            active={rate.rateTypeId.name === curentRate}
-            className={styles.rateItem}
-          />
-        ))}
+        {!!dbRate.length &&
+          dbRate.map((rate) => (
+            <ButtonRadio
+              key={rate.id}
+              name={`${rate.rateTypeId.name}, ${rate.price} \u20bd\\сутки`}
+              onClick={handleRateClick(rate.rateTypeId.name)}
+              active={rate.rateTypeId.name === curentRate}
+              className={styles.rateItem}
+            />
+          ))}
       </div>
 
       <p className={styles.text}>Доп услуги</p>
+      <div className={styles.optionsList}>
+        {Object.entries(options).map(([option, value]) => (
+          <ButtonCheckBox
+            key={option}
+            text={value.name}
+            checked={value.checked}
+            onClick={handleOptionClick(option)}
+          />
+        ))}
+      </div>
     </section>
   );
 };

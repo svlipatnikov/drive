@@ -3,7 +3,6 @@ import styles from './buttonRadio.module.scss';
 import cn from 'classnames';
 
 const ButtonRadio = ({ name, active, onClick, className }) => {
-  console.log('className', className);
   const checkBoxStyles = cn({
     [styles.checkBox]: true,
     [styles.checkBoxActive]: active,
