@@ -7,6 +7,8 @@ import {
   SET_COLOR,
   SET_RATE,
   SET_OPTIONS,
+  SET_DATE_FROM,
+  SET_DATE_TO,
 } from 'redux/types';
 
 const orderReducerInit = {
@@ -60,6 +62,20 @@ const orderReducer = (state = orderReducerInit, action) => {
         ...state,
         addition: { ...state.addition, options: { ...state.addition.options, ...action.payload } },
       };
+
+    case SET_DATE_FROM:
+      console.log(state.addition.dateFrom > state.addition.dateTo);
+      return {
+        ...state,
+        addition: {
+          ...state.addition,
+          dateFrom: action.payload,
+          dateTo: state.addition.dateFrom > state.addition.dateTo ? null : state.addition.dateTo,
+        },
+      };
+
+    case SET_DATE_TO:
+      return { ...state, addition: { ...state.addition, dateTo: action.payload } };
 
     default:
       return state;

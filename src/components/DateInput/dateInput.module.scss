@@ -1,5 +1,10 @@
 @import '../../scss/variables.scss';
 
+:global {
+  @import './datepicker.scss';
+  @import '../../../node_modules/react-datepicker/src/stylesheets/datepicker.scss';
+}
+
 .wrapper {
   display: flex;
   align-items: center;

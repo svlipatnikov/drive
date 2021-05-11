@@ -9,6 +9,8 @@ export const modelSelector = (store) => store.orderReducer.car.model;
 export const colorSelector = (store) => store.orderReducer.addition.color;
 export const rateSelector = (store) => store.orderReducer.addition.rate;
 export const optionsSelector = (store) => store.orderReducer.addition.options;
+export const dateFromSelector = (store) => store.orderReducer.addition.dateFrom;
+export const dateToSelector = (store) => store.orderReducer.addition.dateTo;
 
 export const locationIsFilledSelector = (store) =>
   !!store.orderReducer.location.city && !!store.orderReducer.location.point;

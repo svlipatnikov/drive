@@ -10,6 +10,8 @@ export const SET_CAR_MODEL = 'SET_CAR_MODEL';
 export const SET_COLOR = 'SET_COLOR';
 export const SET_RATE = 'SET_RATE';
 export const SET_OPTIONS = 'SET_OPTIONS';
+export const SET_DATE_TO = 'SET_DATE_TO';
+export const SET_DATE_FROM = 'SET_DATE_FROM';
 
 // dbReducer
 export const SET_DB_CITIES = 'SET_DB_CITIES';

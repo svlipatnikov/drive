@@ -3,13 +3,21 @@ import ButtonCheckBox from 'components/ButtonCheckBox';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setDbRateAction } from 'redux/actions/dbActions';
-import { setColorAction, setRateAction, setOptionsAction } from 'redux/actions/orderActions';
+import {
+  setColorAction,
+  setRateAction,
+  setOptionsAction,
+  setDateFromAction,
+  setDateToAction,
+} from 'redux/actions/orderActions';
 import { dbRateSelector } from 'redux/selectors/dbSelectors';
 import {
   colorSelector,
   modelSelector,
   rateSelector,
   optionsSelector,
+  dateFromSelector,
+  dateToSelector,
 } from 'redux/selectors/orderSelectors';
 import styles from './addition.module.scss';
 import DateInput from 'components/DateInput';
@@ -21,6 +29,8 @@ const Addition = () => {
   const curentRate = useSelector(rateSelector);
   const options = useSelector(optionsSelector);
   const dbRate = useSelector(dbRateSelector);
+  const dateFrom = useSelector(dateFromSelector);
+  const dateTo = useSelector(dateToSelector);
 
   useEffect(() => {
     if (!dbRate.length) dispatch(setDbRateAction());
@@ -67,8 +77,8 @@ const Addition = () => {
 
       <p className={styles.text}>Дата аренды</p>
       <div className={styles.dateWrapper}>
-        <DateInput label="С" />
-        <DateInput label="По" />
+        <DateInput label="С" date={dateFrom} action={setDateFromAction} minDate={new Date()} />
+        <DateInput label="По" date={dateTo} action={setDateToAction} minDate={dateFrom} />
       </div>
 
       <p className={styles.text}>Тариф</p>
