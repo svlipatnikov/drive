@@ -28,8 +28,9 @@ const MainPage = () => {
           <p className={styles.subtitle}>Поминутная аренда авто твоего города</p>
           <ButtonAccent
             text="Забронировать"
-            handleClick={handleClick}
+            onClick={handleClick}
             className={styles.buttonOrder}
+            active
           />
         </main>
         <Footer />

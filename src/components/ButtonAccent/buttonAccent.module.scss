@@ -1,13 +1,17 @@
 @import '../../scss/variables.scss';
 
-.accentBtn {
+.btn {
   border: none;
   border-radius: 8px;
+  height: 48px;
 
   font-size: 18px;
   line-height: 21px;
   color: $color-white;
+  background: $color-gray-light;
+}
 
+.activeBtn {
   background: linear-gradient(90deg, $color-main-accent 2.61%, #039f67 112.6%);
 
   &:hover {

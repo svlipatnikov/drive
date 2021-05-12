@@ -1,18 +1,18 @@
 import React from 'react';
 import cn from 'classnames';
-import styles from './breadCrumps.module.scss';
+import styles from './breadCrumbs.module.scss';
 import { ReactComponent as Tringle } from 'assets/svg/tringle.svg';
 import ButtonNav from 'components/ButtonNav';
 import { useSelector } from 'react-redux';
 import {
-  activeSelector,
+  orderStepSelector,
   locationIsFilledSelector,
   carIsFilledSelector,
   additionIsFilledSelector,
 } from 'redux/selectors/orderSelectors';
 
 const BreadCrumps = ({ className }) => {
-  const active = useSelector(activeSelector);
+  const orderStep = useSelector(orderStepSelector);
   const locationIsFilled = useSelector(locationIsFilledSelector);
   const carIsFilled = useSelector(carIsFilledSelector);
   const additionIsFilled = useSelector(additionIsFilledSelector);
@@ -22,7 +22,7 @@ const BreadCrumps = ({ className }) => {
       <ButtonNav
         text="Местоположение"
         link="/order/location"
-        active={active === 'Местоположение'}
+        active={orderStep === 'Местоположение'}
       />
 
       <Tringle className={styles.tringle} />
@@ -30,7 +30,7 @@ const BreadCrumps = ({ className }) => {
       <ButtonNav
         text="Модель"
         link="/order/car"
-        active={active === 'Модель'}
+        active={orderStep === 'Модель'}
         disabled={!locationIsFilled}
       />
 
@@ -39,7 +39,7 @@ const BreadCrumps = ({ className }) => {
       <ButtonNav
         text="Дополнительно"
         link="/order/addition"
-        active={active === 'Дополнительно'}
+        active={orderStep === 'Дополнительно'}
         disabled={!carIsFilled}
       />
 
@@ -48,7 +48,7 @@ const BreadCrumps = ({ className }) => {
       <ButtonNav
         text="Итого"
         link="/order/result"
-        active={active === 'Итого'}
+        active={orderStep === 'Итого'}
         disabled={!additionIsFilled}
       />
     </nav>

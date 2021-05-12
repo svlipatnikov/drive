@@ -52,6 +52,10 @@ const Addition = () => {
     );
   };
 
+  if (dateFrom && dateTo && dateTo <= dateFrom) {
+    dispatch(setDateToAction(null));
+  }
+
   return (
     <section className={styles.wrapper}>
       <p className={styles.text}>Цвет</p>

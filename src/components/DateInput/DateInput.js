@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { useDispatch } from 'react-redux';
 import styles from './dateInput.module.scss';
@@ -21,7 +21,7 @@ const DateInput = ({ label, date, action, minDate }) => {
         onChange={handleChangeDate}
         showTimeSelect
         timeFormat="HH:mm"
-        timeIntervals={60}
+        timeIntervals={30}
         timeCaption="Время"
         dateFormat="dd.MM.yyyy HH:mm"
       />

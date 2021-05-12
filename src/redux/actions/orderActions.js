@@ -1,5 +1,5 @@
 import {
-  SET_ACTIVE,
+  SET_ORDER_STEP,
   SET_CAR_CATEGORY,
   SET_CAR_MODEL,
   SET_CITY,
@@ -11,7 +11,7 @@ import {
   SET_DATE_FROM,
 } from 'redux/types';
 
-export const setActiveAction = (active) => ({ type: SET_ACTIVE, payload: active });
+export const setOrderStepAction = (step) => ({ type: SET_ORDER_STEP, payload: step });
 
 export const setCityAction = (city) => ({ type: SET_CITY, payload: city });
 export const setPointAction = (point) => ({ type: SET_POINT, payload: point });

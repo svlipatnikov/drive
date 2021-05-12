@@ -3,7 +3,7 @@ import { Switch, Route, Redirect, useHistory } from 'react-router';
 import SideBar from 'components/SideBar';
 import MenuButton from 'components/ButtonMenu';
 import Header from 'components/Header';
-import BreadCrumps from 'components/BreadCrumps';
+import BreadCrumbs from 'components/BreadCrumbs';
 import Location from 'pages/OrderPage/Location';
 import Car from 'pages/OrderPage/Car';
 import Addition from 'pages/OrderPage/Addition';
@@ -27,7 +27,7 @@ const OrderPage = () => {
 
         <nav className={styles.navBlock}>
           <div className={styles.horizontLine} />
-          <BreadCrumps className={styles.container} />
+          <BreadCrumbs className={styles.container} />
           <div className={styles.horizontLine} />
         </nav>
 

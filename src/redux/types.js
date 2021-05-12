@@ -2,7 +2,7 @@
 export const SET_LANGUAGE = 'SET_LANGUAGE';
 
 // orderReducer
-export const SET_ACTIVE = 'SET_ACTIVE';
+export const SET_ORDER_STEP = 'SET_ORDER_STEP';
 export const SET_CITY = 'SET_CITY';
 export const SET_POINT = 'SET_POINT';
 export const SET_CAR_CATEGORY = 'SET_CAR_CATEGORY';
