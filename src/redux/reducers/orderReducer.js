@@ -22,7 +22,7 @@ const orderReducerInit = {
     model: {},
   },
   addition: {
-    color: 'Любой',
+    color: null,
     dateFrom: null,
     dateTo: null,
     rate: null,
@@ -64,7 +64,6 @@ const orderReducer = (state = orderReducerInit, action) => {
       };
 
     case SET_DATE_FROM:
-      console.log(state.addition.dateFrom > state.addition.dateTo);
       return {
         ...state,
         addition: {
