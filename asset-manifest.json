@@ -1,17 +1,18 @@
 {
   "files": {
-    "main.css": "/simbirsoft-practicum/static/css/main.b3026a90.chunk.css",
-    "main.js": "/simbirsoft-practicum/static/js/main.a37b234b.chunk.js",
-    "main.js.map": "/simbirsoft-practicum/static/js/main.a37b234b.chunk.js.map",
+    "main.css": "/simbirsoft-practicum/static/css/main.56dbff1c.chunk.css",
+    "main.js": "/simbirsoft-practicum/static/js/main.525fffcb.chunk.js",
+    "main.js.map": "/simbirsoft-practicum/static/js/main.525fffcb.chunk.js.map",
     "runtime-main.js": "/simbirsoft-practicum/static/js/runtime-main.c80e0b35.js",
     "runtime-main.js.map": "/simbirsoft-practicum/static/js/runtime-main.c80e0b35.js.map",
-    "static/js/2.27b2bc97.chunk.js": "/simbirsoft-practicum/static/js/2.27b2bc97.chunk.js",
-    "static/js/2.27b2bc97.chunk.js.map": "/simbirsoft-practicum/static/js/2.27b2bc97.chunk.js.map",
+    "static/js/2.4ecdd42b.chunk.js": "/simbirsoft-practicum/static/js/2.4ecdd42b.chunk.js",
+    "static/js/2.4ecdd42b.chunk.js.map": "/simbirsoft-practicum/static/js/2.4ecdd42b.chunk.js.map",
     "index.html": "/simbirsoft-practicum/index.html",
-    "static/css/main.b3026a90.chunk.css.map": "/simbirsoft-practicum/static/css/main.b3026a90.chunk.css.map",
-    "static/js/2.27b2bc97.chunk.js.LICENSE.txt": "/simbirsoft-practicum/static/js/2.27b2bc97.chunk.js.LICENSE.txt",
+    "static/css/main.56dbff1c.chunk.css.map": "/simbirsoft-practicum/static/css/main.56dbff1c.chunk.css.map",
+    "static/js/2.4ecdd42b.chunk.js.LICENSE.txt": "/simbirsoft-practicum/static/js/2.4ecdd42b.chunk.js.LICENSE.txt",
     "static/media/arrowLeft.1752ae91.svg": "/simbirsoft-practicum/static/media/arrowLeft.1752ae91.svg",
     "static/media/arrowRight.7591c327.svg": "/simbirsoft-practicum/static/media/arrowRight.7591c327.svg",
+    "static/media/checkMark.d27c7e7d.svg": "/simbirsoft-practicum/static/media/checkMark.d27c7e7d.svg",
     "static/media/closeBtn.5d950efb.svg": "/simbirsoft-practicum/static/media/closeBtn.5d950efb.svg",
     "static/media/facebook.21faf158.svg": "/simbirsoft-practicum/static/media/facebook.21faf158.svg",
     "static/media/hamburger.5e54e4fb.svg": "/simbirsoft-practicum/static/media/hamburger.5e54e4fb.svg",
@@ -28,8 +29,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.c80e0b35.js",
-    "static/js/2.27b2bc97.chunk.js",
-    "static/css/main.b3026a90.chunk.css",
-    "static/js/main.a37b234b.chunk.js"
+    "static/js/2.4ecdd42b.chunk.js",
+    "static/css/main.56dbff1c.chunk.css",
+    "static/js/main.525fffcb.chunk.js"
   ]
 }
