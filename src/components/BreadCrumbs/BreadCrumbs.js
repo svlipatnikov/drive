@@ -40,7 +40,7 @@ const BreadCrumps = ({ className }) => {
         text="Дополнительно"
         link="/order/addition"
         active={orderStep === 'Дополнительно'}
-        disabled={!carIsFilled}
+        disabled={!locationIsFilled || !carIsFilled}
       />
 
       <Tringle className={styles.tringle} />
@@ -49,7 +49,7 @@ const BreadCrumps = ({ className }) => {
         text="Итого"
         link="/order/result"
         active={orderStep === 'Итого'}
-        disabled={!additionIsFilled}
+        disabled={!locationIsFilled || !carIsFilled || !additionIsFilled}
       />
     </nav>
   );

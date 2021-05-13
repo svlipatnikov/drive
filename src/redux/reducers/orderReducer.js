@@ -64,14 +64,7 @@ const orderReducer = (state = orderReducerInit, action) => {
       };
 
     case SET_DATE_FROM:
-      return {
-        ...state,
-        addition: {
-          ...state.addition,
-          dateFrom: action.payload,
-          dateTo: state.addition.dateFrom > state.addition.dateTo ? null : state.addition.dateTo,
-        },
-      };
+      return { ...state, addition: { ...state.addition, dateFrom: action.payload } };
 
     case SET_DATE_TO:
       return { ...state, addition: { ...state.addition, dateTo: action.payload } };

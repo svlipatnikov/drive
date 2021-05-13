@@ -53,7 +53,7 @@ const Addition = () => {
     );
   };
 
-  if (dateFrom && dateTo && dateTo <= dateFrom) {
+  if (dateFrom && dateTo && dateTo - dateFrom < 1000 * 60 * 25) {
     dispatch(setDateToAction(null));
   }
 
@@ -83,7 +83,7 @@ const Addition = () => {
       <p className={styles.text}>Дата аренды</p>
       <div className={styles.dateWrapper}>
         <DateInput label="С" date={dateFrom} action={setDateFromAction} minDate={new Date()} />
-        <DateInput label="По" date={dateTo} action={setDateToAction} minDate={dateFrom} />
+        <DateInput label="По" date={dateTo} action={setDateToAction} />
       </div>
 
       <p className={styles.text}>Тариф</p>
