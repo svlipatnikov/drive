@@ -10,6 +10,7 @@ import Addition from 'pages/OrderPage/Addition';
 import OrderInfo from 'pages/OrderPage/OrderInfo';
 import styles from './orderPage.module.scss';
 import cn from 'classnames';
+import Result from './Result';
 
 const OrderPage = () => {
   const history = useHistory();
@@ -36,7 +37,7 @@ const OrderPage = () => {
             <Route path="/order/location" exact component={Location} />
             <Route path="/order/car" exact component={Car} />
             <Route path="/order/addition" exact component={Addition} />
-            <Route path="/order/result" exact />
+            <Route path="/order/result" exact component={Result} />
             <Redirect to="/order/location" />
           </Switch>
 

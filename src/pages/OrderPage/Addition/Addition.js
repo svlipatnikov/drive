@@ -21,6 +21,7 @@ import {
 } from 'redux/selectors/orderSelectors';
 import styles from './addition.module.scss';
 import DateInput from 'components/DateInput';
+import Loader from 'components/Loader/Loader';
 
 const Addition = () => {
   const dispatch = useDispatch();
@@ -87,12 +88,12 @@ const Addition = () => {
 
       <p className={styles.text}>Тариф</p>
       <div className={styles.rateList}>
+        {!dbRate.length && <Loader />}
         {dbRate &&
-          !!dbRate.length &&
           dbRate.map((rate) => (
             <ButtonRadio
               key={rate.id}
-              name={`${rate.rateTypeId.name}, ${rate.price} \u20bd\\сутки`}
+              name={`${rate.rateTypeId.name}, ${rate.price} \u20bd/${rate.rateTypeId.unit}`}
               onClick={handleRateClick(rate.rateTypeId.name)}
               active={rate.rateTypeId.name === curentRate}
               className={styles.rateItem}

@@ -7,6 +7,7 @@ import ButtonRadio from 'components/ButtonRadio';
 import styles from './car.module.scss';
 import CarCard from 'components/CarCard';
 import { setCategoryAction } from 'redux/actions/orderActions';
+import Loader from 'components/Loader/Loader';
 
 const Car = () => {
   const dispatch = useDispatch();
@@ -27,15 +28,21 @@ const Car = () => {
   return (
     <section className={styles.wrapper}>
       <div className={styles.category}>
-        <ButtonRadio
-          name="Все модели"
-          active={curentCategory === 'Все модели'}
-          onClick={handleClick('Все модели')}
-        />
+        {dbCategory.length ? (
+          <ButtonRadio
+            name="Все модели"
+            className={styles.categoryItem}
+            active={curentCategory === 'Все модели'}
+            onClick={handleClick('Все модели')}
+          />
+        ) : (
+          <Loader />
+        )}
         {dbCategory.map((category) => (
           <ButtonRadio
             key={category.id}
             name={category.name}
+            className={styles.categoryItem}
             active={category.name === curentCategory}
             onClick={handleClick(category.name)}
           />
@@ -44,18 +51,22 @@ const Car = () => {
 
       <div className={styles.container}>
         <div className={styles.models}>
-          {dbCars
-            .filter((car) => {
-              if (curentCategory === 'Все модели') return true;
-              return curentCategory === car.categoryId.name;
-            })
-            .map((car) => (
-              <CarCard
-                key={car.id}
-                carData={car}
-                active={curentModel.id && curentModel.id === car.id}
-              />
-            ))}
+          {dbCars.length ? (
+            dbCars
+              .filter((car) => {
+                if (curentCategory === 'Все модели') return true;
+                return curentCategory === car.categoryId.name;
+              })
+              .map((car) => (
+                <CarCard
+                  key={car.id}
+                  carData={car}
+                  active={curentModel.id && curentModel.id === car.id}
+                />
+              ))
+          ) : (
+            <Loader />
+          )}
         </div>
       </div>
     </section>

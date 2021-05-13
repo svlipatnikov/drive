@@ -7,11 +7,15 @@
 }
 
 .category {
-  padding: 32px 0;
-  margin: 0;
+  margin: 24px 0 32px;
+  // margin: 0;
 
   display: flex;
   flex-wrap: wrap;
+}
+
+.categoryItem {
+  margin-top: 8px;
 }
 
 .container {

@@ -10,7 +10,7 @@ const ButtonAccent = ({ text, className, onClick, active }) => {
   });
 
   return (
-    <button className={buttonStyle} onClick={active && onClick}>
+    <button className={buttonStyle} onClick={active ? onClick : undefined}>
       {text}
     </button>
   );

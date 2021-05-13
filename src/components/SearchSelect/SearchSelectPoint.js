@@ -5,6 +5,8 @@ import { setPointAction } from 'redux/actions/orderActions';
 import { ReactComponent as CloseBtn } from 'assets/svg/closeBtn.svg';
 import { dbPointsSelector } from 'redux/selectors/dbSelectors';
 import styles from './searchSelect.module.scss';
+import { setDbPointsAction } from 'redux/actions/dbActions';
+import Loader from 'components/Loader/Loader';
 
 const SearchSelectPoint = () => {
   const city = useSelector(citySelector);
@@ -43,6 +45,9 @@ const SearchSelectPoint = () => {
       setInput('');
       dispatch(setPointAction(''));
     }
+    if (!dbPoints.length) {
+      dispatch(setDbPointsAction());
+    }
     setOpen(true);
   };
 
@@ -79,6 +84,7 @@ const SearchSelectPoint = () => {
 
       {open && (
         <div className={styles.selectList}>
+          {!dbPoints.length && <Loader />}
           {dbPoints
             .filter((item) => {
               if (!city) return true;

@@ -44,7 +44,8 @@ const OrderInfo = () => {
   if (dateFrom && dateTo) {
     const range = dateTo - dateFrom;
     daysRange = Math.floor(range / (1000 * 60 * 60 * 24));
-    hoursRange = (range - daysRange * (1000 * 60 * 60 * 24)) / (1000 * 60 * 60);
+    hoursRange =
+      Math.round(((range - daysRange * (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) * 10) / 10;
   }
 
   const btnText = getBtnText(orderStep);
