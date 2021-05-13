@@ -5,11 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { citySelector } from 'redux/selectors/orderSelectors';
 import { setCityAction } from 'redux/actions/orderActions';
 import { dbCitiesSelector } from 'redux/selectors/dbSelectors';
+import Loader from 'components/Loader/Loader';
+import { setDbCitiesAction } from 'redux/actions/dbActions';
 
 const SearchSelectCity = () => {
+  const dispatch = useDispatch();
+
   const city = useSelector(citySelector);
   const dbCities = useSelector(dbCitiesSelector);
-  const dispatch = useDispatch();
   const [input, setInput] = useState(city);
   const [open, setOpen] = useState(false);
   const listRef = useRef();
@@ -37,6 +40,9 @@ const SearchSelectCity = () => {
     if (city) {
       setInput('');
       dispatch(setCityAction(''));
+    }
+    if (!dbCities.length) {
+      dispatch(setDbCitiesAction());
     }
     setOpen(true);
   };
@@ -74,6 +80,7 @@ const SearchSelectCity = () => {
 
       {open && (
         <div className={styles.selectList}>
+          {!dbCities.length && <Loader />}
           {dbCities
             .filter((item) => {
               if (!input) return true;

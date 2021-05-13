@@ -1,7 +1,18 @@
-import { SET_ACTIVE, SET_CITY, SET_POINT, SET_CAR_CATEGORY, SET_CAR_MODEL } from 'redux/types';
+import {
+  SET_ORDER_STEP,
+  SET_CITY,
+  SET_POINT,
+  SET_CAR_CATEGORY,
+  SET_CAR_MODEL,
+  SET_COLOR,
+  SET_RATE,
+  SET_OPTIONS,
+  SET_DATE_FROM,
+  SET_DATE_TO,
+} from 'redux/types';
 
 const orderReducerInit = {
-  active: 'Местоположение',
+  orderStep: 'Местоположение',
   location: {
     city: '',
     point: '',
@@ -11,25 +22,25 @@ const orderReducerInit = {
     model: {},
   },
   addition: {
-    color: 'any',
+    color: null,
     dateFrom: null,
     dateTo: null,
-    tariff: 'perDay',
-    services: {
-      fullTank: false,
-      babyChair: false,
-      rightSteering: false,
+    rate: null,
+    options: {
+      fullTank: { name: 'Полный бак, 500р', checked: false },
+      babyChair: { name: 'Детское кресло, 200р', checked: false },
+      rightSteering: { name: 'Правый руль, 1600р', checked: false },
     },
   },
 };
 
 const orderReducer = (state = orderReducerInit, action) => {
   switch (action.type) {
-    case SET_ACTIVE:
-      return { ...state, active: action.payload };
+    case SET_ORDER_STEP:
+      return { ...state, orderStep: action.payload };
 
     case SET_CITY:
-      return { ...state, location: { ...state.location, city: action.payload, point: '' } };
+      return { ...state, location: { city: action.payload, point: '' } };
 
     case SET_POINT:
       return { ...state, location: { ...state.location, point: action.payload } };
@@ -39,6 +50,31 @@ const orderReducer = (state = orderReducerInit, action) => {
 
     case SET_CAR_MODEL:
       return { ...state, car: { ...state.car, model: action.payload } };
+
+    case SET_COLOR:
+      return { ...state, addition: { ...state.addition, color: action.payload } };
+
+    case SET_RATE:
+      return { ...state, addition: { ...state.addition, rate: action.payload } };
+
+    case SET_OPTIONS:
+      return {
+        ...state,
+        addition: { ...state.addition, options: { ...state.addition.options, ...action.payload } },
+      };
+
+    case SET_DATE_FROM:
+      return {
+        ...state,
+        addition: {
+          ...state.addition,
+          dateFrom: action.payload,
+          dateTo: state.addition.dateFrom > state.addition.dateTo ? null : state.addition.dateTo,
+        },
+      };
+
+    case SET_DATE_TO:
+      return { ...state, addition: { ...state.addition, dateTo: action.payload } };
 
     default:
       return state;

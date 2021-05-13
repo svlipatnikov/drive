@@ -3,13 +3,14 @@ import { Switch, Route, Redirect, useHistory } from 'react-router';
 import SideBar from 'components/SideBar';
 import MenuButton from 'components/ButtonMenu';
 import Header from 'components/Header';
-import BreadCrumps from 'components/BreadCrumps';
+import BreadCrumbs from 'components/BreadCrumbs';
 import Location from 'pages/OrderPage/Location';
 import Car from 'pages/OrderPage/Car';
+import Addition from 'pages/OrderPage/Addition';
 import OrderInfo from 'pages/OrderPage/OrderInfo';
 import styles from './orderPage.module.scss';
 import cn from 'classnames';
-import Addition from './Addition/Addition';
+import Result from './Result';
 
 const OrderPage = () => {
   const history = useHistory();
@@ -27,7 +28,7 @@ const OrderPage = () => {
 
         <nav className={styles.navBlock}>
           <div className={styles.horizontLine} />
-          <BreadCrumps className={styles.container} />
+          <BreadCrumbs className={styles.container} />
           <div className={styles.horizontLine} />
         </nav>
 
@@ -36,7 +37,7 @@ const OrderPage = () => {
             <Route path="/order/location" exact component={Location} />
             <Route path="/order/car" exact component={Car} />
             <Route path="/order/addition" exact component={Addition} />
-            <Route path="/order/result" exact />
+            <Route path="/order/result" exact component={Result} />
             <Redirect to="/order/location" />
           </Switch>
 

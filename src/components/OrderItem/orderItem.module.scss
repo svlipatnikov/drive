@@ -1,0 +1,32 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  margin: 16px 0;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.itemName {
+  min-width: max-content;
+  @include font-text;
+}
+
+.dots {
+  width: 100%;
+  border-bottom: $color-gray dotted 2px;
+  margin: 0 12px 4px;
+}
+
+.itemValue {
+  @include font-text($color-gray);
+  min-width: max-content;
+}

@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 import styles from './buttonNav.module.scss';
 import cn from 'classnames';
 import { useDispatch } from 'react-redux';
-import { setActiveAction } from 'redux/actions/orderActions';
+import { setOrderStepAction } from 'redux/actions/orderActions';
 
 const ButtonNav = ({ text, link, active, disabled }) => {
   const history = useHistory();
@@ -17,7 +17,7 @@ const ButtonNav = ({ text, link, active, disabled }) => {
 
   const handleClick = () => {
     history.push(link);
-    dispatch(setActiveAction(text));
+    dispatch(setOrderStepAction(text));
   };
 
   return (
