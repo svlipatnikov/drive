@@ -53,10 +53,6 @@ const Addition = () => {
     );
   };
 
-  if (dateFrom && dateTo && dateTo - dateFrom < 1000 * 60 * 25) {
-    dispatch(setDateToAction(null));
-  }
-
   return (
     <section className={styles.wrapper}>
       <p className={styles.text}>Цвет</p>
@@ -82,8 +78,22 @@ const Addition = () => {
 
       <p className={styles.text}>Дата аренды</p>
       <div className={styles.dateWrapper}>
-        <DateInput label="С" date={dateFrom} action={setDateFromAction} minDate={new Date()} />
-        <DateInput label="По" date={dateTo} action={setDateToAction} />
+        <DateInput
+          label="С"
+          date={dateFrom}
+          action={setDateFromAction}
+          minDate={new Date()}
+          maxDate={dateTo}
+          disabled={false}
+        />
+        <DateInput
+          label="По"
+          date={dateTo}
+          action={setDateToAction}
+          minDate={dateFrom || new Date()}
+          disabled={!dateFrom}
+          maxDate={null}
+        />
       </div>
 
       <p className={styles.text}>Тариф</p>
