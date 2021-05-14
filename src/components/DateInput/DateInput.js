@@ -2,9 +2,17 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { useDispatch } from 'react-redux';
 import styles from './dateInput.module.scss';
-import { setMinutes, setHours, isToday, roundToNearestMinutes } from 'date-fns';
+import {
+  setMinutes,
+  setHours,
+  isToday,
+  roundToNearestMinutes,
+  addMinutes,
+  addHours,
+  subMinutes,
+} from 'date-fns';
 
-const DateInput = ({ label, date, action, minDate, maxDate, disabled }) => {
+const DateInput = ({ label, date, action, minDate, maxDate }) => {
   const [inputDate, setInputDate] = useState(date);
   const dispatch = useDispatch();
 
@@ -13,20 +21,33 @@ const DateInput = ({ label, date, action, minDate, maxDate, disabled }) => {
   };
 
   const handleClose = () => {
-    dispatch(action(inputDate));
+    dispatch(action(roundToNearestMinutes(inputDate, { nearestTo: 30 })));
   };
 
   const handleOpen = () => {
-    if (!date) setInputDate(roundToNearestMinutes(minDate, { nearestTo: 30 }));
+    if (!date)
+      setInputDate(roundToNearestMinutes(addMinutes(minDate || new Date(), 30), { nearestTo: 30 }));
   };
 
   const getMinTime = () => {
-    if (label === 'С') {
-      return isToday(inputDate) ? minDate : null;
-    } else if (inputDate) {
-      return inputDate.getDate() === minDate.getDate() ? minDate : null;
+    if (minDate && inputDate) {
+      return inputDate.getDate() === minDate.getDate()
+        ? addMinutes(minDate, 30)
+        : setHours(setMinutes(minDate, 0), 0);
     }
-    return null;
+    if (inputDate) {
+      return isToday(inputDate) ? addHours(new Date(), 1) : setHours(setMinutes(new Date(), 0), 0);
+    }
+    return setHours(setMinutes(new Date(), 0), 0);
+  };
+
+  const getMaxTime = () => {
+    if (maxDate && inputDate) {
+      return inputDate.getDate() === subMinutes(maxDate, 30).getDate()
+        ? subMinutes(maxDate, 30)
+        : setHours(setMinutes(subMinutes(maxDate, 30), 59), 23);
+    }
+    return setHours(setMinutes(new Date(), 59), 23);
   };
 
   return (
@@ -45,10 +66,9 @@ const DateInput = ({ label, date, action, minDate, maxDate, disabled }) => {
         dateFormat="dd.MM.yyyy HH:mm"
         placeholderText="Введите дату и время"
         minDate={minDate}
-        maxDate={maxDate}
+        maxDate={subMinutes(maxDate, 30)}
         minTime={getMinTime()}
-        maxTime={!!getMinTime() ? setHours(setMinutes(minDate, 59), 23) : null}
-        disabled={disabled}
+        maxTime={getMaxTime()}
       />
     </div>
   );

@@ -84,14 +84,12 @@ const Addition = () => {
           action={setDateFromAction}
           minDate={new Date()}
           maxDate={dateTo}
-          disabled={false}
         />
         <DateInput
           label="По"
           date={dateTo}
           action={setDateToAction}
           minDate={dateFrom || new Date()}
-          disabled={!dateFrom}
           maxDate={null}
         />
       </div>
