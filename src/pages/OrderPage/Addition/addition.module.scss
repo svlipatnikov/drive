@@ -6,6 +6,10 @@
   width: 100%;
 }
 
+.itemWrapper {
+  max-width: max-content;
+}
+
 .text {
   color: $color-black;
   font-weight: 300;
@@ -29,7 +33,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  max-width: max-content;
   margin-top: 8px;
 }
 

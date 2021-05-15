@@ -12,6 +12,7 @@ export const SET_RATE = 'SET_RATE';
 export const SET_OPTIONS = 'SET_OPTIONS';
 export const SET_DATE_TO = 'SET_DATE_TO';
 export const SET_DATE_FROM = 'SET_DATE_FROM';
+export const SET_FINAL_PRICE = 'SET_FINAL_PRICE';
 
 // dbReducer
 export const SET_DB_CITIES = 'SET_DB_CITIES';

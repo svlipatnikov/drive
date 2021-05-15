@@ -1,11 +1,12 @@
 import ButtonClose from 'components/ButtonClose';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 import { ReactComponent as TelegramLogo } from 'assets/svg/telegram.svg';
 import { ReactComponent as InstagramLogo } from 'assets/svg/instagram.svg';
 import { ReactComponent as FacebookLogo } from 'assets/svg/facebook.svg';
 import LanguageButton from 'components/ButtonLanguage';
 import styles from './menu.module.scss';
+import cn from 'classnames';
 
 const menuItems = [
   { title: 'ПАРКОВКА', link: '/' },
@@ -15,12 +16,19 @@ const menuItems = [
 ];
 
 const Menu = ({ setOpen }) => {
+  let match = useRouteMatch();
+
+  const wrapperStyle = cn({
+    [styles.wrapper]: true,
+    [styles.wrapperCover]: match.path === '/order',
+  });
+
   const handleClose = () => {
     setOpen(false);
   };
 
   return (
-    <nav className={styles.wrapper}>
+    <nav className={wrapperStyle}>
       <ButtonClose handleClose={handleClose} />
 
       <div className={styles.menu}>

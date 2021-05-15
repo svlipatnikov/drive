@@ -9,6 +9,7 @@ import {
   SET_OPTIONS,
   SET_DATE_TO,
   SET_DATE_FROM,
+  SET_FINAL_PRICE,
 } from 'redux/types';
 
 export const setOrderStepAction = (step) => ({ type: SET_ORDER_STEP, payload: step });
@@ -24,3 +25,5 @@ export const setRateAction = (rate) => ({ type: SET_RATE, payload: rate });
 export const setOptionsAction = (option) => ({ type: SET_OPTIONS, payload: option });
 export const setDateToAction = (date) => ({ type: SET_DATE_TO, payload: date });
 export const setDateFromAction = (date) => ({ type: SET_DATE_FROM, payload: date });
+
+export const setFinalPriceAction = (date) => ({ type: SET_FINAL_PRICE, payload: date });
