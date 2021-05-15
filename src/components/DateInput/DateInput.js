@@ -8,7 +8,6 @@ import {
   isToday,
   roundToNearestMinutes,
   addMinutes,
-  addHours,
   subMinutes,
 } from 'date-fns';
 
@@ -25,18 +24,31 @@ const DateInput = ({ label, date, action, minDate, maxDate }) => {
   };
 
   const handleOpen = () => {
-    if (!date)
-      setInputDate(roundToNearestMinutes(addMinutes(minDate || new Date(), 30), { nearestTo: 30 }));
+    if (!inputDate) {
+      if (minDate) {
+        setInputDate(roundToNearestMinutes(addMinutes(minDate, 30), { nearestTo: 30 }));
+      } else {
+        setInputDate(roundToNearestMinutes(addMinutes(new Date(), 60), { nearestTo: 30 }));
+      }
+    }
+  };
+
+  const handleBlur = () => {
+    setInputDate(() => {
+      dispatch(action(null));
+    });
   };
 
   const getMinTime = () => {
-    if (minDate && inputDate) {
-      return inputDate.getDate() === minDate.getDate()
-        ? addMinutes(minDate, 30)
-        : setHours(setMinutes(minDate, 0), 0);
-    }
     if (inputDate) {
-      return isToday(inputDate) ? addHours(new Date(), 1) : setHours(setMinutes(new Date(), 0), 0);
+      if (minDate) {
+        return inputDate.getDate() === minDate.getDate()
+          ? addMinutes(minDate, 30)
+          : setHours(setMinutes(minDate, 0), 0);
+      }
+      return isToday(inputDate)
+        ? addMinutes(new Date(), 60)
+        : setHours(setMinutes(new Date(), 0), 0);
     }
     return setHours(setMinutes(new Date(), 0), 0);
   };
@@ -59,13 +71,14 @@ const DateInput = ({ label, date, action, minDate, maxDate }) => {
         onChange={handleChangeDate}
         onCalendarClose={handleClose}
         onCalendarOpen={handleOpen}
+        onBlur={handleBlur}
         showTimeSelect
         timeIntervals={30}
         timeFormat="HH:mm"
         timeCaption="Время"
         dateFormat="dd.MM.yyyy HH:mm"
         placeholderText="Введите дату и время"
-        minDate={minDate}
+        minDate={addMinutes(minDate || new Date(), 30)}
         maxDate={subMinutes(maxDate, 30)}
         minTime={getMinTime()}
         maxTime={getMaxTime()}

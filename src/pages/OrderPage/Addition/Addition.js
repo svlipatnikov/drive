@@ -89,7 +89,7 @@ const Addition = () => {
           label="По"
           date={dateTo}
           action={setDateToAction}
-          minDate={dateFrom || new Date()}
+          minDate={dateFrom}
           maxDate={null}
         />
       </div>
