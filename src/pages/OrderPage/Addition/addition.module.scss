@@ -1,4 +1,5 @@
-@import '../../../scss/variables.scss';
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
 
 .wrapper {
   display: flex;
@@ -6,12 +7,12 @@
   width: 100%;
 }
 
-.text {
-  color: $color-black;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 16px;
+.itemWrapper {
+  max-width: max-content;
+}
 
+.text {
+  @include font-text();
   margin: 32px 0 0;
 }
 
@@ -29,7 +30,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  max-width: max-content;
   margin-top: 8px;
 }
 
@@ -47,4 +47,8 @@
   margin: 8px 0 0;
   display: flex;
   flex-direction: column;
+}
+
+.errorMessage {
+  @include font-text($color-gray);
 }

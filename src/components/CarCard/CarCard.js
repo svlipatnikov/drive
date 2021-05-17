@@ -3,7 +3,7 @@ import styles from './carCard.module.scss';
 import cn from 'classnames';
 import { useDispatch } from 'react-redux';
 import { setModelAction } from 'redux/actions/orderActions';
-import { imagesUrl } from 'api';
+import { imagesUrl } from 'api/sendRequest';
 
 const CarCard = ({ carData, active }) => {
   const dispatch = useDispatch();

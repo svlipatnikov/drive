@@ -1,44 +1,37 @@
 import {
-  SET_DB_CARS,
-  SET_DB_CITIES,
-  SET_DB_POINTS,
-  SET_DB_CATEGORY,
-  SET_DB_RATE,
+  FETCH_CITIES,
+  FETCH_POINTS,
+  FETCH_CATEGORY,
+  FETCH_CARS,
+  FETCH_RATE,
+  SUCCESS_CITIES,
+  SUCCESS_POINTS,
+  SUCCESS_CATEGORY,
+  SUCCESS_CARS,
+  SUCCESS_RATE,
+  FAILED_CITIES,
+  FAILED_POINTS,
+  FAILED_CATEGORY,
+  FAILED_CARS,
+  FAILED_RATE,
 } from 'redux/types';
-import sendRequest from 'api';
 
-const setCitiesAction = (cities) => ({ type: SET_DB_CITIES, payload: cities });
-const setPointsAction = (points) => ({ type: SET_DB_POINTS, payload: points });
-const setCategoryAction = (category) => ({ type: SET_DB_CATEGORY, payload: category });
-const setCarsAction = (cars) => ({ type: SET_DB_CARS, payload: cars });
-const setRateAction = (rate) => ({ type: SET_DB_RATE, payload: rate });
+export const fetchCities = () => ({ type: FETCH_CITIES });
+export const successCities = (cities) => ({ type: SUCCESS_CITIES, payload: cities });
+export const failedCities = () => ({ type: FAILED_CITIES });
 
-export const setDbCitiesAction = () => (dispatch) => {
-  sendRequest('/db/city', 'GET').then((result) => {
-    if (result) dispatch(setCitiesAction(result.data));
-  });
-};
+export const fetchPoints = () => ({ type: FETCH_POINTS });
+export const successPoints = (points) => ({ type: SUCCESS_POINTS, payload: points });
+export const failedPoints = () => ({ type: FAILED_POINTS });
 
-export const setDbPointsAction = () => (dispatch) => {
-  sendRequest('/db/point', 'GET').then((result) => {
-    if (result) dispatch(setPointsAction(result.data));
-  });
-};
+export const fetchCategory = () => ({ type: FETCH_CATEGORY });
+export const successCategory = (category) => ({ type: SUCCESS_CATEGORY, payload: category });
+export const failedCategory = () => ({ type: FAILED_CATEGORY });
 
-export const setDbCategoryAction = () => (dispatch) => {
-  sendRequest('/db/category', 'GET').then((result) => {
-    if (result) dispatch(setCategoryAction(result.data));
-  });
-};
+export const fetchCars = () => ({ type: FETCH_CARS });
+export const successCars = (cars) => ({ type: SUCCESS_CARS, payload: cars });
+export const failedCars = () => ({ type: FAILED_CARS });
 
-export const setDbCarsAction = () => (dispatch) => {
-  sendRequest('/db/car', 'GET').then((result) => {
-    if (result) dispatch(setCarsAction(result.data));
-  });
-};
-
-export const setDbRateAction = () => (dispatch) => {
-  sendRequest('/db/rate', 'GET').then((result) => {
-    if (result) dispatch(setRateAction(result.data));
-  });
-};
+export const fetchRate = () => ({ type: FETCH_RATE });
+export const successRate = (rate) => ({ type: SUCCESS_RATE, payload: rate });
+export const failedRate = () => ({ type: FAILED_RATE });

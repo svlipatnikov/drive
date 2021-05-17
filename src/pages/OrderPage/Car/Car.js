@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setDbCarsAction, setDbCategoryAction } from 'redux/actions/dbActions';
+import { setDbCarsAction, setDbCategoryAction } from 'redux/thunk/thunk';
 import { dbCarsSelector, dbCategorySelector } from 'redux/selectors/dbSelectors';
 import { categorySelector, modelSelector } from 'redux/selectors/orderSelectors';
 import ButtonRadio from 'components/ButtonRadio';
 import styles from './car.module.scss';
 import CarCard from 'components/CarCard';
 import { setCategoryAction } from 'redux/actions/orderActions';
-import Loader from 'components/Loader/Loader';
+import Loader from 'components/Loader';
 
 const Car = () => {
   const dispatch = useDispatch();
@@ -17,9 +17,9 @@ const Car = () => {
   const curentModel = useSelector(modelSelector);
 
   useEffect(() => {
-    if (!dbCategory.length) dispatch(setDbCategoryAction());
-    if (!dbCars.length) dispatch(setDbCarsAction());
-  }, [dbCars.length, dbCategory.length, dispatch]);
+    dispatch(setDbCategoryAction());
+    dispatch(setDbCarsAction());
+  }, [dispatch]);
 
   const handleClick = (category) => () => {
     dispatch(setCategoryAction(category));
@@ -28,17 +28,19 @@ const Car = () => {
   return (
     <section className={styles.wrapper}>
       <div className={styles.category}>
-        {dbCategory.length ? (
+        {dbCategory.isLoading && <Loader />}
+        {dbCategory.isFailed && (
+          <div className={styles.errorMessage}>Не удалось загрузить категорий</div>
+        )}
+        {dbCategory.isOk && (
           <ButtonRadio
             name="Все модели"
             className={styles.categoryItem}
             active={curentCategory === 'Все модели'}
             onClick={handleClick('Все модели')}
           />
-        ) : (
-          <Loader />
         )}
-        {dbCategory.map((category) => (
+        {dbCategory.data.map((category) => (
           <ButtonRadio
             key={category.id}
             name={category.name}
@@ -51,8 +53,10 @@ const Car = () => {
 
       <div className={styles.container}>
         <div className={styles.models}>
-          {dbCars.length ? (
-            dbCars
+          {dbCars.isLoading && <Loader />}
+          {dbCars.isFailed && <div>Не удалось загрузить список автомобилей</div>}
+          {dbCars.isOk &&
+            dbCars.data
               .filter((car) => {
                 if (curentCategory === 'Все модели') return true;
                 return curentCategory === car.categoryId.name;
@@ -63,10 +67,7 @@ const Car = () => {
                   carData={car}
                   active={curentModel.id && curentModel.id === car.id}
                 />
-              ))
-          ) : (
-            <Loader />
-          )}
+              ))}
         </div>
       </div>
     </section>

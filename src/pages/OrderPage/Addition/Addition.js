@@ -2,7 +2,7 @@ import ButtonRadio from 'components/ButtonRadio';
 import ButtonCheckBox from 'components/ButtonCheckBox';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setDbRateAction } from 'redux/actions/dbActions';
+import { setDbRateAction } from 'redux/thunk/thunk';
 import {
   setColorAction,
   setRateAction,
@@ -21,7 +21,7 @@ import {
 } from 'redux/selectors/orderSelectors';
 import styles from './addition.module.scss';
 import DateInput from 'components/DateInput';
-import Loader from 'components/Loader/Loader';
+import Loader from 'components/Loader';
 
 const Addition = () => {
   const dispatch = useDispatch();
@@ -34,8 +34,8 @@ const Addition = () => {
   const dateTo = useSelector(dateToSelector);
 
   useEffect(() => {
-    if (!dbRate.length) dispatch(setDbRateAction());
-  }, [dbRate.length, dispatch]);
+    dispatch(setDbRateAction());
+  }, [dispatch]);
 
   const handleColorClick = (color) => () => {
     dispatch(setColorAction(color));
@@ -53,64 +53,83 @@ const Addition = () => {
     );
   };
 
-  if (dateFrom && dateTo && dateTo - dateFrom < 1000 * 60 * 25) {
-    dispatch(setDateToAction(null));
-  }
-
   return (
     <section className={styles.wrapper}>
-      <p className={styles.text}>Цвет</p>
-      <div className={styles.colorList}>
-        <ButtonRadio
-          name="Любой"
-          active={curentColor === 'Любой'}
-          onClick={handleColorClick('Любой')}
-          className={styles.colorItem}
-        />
-        {colors &&
-          !!colors.length &&
-          colors.map((color) => (
-            <ButtonRadio
-              key={color}
-              name={color}
-              active={color === curentColor}
-              onClick={handleColorClick(color)}
-              className={styles.colorItem}
-            />
-          ))}
-      </div>
-
-      <p className={styles.text}>Дата аренды</p>
-      <div className={styles.dateWrapper}>
-        <DateInput label="С" date={dateFrom} action={setDateFromAction} minDate={new Date()} />
-        <DateInput label="По" date={dateTo} action={setDateToAction} />
-      </div>
-
-      <p className={styles.text}>Тариф</p>
-      <div className={styles.rateList}>
-        {!dbRate.length && <Loader />}
-        {dbRate &&
-          dbRate.map((rate) => (
-            <ButtonRadio
-              key={rate.id}
-              name={`${rate.rateTypeId.name}, ${rate.price} \u20bd/${rate.rateTypeId.unit}`}
-              onClick={handleRateClick(rate.rateTypeId.name)}
-              active={rate.rateTypeId.name === curentRate}
-              className={styles.rateItem}
-            />
-          ))}
-      </div>
-
-      <p className={styles.text}>Доп услуги</p>
-      <div className={styles.optionsList}>
-        {Object.entries(options).map(([option, value]) => (
-          <ButtonCheckBox
-            key={option}
-            text={value.name}
-            checked={value.checked}
-            onClick={handleOptionClick(option)}
+      <div className={styles.itemWrapper}>
+        <p className={styles.text}>Цвет</p>
+        <div className={styles.colorList}>
+          <ButtonRadio
+            name="Любой"
+            active={curentColor === 'Любой'}
+            onClick={handleColorClick('Любой')}
+            className={styles.colorItem}
           />
-        ))}
+          {colors &&
+            !!colors.length &&
+            colors.map((color) => (
+              <ButtonRadio
+                key={color}
+                name={color}
+                active={color === curentColor}
+                onClick={handleColorClick(color)}
+                className={styles.colorItem}
+              />
+            ))}
+        </div>
+      </div>
+
+      <div className={styles.itemWrapper}>
+        <p className={styles.text}>Дата аренды</p>
+        <div className={styles.dateWrapper}>
+          <DateInput
+            label="С"
+            date={dateFrom}
+            action={setDateFromAction}
+            minDate={new Date()}
+            maxDate={dateTo}
+          />
+          <DateInput
+            label="По"
+            date={dateTo}
+            action={setDateToAction}
+            minDate={dateFrom}
+            maxDate={null}
+          />
+        </div>
+      </div>
+
+      <div className={styles.itemWrapper}>
+        <p className={styles.text}>Тариф</p>
+        <div className={styles.rateList}>
+          {dbRate.isLoading && <Loader />}
+          {dbRate.isFailed && (
+            <div className={styles.errorMessage}>Не удалось загрузить тарифы</div>
+          )}
+          {dbRate.isOk &&
+            dbRate.data.map((rate) => (
+              <ButtonRadio
+                key={rate.id}
+                name={`${rate.rateTypeId.name}, ${rate.price} \u20bd/${rate.rateTypeId.unit}`}
+                onClick={handleRateClick(rate)}
+                active={rate === curentRate}
+                className={styles.rateItem}
+              />
+            ))}
+        </div>
+      </div>
+
+      <div className={styles.itemWrapper}>
+        <p className={styles.text}>Доп услуги</p>
+        <div className={styles.optionsList}>
+          {Object.entries(options).map(([option, value]) => (
+            <ButtonCheckBox
+              key={option}
+              text={value.name}
+              checked={value.checked}
+              onClick={handleOptionClick(option)}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
