@@ -97,7 +97,7 @@ const OrderInfo = ({ setOpen, open }) => {
         text={getBtnText(orderStep)}
         active={btnActive}
         onClick={handleBtnClick}
-        className={styles.button}
+        className={styles.nextBtn}
       />
     </section>
   );

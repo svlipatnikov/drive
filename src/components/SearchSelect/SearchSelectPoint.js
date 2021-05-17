@@ -5,7 +5,7 @@ import { setPointAction } from 'redux/actions/orderActions';
 import { ReactComponent as CloseBtn } from 'assets/svg/closeBtn.svg';
 import { dbPointsSelector } from 'redux/selectors/dbSelectors';
 import styles from './searchSelect.module.scss';
-import { setDbPointsAction } from 'redux/actions/dbActions';
+import { setDbPointsAction } from 'redux/thunk/thunk';
 import Loader from 'components/Loader';
 
 const SearchSelectPoint = () => {

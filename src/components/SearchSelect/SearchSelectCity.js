@@ -6,7 +6,7 @@ import { citySelector } from 'redux/selectors/orderSelectors';
 import { setCityAction } from 'redux/actions/orderActions';
 import { dbCitiesSelector } from 'redux/selectors/dbSelectors';
 import Loader from 'components/Loader';
-import { setDbCitiesAction } from 'redux/actions/dbActions';
+import { setDbCitiesAction } from 'redux/thunk/thunk';
 
 const SearchSelectCity = () => {
   const dispatch = useDispatch();

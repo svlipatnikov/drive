@@ -2,7 +2,7 @@ import ButtonRadio from 'components/ButtonRadio';
 import ButtonCheckBox from 'components/ButtonCheckBox';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setDbRateAction } from 'redux/actions/dbActions';
+import { setDbRateAction } from 'redux/thunk/thunk';
 import {
   setColorAction,
   setRateAction,

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setDbCarsAction, setDbCategoryAction } from 'redux/actions/dbActions';
+import { setDbCarsAction, setDbCategoryAction } from 'redux/thunk/thunk';
 import { dbCarsSelector, dbCategorySelector } from 'redux/selectors/dbSelectors';
 import { categorySelector, modelSelector } from 'redux/selectors/orderSelectors';
 import ButtonRadio from 'components/ButtonRadio';
