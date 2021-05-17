@@ -101,9 +101,12 @@ const Addition = () => {
       <div className={styles.itemWrapper}>
         <p className={styles.text}>Тариф</p>
         <div className={styles.rateList}>
-          {!dbRate.length && <Loader />}
-          {dbRate &&
-            dbRate.map((rate) => (
+          {dbRate.isLoading && <Loader />}
+          {dbRate.isFailed && (
+            <div className={styles.errorMessage}>Не удалось загрузить тарифы</div>
+          )}
+          {dbRate.isOk &&
+            dbRate.data.map((rate) => (
               <ButtonRadio
                 key={rate.id}
                 name={`${rate.rateTypeId.name}, ${rate.price} \u20bd/${rate.rateTypeId.unit}`}

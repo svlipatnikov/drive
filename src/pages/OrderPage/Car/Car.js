@@ -28,17 +28,19 @@ const Car = () => {
   return (
     <section className={styles.wrapper}>
       <div className={styles.category}>
-        {dbCategory.length ? (
+        {dbCategory.isLoading && <Loader />}
+        {dbCategory.isFailed && (
+          <div className={styles.errorMessage}>Не удалось загрузить категорий</div>
+        )}
+        {dbCategory.isOk && (
           <ButtonRadio
             name="Все модели"
             className={styles.categoryItem}
             active={curentCategory === 'Все модели'}
             onClick={handleClick('Все модели')}
           />
-        ) : (
-          <Loader />
         )}
-        {dbCategory.map((category) => (
+        {dbCategory.data.map((category) => (
           <ButtonRadio
             key={category.id}
             name={category.name}
@@ -51,8 +53,10 @@ const Car = () => {
 
       <div className={styles.container}>
         <div className={styles.models}>
-          {dbCars.length ? (
-            dbCars
+          {dbCars.isLoading && <Loader />}
+          {dbCars.isFailed && <div>Не удалось загрузить список автомобилей</div>}
+          {dbCars.isOk &&
+            dbCars.data
               .filter((car) => {
                 if (curentCategory === 'Все модели') return true;
                 return curentCategory === car.categoryId.name;
@@ -63,10 +67,7 @@ const Car = () => {
                   carData={car}
                   active={curentModel.id && curentModel.id === car.id}
                 />
-              ))
-          ) : (
-            <Loader />
-          )}
+              ))}
         </div>
       </div>
     </section>

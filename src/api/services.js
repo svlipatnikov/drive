@@ -1,26 +1,26 @@
 import sendRequest from './sendRequest';
 
-export const getDbCities = async () => {
+export const getCities = async () => {
   const result = await sendRequest('/db/city', 'GET');
-  return result.data || [];
+  if (result) return result.data;
 };
 
-export const getDbPoints = async () => {
+export const getPoints = async () => {
   const result = await sendRequest('/db/point', 'GET');
-  return result.data || [];
+  if (result) return result.data;
 };
 
-export const getDbCategory = async () => {
+export const getCategory = async () => {
   const result = await sendRequest('/db/category', 'GET');
-  return result.data || [];
+  if (result) return result.data;
 };
 
-export const getDbCars = async () => {
+export const getCars = async () => {
   const result = await sendRequest('/db/car', 'GET');
-  return result.data || [];
+  if (result) return result.data;
 };
 
-export const getDbRate = async () => {
+export const getRate = async () => {
   const result = await sendRequest('/db/rate', 'GET');
-  return result.data || [];
+  if (result) return result.data;
 };

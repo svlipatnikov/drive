@@ -11,11 +11,11 @@ import Loader from 'components/Loader';
 const SearchSelectPoint = () => {
   const city = useSelector(citySelector);
   const point = useSelector(pointSelector);
-  const dbPoints = useSelector(dbPointsSelector);
+  const listRef = useRef();
+  const { data, isLoading, isOk, isFailed } = useSelector(dbPointsSelector);
   const [input, setInput] = useState(point);
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
-  const listRef = useRef();
 
   useEffect(() => {
     setInput(point);
@@ -46,7 +46,7 @@ const SearchSelectPoint = () => {
       setInput('');
       dispatch(setPointAction(''));
     }
-    if (!dbPoints.length) {
+    if (!isOk && !isLoading) {
       dispatch(setDbPointsAction());
     }
     setOpen(true);
@@ -85,23 +85,31 @@ const SearchSelectPoint = () => {
 
       {open && (
         <div className={styles.selectList}>
-          {!dbPoints.length && <Loader />}
-          {dbPoints
-            .filter((item) => {
-              if (!city) return true;
-              if (!item.cityId) return true;
-              return item.cityId.name === city;
-            })
-            .filter((item) => {
-              if (!input) return true;
-              if (input.length < 2) return true;
-              return item.address.toLowerCase().includes(input.toLowerCase());
-            })
-            .map((item) => (
-              <div className={styles.selectItem} onClick={handleChoice(item.address)} key={item.id}>
-                {item.address}
-              </div>
-            ))}
+          {isLoading && <Loader />}
+          {isOk &&
+            data
+              .filter((item) => {
+                if (!city) return true;
+                if (!item.cityId) return true;
+                return item.cityId.name === city;
+              })
+              .filter((item) => {
+                if (!input) return true;
+                if (input.length < 2) return true;
+                return item.address.toLowerCase().includes(input.toLowerCase());
+              })
+              .map((item) => (
+                <div
+                  className={styles.selectItem}
+                  onClick={handleChoice(item.address)}
+                  key={item.id}
+                >
+                  {item.address}
+                </div>
+              ))}
+          {isFailed && (
+            <div className={styles.errorMessage}>Не удалось загрузить список адресов</div>
+          )}
         </div>
       )}
     </div>

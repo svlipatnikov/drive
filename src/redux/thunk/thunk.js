@@ -1,33 +1,68 @@
-import { getDbCars, getDbCategory, getDbCities, getDbPoints, getDbRate } from 'api/services';
+import { getCars, getCategory, getCities, getPoints, getRate } from 'api/services';
 import {
-  setCitiesAction,
-  setPointsAction,
-  setCategoryAction,
-  setCarsAction,
-  setRateAction,
+  fetchCities,
+  fetchPoints,
+  fetchCategory,
+  fetchCars,
+  fetchRate,
+  successCities,
+  successPoints,
+  successCategory,
+  successCars,
+  successRate,
+  failedCities,
+  failedPoints,
+  failedCategory,
+  failedCars,
+  failedRate,
 } from 'redux/actions/dbActions';
 
 export const setDbCitiesAction = () => async (dispatch) => {
-  const cities = await getDbCities();
-  dispatch(setCitiesAction(cities));
+  dispatch(fetchCities());
+  const cities = await getCities();
+  if (cities && cities.length) {
+    dispatch(successCities(cities));
+  } else {
+    dispatch(failedCities());
+  }
 };
 
 export const setDbPointsAction = () => async (dispatch) => {
-  const points = await getDbPoints();
-  dispatch(setPointsAction(points));
+  dispatch(fetchPoints());
+  const points = await getPoints();
+  if (points && points.length) {
+    dispatch(successPoints(points));
+  } else {
+    dispatch(failedPoints());
+  }
 };
 
 export const setDbCategoryAction = () => async (dispatch) => {
-  const category = await getDbCategory();
-  dispatch(setCategoryAction(category));
+  dispatch(fetchCategory());
+  const category = await getCategory();
+  if (category && category.length) {
+    dispatch(successCategory(category));
+  } else {
+    dispatch(failedCategory());
+  }
 };
 
 export const setDbCarsAction = () => async (dispatch) => {
-  const cars = await getDbCars();
-  dispatch(setCarsAction(cars));
+  dispatch(fetchCars());
+  const cars = await getCars();
+  if (cars && cars.length) {
+    dispatch(successCars(cars));
+  } else {
+    dispatch(failedCars());
+  }
 };
 
 export const setDbRateAction = () => async (dispatch) => {
-  const rate = await getDbRate();
-  dispatch(setRateAction(rate));
+  dispatch(fetchRate());
+  const rate = await getRate();
+  if (rate && rate.length) {
+    dispatch(successRate(rate));
+  } else {
+    dispatch(failedRate());
+  }
 };
