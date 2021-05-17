@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { citySelector } from 'redux/selectors/orderSelectors';
 import { setCityAction } from 'redux/actions/orderActions';
 import { dbCitiesSelector } from 'redux/selectors/dbSelectors';
-import Loader from 'components/Loader/Loader';
+import Loader from 'components/Loader';
 import { setDbCitiesAction } from 'redux/actions/dbActions';
 
 const SearchSelectCity = () => {
@@ -26,11 +26,12 @@ const SearchSelectCity = () => {
       }
     };
 
+    dispatch(setDbCitiesAction());
     window.addEventListener('click', handleClose);
     return () => {
       window.removeEventListener('click', handleClose);
     };
-  }, []);
+  }, [dispatch]);
 
   const handleChange = (event) => {
     setInput(event.target.value);

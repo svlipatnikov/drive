@@ -1,11 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { setOrderStepAction } from 'redux/actions/mainActions';
+import { ReactComponent as Tringle } from 'assets/svg/tringle.svg';
 import styles from './buttonNav.module.scss';
 import cn from 'classnames';
-import { useDispatch } from 'react-redux';
-import { setOrderStepAction } from 'redux/actions/orderActions';
 
-const ButtonNav = ({ text, link, active, disabled }) => {
+const ButtonNav = ({ link, active, disabled, step, children }) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -17,13 +18,16 @@ const ButtonNav = ({ text, link, active, disabled }) => {
 
   const handleClick = () => {
     history.push(link);
-    dispatch(setOrderStepAction(text));
+    dispatch(setOrderStepAction(step));
   };
 
   return (
-    <button className={buttonStyle} onClick={handleClick} disabled={disabled}>
-      {text}
-    </button>
+    <>
+      <Tringle className={styles.tringle} />
+      <button className={buttonStyle} onClick={handleClick} disabled={disabled}>
+        {children}
+      </button>
+    </>
   );
 };
 

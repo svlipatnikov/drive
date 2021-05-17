@@ -1,4 +1,4 @@
-@import '../../scss/variables.scss';
+@import '../../styles/variables.scss';
 
 .wrapper {
   height: 100vh;
@@ -46,10 +46,8 @@
   justify-content: space-between;
   flex-grow: 1;
 
-  @media screen and (max-width: $tablet) {
-    flex-direction: column;
-    justify-content: flex-start;
-  }
+  max-height: calc(100vh - 133px);
+  overflow-y: auto;
 }
 
 .horizontLine {

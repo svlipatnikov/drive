@@ -7,7 +7,7 @@ import ButtonRadio from 'components/ButtonRadio';
 import styles from './car.module.scss';
 import CarCard from 'components/CarCard';
 import { setCategoryAction } from 'redux/actions/orderActions';
-import Loader from 'components/Loader/Loader';
+import Loader from 'components/Loader';
 
 const Car = () => {
   const dispatch = useDispatch();
@@ -17,9 +17,9 @@ const Car = () => {
   const curentModel = useSelector(modelSelector);
 
   useEffect(() => {
-    if (!dbCategory.length) dispatch(setDbCategoryAction());
-    if (!dbCars.length) dispatch(setDbCarsAction());
-  }, [dbCars.length, dbCategory.length, dispatch]);
+    dispatch(setDbCategoryAction());
+    dispatch(setDbCarsAction());
+  }, [dispatch]);
 
   const handleClick = (category) => () => {
     dispatch(setCategoryAction(category));

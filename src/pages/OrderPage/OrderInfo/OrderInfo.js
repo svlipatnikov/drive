@@ -4,9 +4,9 @@ import React, { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
-import { setOrderStepAction } from 'redux/actions/orderActions';
+import { setOrderStepAction } from 'redux/actions/mainActions';
+import { orderStepSelector, pageSizeSelector } from 'redux/selectors/mainSelectors';
 import {
-  orderStepSelector,
   locationSelector,
   carSelector,
   additionSelector,
@@ -15,18 +15,20 @@ import {
   carIsFilledSelector,
   additionIsFilledSelector,
 } from 'redux/selectors/orderSelectors';
+import { ReactComponent as CloseBtn } from 'assets/svg/closeBtn.svg';
 import styles from './orderInfo.module.scss';
+import cn from 'classnames';
 
-const OrderInfo = () => {
+const OrderInfo = ({ setOpen, open }) => {
   const history = useHistory();
   const dispatch = useDispatch();
-
   const orderStep = useSelector(orderStepSelector);
 
   const { city, point } = useSelector(locationSelector);
   const { model } = useSelector(carSelector);
   const { color, rate, dateFrom, dateTo } = useSelector(additionSelector);
   const { fullTank, babyChair, rightSteering } = useSelector(optionsSelector);
+  const { tablet } = useSelector(pageSizeSelector);
 
   const locationIsFilled = useSelector(locationIsFilledSelector);
   const carIsFilled = useSelector(carIsFilledSelector);
@@ -56,14 +58,24 @@ const OrderInfo = () => {
     history.push(getNextLink(orderStep));
   };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <section className={styles.wrapper}>
+    <section className={cn({ [styles.wrapper]: true, [styles.notOpen]: !open })}>
+      {tablet && (
+        <button className={styles.closeBtn} onClick={handleClose}>
+          <CloseBtn />
+        </button>
+      )}
+
       <div className={styles.title}>Ваш заказ:</div>
 
       <ul className={styles.itemList}>
         {city && <OrderItem name="Пункт выдачи" items={[city, point]} />}
         {model.name && <OrderItem name="Модель" items={[model.name]} />}
-        {color && <OrderItem name="Цвет" items={[color]} />}
+        {color && color !== 'Любой' && <OrderItem name="Цвет" items={[color]} />}
         {dateFrom && dateTo && (
           <OrderItem name="Длительность аренды" items={[daysRange + 'д ' + hoursRange + 'ч']} />
         )}
@@ -81,7 +93,12 @@ const OrderInfo = () => {
         </div>
       )}
 
-      <ButtonAccent text={getBtnText(orderStep)} active={btnActive} onClick={handleBtnClick} />
+      <ButtonAccent
+        text={getBtnText(orderStep)}
+        active={btnActive}
+        onClick={handleBtnClick}
+        className={styles.button}
+      />
     </section>
   );
 };

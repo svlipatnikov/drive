@@ -1,4 +1,4 @@
-@import '../../scss/variables.scss';
+@import '../../styles/variables.scss';
 
 .wrapper {
   position: absolute;
@@ -7,7 +7,7 @@
   width: 100vw;
   height: 100vh;
 
-  z-index: 2;
+  z-index: 101;
   background-color: $background-color-menu--transparent;
 
   display: flex;

@@ -1,57 +1,88 @@
-import React from 'react';
+import React, { useState } from 'react';
 import cn from 'classnames';
 import styles from './breadCrumbs.module.scss';
-import { ReactComponent as Tringle } from 'assets/svg/tringle.svg';
 import ButtonNav from 'components/ButtonNav';
 import { useSelector } from 'react-redux';
 import {
-  orderStepSelector,
   locationIsFilledSelector,
   carIsFilledSelector,
   additionIsFilledSelector,
 } from 'redux/selectors/orderSelectors';
+import { orderStepSelector, pageSizeSelector } from 'redux/selectors/mainSelectors';
+import { ReactComponent as Location } from 'assets/breadCrumbsSvg/location.svg';
+import { ReactComponent as Car } from 'assets/breadCrumbsSvg/car.svg';
+import { ReactComponent as Addition } from 'assets/breadCrumbsSvg/info.svg';
+import { ReactComponent as Result } from 'assets/breadCrumbsSvg/result.svg';
+import { ReactComponent as OrderSvg } from 'assets/breadCrumbsSvg/order.svg';
+import OrderInfo from 'pages/OrderPage/OrderInfo';
 
 const BreadCrumps = ({ className }) => {
+  const [open, setOpen] = useState(false);
   const orderStep = useSelector(orderStepSelector);
   const locationIsFilled = useSelector(locationIsFilledSelector);
   const carIsFilled = useSelector(carIsFilledSelector);
   const additionIsFilled = useSelector(additionIsFilledSelector);
+  const { mobile, tablet } = useSelector(pageSizeSelector);
+
+  const navigation = [
+    {
+      text: 'Местоположение',
+      icon: Location,
+      link: '/order/location',
+      disabled: false,
+    },
+    {
+      text: 'Модель',
+      icon: Car,
+      link: '/order/car',
+      disabled: !locationIsFilled,
+    },
+    {
+      text: 'Дополнительно',
+      icon: Addition,
+      link: '/order/addition',
+      disabled: !locationIsFilled || !carIsFilled,
+    },
+    {
+      text: 'Итого',
+      icon: Result,
+      link: '/order/result',
+      disabled: !locationIsFilled || !carIsFilled || !additionIsFilled,
+    },
+  ];
+
+  const handleOrderClick = () => {
+    setOpen(true);
+  };
 
   return (
-    <nav className={cn(styles.wrapper, className)}>
-      <ButtonNav
-        text="Местоположение"
-        link="/order/location"
-        active={orderStep === 'Местоположение'}
-      />
+    <div className={cn(styles.wrapper, className)}>
+      <nav className={styles.nav}>
+        {navigation.map((nav) => (
+          <ButtonNav
+            key={nav.text}
+            link={nav.link}
+            step={nav.text}
+            active={orderStep === nav.text}
+            disabled={nav.disabled}
+          >
+            {mobile ? <nav.icon className={styles.icon} /> : nav.text}
+          </ButtonNav>
+        ))}
+      </nav>
 
-      <Tringle className={styles.tringle} />
+      {tablet && (
+        <button className={styles.orderBtn} onClick={handleOrderClick}>
+          {mobile ? (
+            <OrderSvg className={cn(styles.icon, styles.orderIcon)} />
+          ) : (
+            <div className={styles.orderText}>Ваш заказ</div>
+          )}
+        </button>
+      )}
 
-      <ButtonNav
-        text="Модель"
-        link="/order/car"
-        active={orderStep === 'Модель'}
-        disabled={!locationIsFilled}
-      />
-
-      <Tringle className={styles.tringle} />
-
-      <ButtonNav
-        text="Дополнительно"
-        link="/order/addition"
-        active={orderStep === 'Дополнительно'}
-        disabled={!locationIsFilled || !carIsFilled}
-      />
-
-      <Tringle className={styles.tringle} />
-
-      <ButtonNav
-        text="Итого"
-        link="/order/result"
-        active={orderStep === 'Итого'}
-        disabled={!locationIsFilled || !carIsFilled || !additionIsFilled}
-      />
-    </nav>
+      {tablet && <OrderInfo setOpen={setOpen} open={open} />}
+    </div>
   );
 };
 

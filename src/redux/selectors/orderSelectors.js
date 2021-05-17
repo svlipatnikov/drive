@@ -1,5 +1,3 @@
-export const orderStepSelector = (store) => store.orderReducer.orderStep;
-
 // location
 export const locationSelector = (store) => store.orderReducer.location;
 export const citySelector = (store) => store.orderReducer.location.city;

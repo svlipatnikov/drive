@@ -1,5 +1,4 @@
 import {
-  SET_ORDER_STEP,
   SET_CITY,
   SET_POINT,
   SET_CAR_CATEGORY,
@@ -13,7 +12,6 @@ import {
 } from 'redux/types';
 
 const orderReducerInit = {
-  orderStep: 'Местоположение',
   location: {
     city: '',
     point: '',
@@ -38,9 +36,6 @@ const orderReducerInit = {
 
 const orderReducer = (state = orderReducerInit, action) => {
   switch (action.type) {
-    case SET_ORDER_STEP:
-      return { ...state, orderStep: action.payload };
-
     case SET_CITY:
       return { ...orderReducerInit, location: { city: action.payload, point: '' } };
 

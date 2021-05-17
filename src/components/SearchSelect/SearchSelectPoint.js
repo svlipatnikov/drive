@@ -6,7 +6,7 @@ import { ReactComponent as CloseBtn } from 'assets/svg/closeBtn.svg';
 import { dbPointsSelector } from 'redux/selectors/dbSelectors';
 import styles from './searchSelect.module.scss';
 import { setDbPointsAction } from 'redux/actions/dbActions';
-import Loader from 'components/Loader/Loader';
+import Loader from 'components/Loader';
 
 const SearchSelectPoint = () => {
   const city = useSelector(citySelector);
@@ -30,11 +30,12 @@ const SearchSelectPoint = () => {
       }
     };
 
+    dispatch(setDbPointsAction());
     window.addEventListener('click', handleClose);
     return () => {
       window.removeEventListener('click', handleClose);
     };
-  }, []);
+  }, [dispatch]);
 
   const handleChange = (event) => {
     setInput(event.target.value);

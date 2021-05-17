@@ -21,7 +21,7 @@ import {
 } from 'redux/selectors/orderSelectors';
 import styles from './addition.module.scss';
 import DateInput from 'components/DateInput';
-import Loader from 'components/Loader/Loader';
+import Loader from 'components/Loader';
 
 const Addition = () => {
   const dispatch = useDispatch();
@@ -34,8 +34,8 @@ const Addition = () => {
   const dateTo = useSelector(dateToSelector);
 
   useEffect(() => {
-    if (!dbRate.length) dispatch(setDbRateAction());
-  }, [dbRate.length, dispatch]);
+    dispatch(setDbRateAction());
+  }, [dispatch]);
 
   const handleColorClick = (color) => () => {
     dispatch(setColorAction(color));

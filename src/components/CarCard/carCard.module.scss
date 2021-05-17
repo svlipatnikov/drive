@@ -1,4 +1,4 @@
-@import '../../scss/variables.scss';
+@import '../../styles/variables.scss';
 
 .card {
   padding: 16px;
@@ -16,7 +16,7 @@
     border: $color-gray solid 1px;
   }
 
-  @media screen and (max-width: $mobile) {
+  @media screen and (max-width: $mobile-compact) {
     width: 100%;
   }
 }
@@ -39,6 +39,10 @@
   font-size: 14px;
   line-height: 16px;
   margin-bottom: 36px;
+
+  @media screen and (max-width: $mobile) {
+    margin-bottom: 16px;
+  }
 }
 
 .img {

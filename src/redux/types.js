@@ -1,8 +1,9 @@
 // mainReducer
 export const SET_LANGUAGE = 'SET_LANGUAGE';
+export const SET_ORDER_STEP = 'SET_ORDER_STEP';
+export const SET_PAGE_SIZE = 'SET_PAGE_SIZE';
 
 // orderReducer
-export const SET_ORDER_STEP = 'SET_ORDER_STEP';
 export const SET_CITY = 'SET_CITY';
 export const SET_POINT = 'SET_POINT';
 export const SET_CAR_CATEGORY = 'SET_CAR_CATEGORY';
