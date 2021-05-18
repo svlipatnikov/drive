@@ -1,0 +1,80 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+
+  position: relative;
+}
+
+.label {
+  margin: 0;
+  @include font-text();
+}
+
+.inputField {
+  outline: none;
+  border: none;
+  border-bottom: $color-gray solid 1px;
+
+  width: 224px;
+  padding: 0 8px 3px;
+  margin-left: 8px;
+
+  @include font-text();
+
+  &::placeholder {
+    @include font-text($color-gray);
+  }
+
+  @media screen and (max-width: $mobile-compact) {
+    width: 180px;
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  background: none;
+  width: 1em;
+  height: 1em;
+  stroke: $color-black;
+  right: 4px;
+
+  svg {
+    width: 1em;
+    height: 1em;
+  }
+}
+
+.selectList {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  z-index: 1;
+
+  width: 224px;
+  max-height: 106px;
+
+  border: $color-gray-light solid 1px;
+  background-color: $color-white;
+
+  padding: 8px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.selectItem {
+  @include font-text($color-gray);
+  padding: 3px 0;
+
+  &:hover {
+    @include font-text($color-main-accent);
+    cursor: pointer;
+  }
+}
+
+.errorMessage {
+  @include font-text($color-gray);
+}

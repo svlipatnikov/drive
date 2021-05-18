@@ -1,0 +1,40 @@
+@import '../../styles/variables.scss';
+
+.tringle {
+  margin: 0 16px;
+
+  &:first-child {
+    display: none;
+  }
+
+  @media screen and (max-width: $mobile-compact) {
+    margin: 0 8px;
+  }
+}
+
+.button {
+  background: none;
+  text-decoration: none;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  color: $color-black;
+  fill: $color-black;
+}
+
+.buttonActive {
+  color: $color-main-accent;
+  fill: $color-main-accent;
+}
+
+.buttonDisabled {
+  color: $color-gray;
+  fill: $color-gray;
+  cursor: auto;
+}
+
+.icon {
+  height: 20px;
+  width: 20px;
+}

@@ -1,8 +1,9 @@
 import Menu from 'components/Menu';
 import React, { useState } from 'react';
-import './buttonMenu.scss';
+import { ReactComponent as HamburgerBtn } from 'assets/svg/hamburger.svg';
+import styles from './buttonMenu.module.scss';
 
-const ButtonMenu = ({ className }) => {
+const ButtonMenu = () => {
   const [open, setOpen] = useState(false);
 
   const handleclick = () => {
@@ -14,11 +15,9 @@ const ButtonMenu = ({ className }) => {
       {open ? (
         <Menu setOpen={setOpen} />
       ) : (
-        <div className={`hamburger-btn ${!!className ? className : ''}`} onClick={handleclick}>
-          <div />
-          <div />
-          <div />
-        </div>
+        <button className={styles.hamburgerBtn} onClick={handleclick}>
+          <HamburgerBtn />
+        </button>
       )}
     </>
   );

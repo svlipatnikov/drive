@@ -1,0 +1,104 @@
+@import '../../styles/variables.scss';
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  z-index: 101;
+  background-color: $background-color-menu--transparent;
+
+  display: flex;
+  align-items: flex-start;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: $background-color-menu;
+    height: 100vh;
+    width: calc(50% + 32px);
+
+    @media screen and (max-width: $desktop-min) {
+      width: calc(752px - (1440px - 100%) / 3);
+    }
+
+    @media screen and (max-width: $tablet) {
+      width: 100%;
+    }
+  }
+}
+
+.wrapperCover {
+  background-color: $background-color-menu;
+}
+
+.menu {
+  position: absolute;
+  align-self: center;
+  margin: 0 128px;
+  padding: 0;
+
+  @media screen and (max-width: $desktop-min) {
+    margin: 0 96px;
+  }
+
+  @media screen and (max-width: $mobile) {
+    margin: 80px 28px;
+    align-self: flex-start;
+  }
+}
+
+.navList {
+  padding: 0;
+}
+
+.navItem {
+  list-style: none;
+  margin-top: 16px;
+}
+
+.navLink {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 37px;
+  color: $color-white;
+
+  &:hover {
+    color: $color-main-accent;
+  }
+
+  @media screen and (max-width: $mobile) {
+    font-size: 22px;
+    line-height: 26px;
+  }
+}
+
+.social {
+  margin-top: 32px;
+}
+
+.socialItem {
+  margin-right: 24px;
+  fill: $color-white;
+
+  &:hover {
+    cursor: pointer;
+    fill: $color-main-accent;
+  }
+}
+
+.languageBtnMenu {
+  display: none;
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+
+  @media screen and (max-width: $mobile) {
+    display: block;
+  }
+}

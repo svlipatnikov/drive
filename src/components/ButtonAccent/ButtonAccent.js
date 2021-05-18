@@ -1,12 +1,16 @@
 import React from 'react';
-import './buttonAccent.scss';
+import cn from 'classnames';
+import styles from './buttonAccent.module.scss';
 
-const ButtonAccent = ({ text, className, onClick }) => {
-  const handleClick = () => {
-    onClick();
-  };
+const ButtonAccent = ({ text, className, onClick, active }) => {
+  const buttonStyle = cn({
+    [styles.btn]: true,
+    [className]: !!className,
+    [styles.activeBtn]: active,
+  });
+
   return (
-    <button className={`button ${!!className ? className : ''}`} onClick={handleClick}>
+    <button className={buttonStyle} onClick={active ? onClick : undefined}>
       {text}
     </button>
   );

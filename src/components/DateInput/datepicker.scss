@@ -1,0 +1,23 @@
+@import '../../styles/variables.scss';
+
+$datepicker__background-color: $color-gray-light;
+$datepicker__border-color: $color-gray-light;
+$datepicker__highlighted-color: $color-main-accent;
+$datepicker__muted-color: $color-gray;
+$datepicker__selected-color: $color-main-accent;
+$datepicker__text-color: $color-black;
+$datepicker__header-color: $color-black;
+$datepicker__navigation-disabled-color: lighten($color-main-accent, 10%);
+
+$datepicker__border-radius: 0.1rem;
+$datepicker__day-margin: 0.2rem;
+$datepicker__font-size: 0.8rem;
+$datepicker__font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+$datepicker__item-size: 1.5rem;
+$datepicker__margin: 0.5rem;
+$datepicker__navigation-size: 0.5rem;
+$datepicker__triangle-size: 8px;
+
+// li.react-datepicker__time-list-item {
+//   height: max-content !important;
+// }

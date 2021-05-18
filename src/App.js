@@ -6,14 +6,12 @@ import OrderPage from './pages/OrderPage';
 
 function App() {
   return (
-    <div className="App">
-      <HashRouter>
-        <Switch>
-          <Route path="/" exact component={MainPage} />
-          <Route path="/order" exact component={OrderPage} />
-        </Switch>
-      </HashRouter>
-    </div>
+    <HashRouter>
+      <Switch>
+        <Route path="/" exact component={MainPage} />
+        <Route path="/order" component={OrderPage} />
+      </Switch>
+    </HashRouter>
   );
 }
 

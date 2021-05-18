@@ -1,0 +1,18 @@
+@import '../../styles/variables.scss';
+
+.closeBtn {
+  position: relative;
+  background: none;
+  margin: 32px 16px;
+  width: 32px;
+  height: 32px;
+  stroke: $color-white;
+
+  @media screen and (max-width: $desktop-min) {
+    margin: 28px 16px;
+  }
+
+  @media screen and (max-width: $mobile) {
+    margin: 20px 20px;
+  }
+}

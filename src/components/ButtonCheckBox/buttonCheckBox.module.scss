@@ -1,0 +1,39 @@
+@import '../../styles/variables.scss';
+
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  margin-top: 8px;
+}
+
+.checkBox {
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+  border: $color-gray solid 1px;
+}
+
+.checked {
+  border: $color-main-accent solid 1px;
+}
+
+.text {
+  color: $color-gray;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.textChecked {
+  color: $color-black;
+}
+
+.checkMark {
+  position: absolute;
+  stroke: $color-black;
+  left: 2px;
+  top: 2px;
+}
