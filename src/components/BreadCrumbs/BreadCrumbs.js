@@ -12,7 +12,7 @@ import { orderStepSelector, pageSizeSelector } from 'redux/selectors/mainSelecto
 import { ReactComponent as Location } from 'assets/breadCrumbsSvg/location.svg';
 import { ReactComponent as Car } from 'assets/breadCrumbsSvg/car.svg';
 import { ReactComponent as Addition } from 'assets/breadCrumbsSvg/info.svg';
-import { ReactComponent as Result } from 'assets/breadCrumbsSvg/result.svg';
+import { ReactComponent as Confirm } from 'assets/breadCrumbsSvg/result.svg';
 import { ReactComponent as OrderSvg } from 'assets/breadCrumbsSvg/order.svg';
 import OrderInfo from 'pages/OrderPage/OrderInfo';
 
@@ -45,8 +45,8 @@ const BreadCrumps = ({ className }) => {
     },
     {
       text: 'Итого',
-      icon: Result,
-      link: '/order/result',
+      icon: Confirm,
+      link: '/order/confirm',
       disabled: !locationIsFilled || !carIsFilled || !additionIsFilled,
     },
   ];

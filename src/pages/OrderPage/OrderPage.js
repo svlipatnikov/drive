@@ -1,14 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import { Switch, Route, Redirect, useHistory } from 'react-router';
 import SideBar from 'components/SideBar';
-import MenuButton from 'components/ButtonMenu';
+import ButtonMenu from 'components/ButtonMenu';
 import Header from 'components/Header';
 import BreadCrumbs from 'components/BreadCrumbs';
 
 import LocationStep from 'pages/OrderPage/LocationStep';
 import CarStep from 'pages/OrderPage/CarStep';
 import AdditionStep from 'pages/OrderPage/AdditionStep';
-import ResultStep from 'pages/OrderPage/ResultStep';
+import ConfirmStep from 'pages/OrderPage/ConfirmStep';
+import Result from './Result';
 
 import OrderInfo from 'pages/OrderPage/OrderInfo';
 import styles from './orderPage.module.scss';
@@ -49,7 +50,7 @@ const OrderPage = () => {
 
   return (
     <div className={styles.wrapper} ref={pageRef}>
-      <MenuButton />
+      <ButtonMenu />
       <SideBar />
 
       <section className={styles.content}>
@@ -57,7 +58,14 @@ const OrderPage = () => {
 
         <nav className={styles.navBlock}>
           <div className={styles.horizontLine} />
-          <BreadCrumbs className={styles.container} />
+
+          <div className={styles.container}>
+            <Switch>
+              {/* <Route path="/order/result" exact component={} className={styles.container}/> */}
+              <Route path="/order" component={BreadCrumbs} />
+            </Switch>
+          </div>
+
           <div className={styles.horizontLine} />
         </nav>
 
@@ -66,7 +74,8 @@ const OrderPage = () => {
             <Route path="/order/location" exact component={LocationStep} />
             <Route path="/order/car" exact component={CarStep} />
             <Route path="/order/addition" exact component={AdditionStep} />
-            <Route path="/order/result" exact component={ResultStep} />
+            <Route path="/order/confirm" exact component={ConfirmStep} />
+            <Route path="/order/result" exact component={Result} />
             <Redirect to="/order/location" />
           </Switch>
 

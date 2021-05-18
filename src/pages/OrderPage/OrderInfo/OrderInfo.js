@@ -1,6 +1,4 @@
-import ButtonAccent from 'components/ButtonAccent';
-import OrderItem from 'components/OrderItem';
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
@@ -16,10 +14,14 @@ import {
   additionIsFilledSelector,
 } from 'redux/selectors/orderSelectors';
 import { ReactComponent as CloseBtn } from 'assets/svg/closeBtn.svg';
+import ButtonAccent from 'components/ButtonAccent';
+import OrderItem from 'components/OrderItem';
 import styles from './orderInfo.module.scss';
 import cn from 'classnames';
+import ConfirmationModal from 'components/ConfirmationModal';
 
 const OrderInfo = ({ setOpen, open }) => {
+  const [confirmation, setConfirmation] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
   const orderStep = useSelector(orderStepSelector);
@@ -55,8 +57,12 @@ const OrderInfo = ({ setOpen, open }) => {
   ]);
 
   const handleBtnClick = () => {
-    dispatch(setOrderStepAction(getNextStep(orderStep)));
-    history.push(getNextLink(orderStep));
+    if (orderStep === 'Итого') {
+      setConfirmation(true);
+    } else {
+      dispatch(setOrderStepAction(getNextStep(orderStep)));
+      history.push(getNextLink(orderStep));
+    }
   };
 
   const handleClose = () => {
@@ -100,6 +106,8 @@ const OrderInfo = ({ setOpen, open }) => {
         onClick={handleBtnClick}
         className={styles.nextBtn}
       />
+
+      {confirmation && <ConfirmationModal setOpen={setConfirmation} />}
     </section>
   );
 };
@@ -136,6 +144,9 @@ const getNextStep = (step) => {
     case 'Дополнительно':
       return 'Итого';
 
+    case 'Итого':
+      return 'Подтверждение';
+
     default:
       return 'Местоположение';
   }
@@ -150,7 +161,7 @@ const getNextLink = (step) => {
       return '/order/addition';
 
     case 'Дополнительно':
-      return '/order/result';
+      return '/order/confirm';
 
     default:
       return 'Местоположение';

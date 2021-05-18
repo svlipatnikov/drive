@@ -23,6 +23,10 @@
     background-color: $color-white;
     padding: 32px;
   }
+
+  @media screen and (max-width: $mobile) {
+    width: 100%;
+  }
 }
 
 .notOpen {
@@ -61,12 +65,13 @@
 .nextBtn {
   visibility: visible;
   z-index: 100;
+  width: 288px;
 
   @media screen and (max-width: $tablet) {
     position: fixed;
     bottom: 16px;
     right: calc(50% - 144px);
-    box-shadow: 0 0 24px 32px $color-white;
+    box-shadow: 0 0 32px 16px $color-white;
   }
 
   @media screen and (max-width: $mobile) {

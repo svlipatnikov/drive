@@ -4,22 +4,55 @@
   border: none;
   border-radius: 8px;
   height: 48px;
-  min-width: 288px;
 
   font-size: 18px;
   line-height: 21px;
   color: $color-white;
   background: $color-gray-light;
+  padding: 0 32px;
 }
 
 .activeBtn {
-  background: linear-gradient(90deg, $color-main-accent 2.61%, #039f67 112.6%);
+  background: linear-gradient(
+    90deg,
+    $color-main-accent 2.61%,
+    darken($color-main-accent, 10%) 112.6%
+  );
+  background-blend-mode: darken;
 
   &:hover {
-    filter: brightness(90%);
+    background: linear-gradient(
+      90deg,
+      darken($color-main-accent, 10%) 2.61%,
+      darken($color-main-accent, 20%) 112.6%
+    );
   }
 
   &:active {
-    filter: brightness(80%);
+    background: linear-gradient(
+      90deg,
+      darken($color-main-accent, 20%) 2.61%,
+      darken($color-main-accent, 30%) 112.6%
+    );
+  }
+}
+
+.negativeBtn {
+  background: linear-gradient(90deg, darken($color-negative, 10%) 0%, $color-negative 100%);
+
+  &:hover {
+    background: linear-gradient(
+      90deg,
+      darken($color-negative, 20%) 0%,
+      darken($color-negative, 10%) 100%
+    );
+  }
+
+  &:active {
+    background: linear-gradient(
+      90deg,
+      darken($color-negative, 30%) 0%,
+      darken($color-negative, 20%) 100%
+    );
   }
 }
