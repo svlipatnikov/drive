@@ -4,13 +4,16 @@ import SideBar from 'components/SideBar';
 import MenuButton from 'components/ButtonMenu';
 import Header from 'components/Header';
 import BreadCrumbs from 'components/BreadCrumbs';
-import Location from 'pages/OrderPage/Location';
-import Car from 'pages/OrderPage/Car';
-import Addition from 'pages/OrderPage/Addition';
+
+import LocationStep from 'pages/OrderPage/LocationStep';
+import CarStep from 'pages/OrderPage/CarStep';
+import AdditionStep from 'pages/OrderPage/AdditionStep';
+import ResultStep from 'pages/OrderPage/ResultStep';
+
 import OrderInfo from 'pages/OrderPage/OrderInfo';
 import styles from './orderPage.module.scss';
 import cn from 'classnames';
-import Result from './Result';
+
 import { setPageSizeAction } from 'redux/actions/mainActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { pageSizeSelector } from 'redux/selectors/mainSelectors';
@@ -60,10 +63,10 @@ const OrderPage = () => {
 
         <main className={cn(styles.order, styles.container)}>
           <Switch>
-            <Route path="/order/location" exact component={Location} />
-            <Route path="/order/car" exact component={Car} />
-            <Route path="/order/addition" exact component={Addition} />
-            <Route path="/order/result" exact component={Result} />
+            <Route path="/order/location" exact component={LocationStep} />
+            <Route path="/order/car" exact component={CarStep} />
+            <Route path="/order/addition" exact component={AdditionStep} />
+            <Route path="/order/result" exact component={ResultStep} />
             <Redirect to="/order/location" />
           </Switch>
 

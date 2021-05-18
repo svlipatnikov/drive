@@ -1,10 +1,10 @@
 import React from 'react';
 import SearchSelectCity from 'components/SearchSelect/SearchSelectCity';
 import SearchSelectPoint from 'components/SearchSelect/SearchSelectPoint';
-import styles from './location.module.scss';
+import styles from './locationStep.module.scss';
 import map from './map.jpg';
 
-const OrderPageLocation = () => {
+const LocationStep = () => {
   return (
     <section>
       <div className={styles.container}>
@@ -18,4 +18,4 @@ const OrderPageLocation = () => {
   );
 };
 
-export default OrderPageLocation;
+export default LocationStep;

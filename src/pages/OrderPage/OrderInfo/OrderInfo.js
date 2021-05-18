@@ -43,7 +43,8 @@ const OrderInfo = ({ setOpen, open }) => {
   const btnActive =
     (orderStep === 'Местоположение' && locationIsFilled) ||
     (orderStep === 'Модель' && carIsFilled) ||
-    (orderStep === 'Дополнительно' && additionIsFilled);
+    (orderStep === 'Дополнительно' && additionIsFilled) ||
+    orderStep === 'Итого';
 
   const finalPrice = useMemo(() => getFinalPrice(rate, range, fullTank, babyChair, rightSteering), [
     rate,
@@ -115,6 +116,9 @@ const getBtnText = (step) => {
 
     case 'Дополнительно':
       return 'Итого';
+
+    case 'Итого':
+      return 'Заказать';
 
     default:
       return '';
