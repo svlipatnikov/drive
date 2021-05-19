@@ -10,7 +10,7 @@ const Header = ({ className }) => {
   return (
     <header className={cn(styles.wrapper, className)}>
       <div className={styles.logo}>Need for drive</div>
-      <div className={styles.location}>{city || 'Местоположение'}</div>
+      {city && <div className={styles.location}>{city}</div>}
     </header>
   );
 };
