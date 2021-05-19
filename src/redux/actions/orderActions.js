@@ -1,4 +1,5 @@
 import {
+  CLEAR_ORDER,
   SET_CAR_CATEGORY,
   SET_CAR_MODEL,
   SET_CITY,
@@ -10,6 +11,9 @@ import {
   SET_DATE_FROM,
   SET_FINAL_PRICE,
 } from 'redux/types';
+
+// clear
+export const clearOrderAction = () => ({ type: CLEAR_ORDER });
 
 // location
 export const setCityAction = (city) => ({ type: SET_CITY, payload: city });

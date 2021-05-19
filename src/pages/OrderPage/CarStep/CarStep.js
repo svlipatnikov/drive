@@ -4,12 +4,12 @@ import { setDbCarsAction, setDbCategoryAction } from 'redux/thunk/thunk';
 import { dbCarsSelector, dbCategorySelector } from 'redux/selectors/dbSelectors';
 import { categorySelector, modelSelector } from 'redux/selectors/orderSelectors';
 import ButtonRadio from 'components/ButtonRadio';
-import styles from './car.module.scss';
+import styles from './carStep.module.scss';
 import CarCard from 'components/CarCard';
 import { setCategoryAction } from 'redux/actions/orderActions';
 import Loader from 'components/Loader';
 
-const Car = () => {
+const CarStep = () => {
   const dispatch = useDispatch();
   const dbCategory = useSelector(dbCategorySelector);
   const dbCars = useSelector(dbCarsSelector);
@@ -54,7 +54,9 @@ const Car = () => {
       <div className={styles.container}>
         <div className={styles.models}>
           {dbCars.isLoading && <Loader />}
-          {dbCars.isFailed && <div>Не удалось загрузить список автомобилей</div>}
+          {dbCars.isFailed && (
+            <div className={styles.errorMessage}>Не удалось загрузить список автомобилей</div>
+          )}
           {dbCars.isOk &&
             dbCars.data
               .filter((car) => {
@@ -74,4 +76,4 @@ const Car = () => {
   );
 };
 
-export default Car;
+export default CarStep;

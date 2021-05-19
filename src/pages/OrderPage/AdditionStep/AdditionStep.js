@@ -19,11 +19,11 @@ import {
   dateFromSelector,
   dateToSelector,
 } from 'redux/selectors/orderSelectors';
-import styles from './addition.module.scss';
+import styles from './additionStep.module.scss';
 import DateInput from 'components/DateInput';
 import Loader from 'components/Loader';
 
-const Addition = () => {
+const AdditionStep = () => {
   const dispatch = useDispatch();
   const { colors } = useSelector(modelSelector);
   const curentColor = useSelector(colorSelector);
@@ -111,7 +111,7 @@ const Addition = () => {
                 key={rate.id}
                 name={`${rate.rateTypeId.name}, ${rate.price} \u20bd/${rate.rateTypeId.unit}`}
                 onClick={handleRateClick(rate)}
-                active={rate === curentRate}
+                active={curentRate ? rate.id === curentRate.id : false}
                 className={styles.rateItem}
               />
             ))}
@@ -135,4 +135,4 @@ const Addition = () => {
   );
 };
 
-export default Addition;
+export default AdditionStep;

@@ -1,19 +1,24 @@
 import React, { useEffect, useRef } from 'react';
 import { Switch, Route, Redirect, useHistory } from 'react-router';
 import SideBar from 'components/SideBar';
-import MenuButton from 'components/ButtonMenu';
+import ButtonMenu from 'components/ButtonMenu';
 import Header from 'components/Header';
 import BreadCrumbs from 'components/BreadCrumbs';
-import Location from 'pages/OrderPage/Location';
-import Car from 'pages/OrderPage/Car';
-import Addition from 'pages/OrderPage/Addition';
+
+import LocationStep from 'pages/OrderPage/LocationStep';
+import CarStep from 'pages/OrderPage/CarStep';
+import AdditionStep from 'pages/OrderPage/AdditionStep';
+import OrderResult from './OrderResult';
+
 import OrderInfo from 'pages/OrderPage/OrderInfo';
 import styles from './orderPage.module.scss';
 import cn from 'classnames';
-import Result from './Result';
+
 import { setPageSizeAction } from 'redux/actions/mainActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { pageSizeSelector } from 'redux/selectors/mainSelectors';
+import OrderNumber from 'components/OrderNumber';
+import ButtonOrder from 'components/ButtonOrder';
 
 const OrderPage = () => {
   const pageRef = useRef(null);
@@ -46,7 +51,7 @@ const OrderPage = () => {
 
   return (
     <div className={styles.wrapper} ref={pageRef}>
-      <MenuButton />
+      <ButtonMenu />
       <SideBar />
 
       <section className={styles.content}>
@@ -54,16 +59,27 @@ const OrderPage = () => {
 
         <nav className={styles.navBlock}>
           <div className={styles.horizontLine} />
-          <BreadCrumbs className={styles.container} />
+
+          <div className={cn(styles.container, styles.navBar)}>
+            <Switch>
+              <Route path="/order/result" exact component={OrderNumber} />
+              <Route path="/order" component={BreadCrumbs} />
+            </Switch>
+            <ButtonOrder />
+          </div>
+
           <div className={styles.horizontLine} />
         </nav>
 
         <main className={cn(styles.order, styles.container)}>
           <Switch>
-            <Route path="/order/location" exact component={Location} />
-            <Route path="/order/car" exact component={Car} />
-            <Route path="/order/addition" exact component={Addition} />
-            <Route path="/order/result" exact component={Result} />
+            <Route path="/order/location" exact component={LocationStep} />
+            <Route path="/order/car" exact component={CarStep} />
+            <Route path="/order/addition" exact component={AdditionStep} />
+            <Route path="/order/confirm" exact component={OrderResult} />
+            <Route path="/order/result">
+              <OrderResult acceptConfirmation />
+            </Route>
             <Redirect to="/order/location" />
           </Switch>
 

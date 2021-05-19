@@ -24,6 +24,7 @@ const sendRequest = async (url, method, body) => {
       return JSON.parse(text);
     }
   } catch (error) {
+    // TODO
     console.log(error);
   }
 };
