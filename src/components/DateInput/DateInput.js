@@ -9,6 +9,7 @@ import {
   roundToNearestMinutes,
   addMinutes,
   subMinutes,
+  getMinutes,
 } from 'date-fns';
 
 const DateInput = ({ label, date, action, minDate, maxDate }) => {
@@ -26,9 +27,13 @@ const DateInput = ({ label, date, action, minDate, maxDate }) => {
   const handleOpen = () => {
     if (!inputDate) {
       if (minDate) {
-        setInputDate(roundToNearestMinutes(addMinutes(minDate, 30), { nearestTo: 30 }));
+        getMinutes(minDate) % 30 === 0
+          ? setInputDate(addMinutes(minDate, 31))
+          : setInputDate(addMinutes(minDate, 30));
       } else {
-        setInputDate(roundToNearestMinutes(addMinutes(new Date(), 60), { nearestTo: 30 }));
+        getMinutes(new Date()) % 30 === 0
+          ? setInputDate(addMinutes(new Date(), 61))
+          : setInputDate(addMinutes(new Date(), 60));
       }
     }
   };

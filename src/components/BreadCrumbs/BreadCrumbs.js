@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
-import cn from 'classnames';
-import styles from './breadCrumbs.module.scss';
-import ButtonNav from 'components/ButtonNav';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import {
   locationIsFilledSelector,
@@ -13,16 +10,15 @@ import { ReactComponent as Location } from 'assets/breadCrumbsSvg/location.svg';
 import { ReactComponent as Car } from 'assets/breadCrumbsSvg/car.svg';
 import { ReactComponent as Addition } from 'assets/breadCrumbsSvg/info.svg';
 import { ReactComponent as Confirm } from 'assets/breadCrumbsSvg/result.svg';
-import { ReactComponent as OrderSvg } from 'assets/breadCrumbsSvg/order.svg';
-import OrderInfo from 'pages/OrderPage/OrderInfo';
+import ButtonNav from 'components/ButtonNav';
+import styles from './breadCrumbs.module.scss';
 
-const BreadCrumps = ({ className }) => {
-  const [open, setOpen] = useState(false);
+const BreadCrumps = () => {
   const orderStep = useSelector(orderStepSelector);
   const locationIsFilled = useSelector(locationIsFilledSelector);
   const carIsFilled = useSelector(carIsFilledSelector);
   const additionIsFilled = useSelector(additionIsFilledSelector);
-  const { mobile, tablet } = useSelector(pageSizeSelector);
+  const { mobile } = useSelector(pageSizeSelector);
 
   const navigation = [
     {
@@ -51,38 +47,20 @@ const BreadCrumps = ({ className }) => {
     },
   ];
 
-  const handleOrderClick = () => {
-    setOpen(true);
-  };
-
   return (
-    <div className={cn(styles.wrapper, className)}>
-      <nav className={styles.nav}>
-        {navigation.map((nav) => (
-          <ButtonNav
-            key={nav.text}
-            link={nav.link}
-            step={nav.text}
-            active={orderStep === nav.text}
-            disabled={nav.disabled}
-          >
-            {mobile ? <nav.icon className={styles.icon} /> : nav.text}
-          </ButtonNav>
-        ))}
-      </nav>
-
-      {tablet && (
-        <button className={styles.orderBtn} onClick={handleOrderClick}>
-          {mobile ? (
-            <OrderSvg className={cn(styles.icon, styles.orderIcon)} />
-          ) : (
-            <div className={styles.orderText}>Ваш заказ</div>
-          )}
-        </button>
-      )}
-
-      {tablet && <OrderInfo setOpen={setOpen} open={open} />}
-    </div>
+    <nav className={styles.wrapper}>
+      {navigation.map((nav) => (
+        <ButtonNav
+          key={nav.text}
+          link={nav.link}
+          step={nav.text}
+          active={orderStep === nav.text}
+          disabled={nav.disabled}
+        >
+          {mobile ? <nav.icon className={styles.icon} /> : nav.text}
+        </ButtonNav>
+      ))}
+    </nav>
   );
 };
 

@@ -19,6 +19,9 @@ export const dateToSelector = (store) => store.orderReducer.addition.dateTo;
 // finalPrice
 export const finalPriceSelector = (store) => store.orderReducer.finalPrice;
 
+// finalPrice
+export const orderIdSelector = (store) => store.orderReducer.orderId;
+
 // is filled
 export const locationIsFilledSelector = (store) =>
   !!store.orderReducer.location.city && !!store.orderReducer.location.point;

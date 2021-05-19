@@ -19,6 +19,7 @@ import OrderItem from 'components/OrderItem';
 import styles from './orderInfo.module.scss';
 import cn from 'classnames';
 import ConfirmationModal from 'components/ConfirmationModal';
+import { clearOrderAction } from 'redux/actions/orderActions';
 
 const OrderInfo = ({ setOpen, open }) => {
   const [confirmation, setConfirmation] = useState(false);
@@ -60,6 +61,9 @@ const OrderInfo = ({ setOpen, open }) => {
     if (orderStep === 'Итого') {
       setConfirmation(true);
     } else {
+      if (orderStep === 'Заказ подтвержден') {
+        dispatch(clearOrderAction());
+      }
       dispatch(setOrderStepAction(getNextStep(orderStep)));
       history.push(getNextLink(orderStep));
     }
@@ -103,6 +107,7 @@ const OrderInfo = ({ setOpen, open }) => {
       <ButtonAccent
         text={getBtnText(orderStep)}
         active={btnActive}
+        negative={orderStep === 'Заказ подтвержден'}
         onClick={handleBtnClick}
         className={styles.nextBtn}
       />
@@ -128,6 +133,9 @@ const getBtnText = (step) => {
     case 'Итого':
       return 'Заказать';
 
+    case 'Заказ подтвержден':
+      return 'Отменить';
+
     default:
       return '';
   }
@@ -145,7 +153,10 @@ const getNextStep = (step) => {
       return 'Итого';
 
     case 'Итого':
-      return 'Подтверждение';
+      return 'Итого';
+
+    case 'Заказ подтвержден':
+      return 'Местоположение';
 
     default:
       return 'Местоположение';
@@ -163,8 +174,14 @@ const getNextLink = (step) => {
     case 'Дополнительно':
       return '/order/confirm';
 
+    case 'Итого':
+      return '/order/confirm';
+
+    case 'Заказ подтвержден':
+      return '/order/location';
+
     default:
-      return 'Местоположение';
+      return '/order/location';
   }
 };
 

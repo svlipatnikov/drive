@@ -1,13 +1,17 @@
 import ButtonAccent from 'components/ButtonAccent';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
+import { setOrderStepAction } from 'redux/actions/mainActions';
 import styles from './confirmationModal.module.scss';
 
 const ConfirmationModal = ({ setOpen }) => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleAccept = () => {
     setOpen(false);
+    dispatch(setOrderStepAction('Заказ подтвержден'));
     history.push('/order/result');
     //TODO send order
   };

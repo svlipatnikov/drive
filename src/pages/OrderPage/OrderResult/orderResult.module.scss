@@ -5,13 +5,25 @@
   width: 100%;
   margin-top: 32px;
   display: flex;
-  flex-wrap: wrap;
+
+  @media screen and (max-width: $mobile) {
+    flex-direction: column;
+  }
 }
 
 .infoBlock {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  .header {
+    color: $color-black;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    white-space: nowrap;
+    margin: 0 0 16px;
+  }
 
   .name {
     color: $color-black;
@@ -33,7 +45,7 @@
 
   .paramItem {
     @include font-text();
-    margin: 8px 0;
+    margin: 8px 0 0;
   }
 
   .paramTitle {
@@ -49,8 +61,14 @@
   flex-grow: 1;
   justify-content: center;
   align-items: flex-start;
-}
 
-.img {
-  width: 256px;
+  @media screen and (max-width: $mobile) {
+    justify-content: flex-start;
+    margin-top: 16px;
+  }
+
+  .img {
+    width: 100%;
+    max-width: 256px;
+  }
 }
