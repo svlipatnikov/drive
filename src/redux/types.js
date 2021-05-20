@@ -16,6 +16,10 @@ export const SET_DATE_TO = 'SET_DATE_TO';
 export const SET_DATE_FROM = 'SET_DATE_FROM';
 export const SET_FINAL_PRICE = 'SET_FINAL_PRICE';
 
+export const FETCH_NEW_ORDER = 'FETCH_NEW_ORDER';
+export const SUCCESS_NEW_ORDER = 'SUCCESS_NEW_ORDER';
+export const FAILED_NEW_ORDER = 'FAILED_NEW_ORDER';
+
 // dbReducer
 export const FETCH_CITIES = 'FETCH_CITIES';
 export const SUCCESS_CITIES = 'SUCCESS_CITIES';

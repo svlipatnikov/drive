@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
@@ -19,7 +19,7 @@ import OrderItem from 'components/OrderItem';
 import styles from './orderInfo.module.scss';
 import cn from 'classnames';
 import ConfirmationModal from 'components/ConfirmationModal';
-import { clearOrderAction } from 'redux/actions/orderActions';
+import { clearOrderAction, setFinalPriceAction } from 'redux/actions/orderActions';
 
 const OrderInfo = ({ setOpen, open }) => {
   const [confirmation, setConfirmation] = useState(false);
@@ -56,6 +56,10 @@ const OrderInfo = ({ setOpen, open }) => {
     babyChair,
     rightSteering,
   ]);
+
+  useEffect(() => {
+    dispatch(setFinalPriceAction(finalPrice));
+  }, [dispatch, finalPrice]);
 
   const handleBtnClick = () => {
     if (orderStep === 'Итого') {

@@ -33,7 +33,6 @@ const orderReducerInit = {
     },
   },
   finalPrice: null,
-  orderId: null,
 };
 
 const orderReducer = (state = orderReducerInit, action) => {

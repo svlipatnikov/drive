@@ -1,19 +1,39 @@
 import ButtonAccent from 'components/ButtonAccent';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
-import { setOrderStepAction } from 'redux/actions/mainActions';
+import { orderSelector } from 'redux/selectors/orderSelectors';
+import postNewOrderAction from 'redux/thunk/postNewOrder';
 import styles from './confirmationModal.module.scss';
 
 const ConfirmationModal = ({ setOpen }) => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const { location, car, addition, finalPrice } = useSelector(orderSelector);
+
+  const getOrderData = () => ({
+    orderStatusId: {}, /// ??
+    cityId: location.city, // {}
+    pointId: location.point, // {}
+    carId: car.model, // {}
+    color: addition.color,
+    dateFrom: addition.dateFrom.getTime(),
+    dateTo: addition.dateTo.getTime(),
+    rateId: addition.rate, //{}
+    price: finalPrice,
+    isFullTank: addition.options.fullTank.checked,
+    isNeedChildChair: addition.options.babyChair.checked,
+    isRightWheel: addition.options.rightSteering.checked,
+  });
+
+  console.log('getOrderData', getOrderData());
+  console.log('getOrderData', JSON.stringify(getOrderData()));
 
   const handleAccept = () => {
     setOpen(false);
-    dispatch(setOrderStepAction('Заказ подтвержден'));
     history.push('/order/result');
-    //TODO send order
+    const newOrder = getOrderData();
+    dispatch(postNewOrderAction(newOrder));
   };
 
   const handleCancel = () => {

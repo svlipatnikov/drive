@@ -24,3 +24,13 @@ export const getRate = async () => {
   const result = await sendRequest('/db/rate', 'GET');
   if (result) return result.data;
 };
+
+export const postNewOrder = async (order) => {
+  const result = await sendRequest('/db/order', 'POST', order);
+  if (result) return result.data;
+};
+
+export const getOrder = async (orderId) => {
+  const result = await sendRequest(`/db/rate/${orderId}`, 'GET');
+  if (result) return result.data;
+};

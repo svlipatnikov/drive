@@ -14,6 +14,9 @@ import {
   FAILED_CATEGORY,
   FAILED_CARS,
   FAILED_RATE,
+  FETCH_NEW_ORDER,
+  SUCCESS_NEW_ORDER,
+  FAILED_NEW_ORDER,
 } from 'redux/types';
 
 const dbReducerInit = {
@@ -21,7 +24,8 @@ const dbReducerInit = {
   points: { isLoading: false, isOk: false, isFailed: false, data: [] },
   category: { isLoading: false, isOk: false, isFailed: false, data: [] },
   cars: { isLoading: false, isOk: false, isFailed: false, data: [] },
-  rate: [],
+  rate: { isLoading: false, isOk: false, isFailed: false, data: [] },
+  order: { isLoading: false, isOk: false, isFailed: false, data: null },
 };
 
 const dbReducer = (state = dbReducerInit, action) => {
@@ -99,6 +103,21 @@ const dbReducer = (state = dbReducerInit, action) => {
       return {
         ...state,
         rate: { isLoading: false, isOk: false, isFailed: true, data: [] },
+      };
+
+    case FETCH_NEW_ORDER:
+      return { ...state, orderId: { ...state.orderId, isLoading: true } };
+
+    case SUCCESS_NEW_ORDER:
+      return {
+        ...state,
+        orderId: { isLoading: false, isOk: true, isFailed: false, data: action.payload },
+      };
+
+    case FAILED_NEW_ORDER:
+      return {
+        ...state,
+        orderId: { isLoading: false, isOk: false, isFailed: true, data: null },
       };
 
     default:

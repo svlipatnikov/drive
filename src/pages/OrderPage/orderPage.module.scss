@@ -59,8 +59,13 @@
 
   max-height: calc(100vh - 133px);
   overflow-y: auto;
+  overflow-x: hidden;
 
   @media screen and (max-width: $mobile) {
-    max-height: calc(100vh - 166px - 48px - 8px);
+    max-height: calc(100vh - 166px - 48px);
+  }
+
+  @media screen and (max-width: $mobile-compact) {
+    max-height: calc(100vh - 156px - 48px);
   }
 }
