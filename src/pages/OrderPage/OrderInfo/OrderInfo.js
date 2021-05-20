@@ -80,7 +80,7 @@ const OrderInfo = ({ setOpen, open }) => {
         {itemRightSteering && <OrderItem name="Правый руль" items={['Да']} />}
       </ul>
 
-      {itemPrice && <div className={styles.finalPrice}>{`Цена: ${finalPrice} \u20bd`}</div>}
+      {itemPrice && <div className={styles.finalPrice}>{`Цена: ${itemPrice} \u20bd`}</div>}
 
       {!itemPrice && model.priceMin && model.priceMax && (
         <div className={styles.finalPrice}>

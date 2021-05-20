@@ -57,80 +57,82 @@ const AdditionStep = () => {
 
   return (
     <section className={styles.wrapper}>
-      <div className={styles.itemWrapper}>
-        <p className={styles.itemText}>Цвет</p>
-        <div className={styles.colorList}>
-          <ButtonRadio
-            name="Любой"
-            active={curentColor === 'Любой'}
-            onClick={handleColorClick('Любой')}
-            className={styles.colorItem}
-          />
-          {colors &&
-            !!colors.length &&
-            colors.map((color) => (
-              <ButtonRadio
-                key={color}
-                name={color}
-                active={color === curentColor}
-                onClick={handleColorClick(color)}
-                className={styles.colorItem}
-              />
-            ))}
-        </div>
-      </div>
-
-      <div className={styles.itemWrapper}>
-        <p className={styles.itemText}>Дата аренды</p>
-        <div className={styles.dateWrapper}>
-          <DateInput
-            label="С"
-            date={dateFrom}
-            action={setDateFromAction}
-            minDate={new Date()}
-            maxDate={dateTo}
-          />
-          <DateInput
-            label="По"
-            date={dateTo}
-            action={setDateToAction}
-            minDate={dateFrom}
-            maxDate={null}
-          />
-        </div>
-      </div>
-
-      <div className={styles.itemWrapper}>
-        <p className={styles.itemText}>Тариф</p>
-        <div className={styles.rateList}>
-          {dbRate.isLoading && <Loader />}
-          {dbRate.isFailed && (
-            <div className={styles.errorMessage}>Не удалось загрузить тарифы</div>
-          )}
-          {dbRate.isOk &&
-            dbRate.data.map((rate) => (
-              <ButtonRadio
-                key={rate.id}
-                name={`${rate.rateTypeId.name}, ${rate.price} \u20bd/${rate.rateTypeId.unit}`}
-                onClick={handleRateClick(rate)}
-                active={curentRate ? rate.id === curentRate.id : false}
-                className={styles.rateItem}
-              />
-            ))}
-        </div>
-      </div>
-
-      <div className={styles.itemWrapper}>
-        <p className={styles.itemText}>Доп услуги</p>
-        <div className={styles.optionsList}>
-          {Object.entries(options).map(([option, value]) => (
-            <ButtonCheckBox
-              key={option}
-              text={value.name}
-              checked={value.checked}
-              onClick={handleOptionClick(option)}
+      <div className={styles.scrollContainer}>
+        <div className={styles.itemWrapper}>
+          <p className={styles.itemText}>Цвет</p>
+          <div className={styles.colorList}>
+            <ButtonRadio
+              name="Любой"
+              active={curentColor === 'Любой'}
+              onClick={handleColorClick('Любой')}
+              className={styles.colorItem}
             />
-          ))}
+            {colors &&
+              !!colors.length &&
+              colors.map((color) => (
+                <ButtonRadio
+                  key={color}
+                  name={color}
+                  active={color === curentColor}
+                  onClick={handleColorClick(color)}
+                  className={styles.colorItem}
+                />
+              ))}
+          </div>
+        </div>
+
+        <div className={styles.itemWrapper}>
+          <p className={styles.itemText}>Дата аренды</p>
+          <div className={styles.dateWrapper}>
+            <DateInput
+              label="С"
+              date={dateFrom}
+              action={setDateFromAction}
+              minDate={new Date()}
+              maxDate={dateTo}
+            />
+            <DateInput
+              label="По"
+              date={dateTo}
+              action={setDateToAction}
+              minDate={dateFrom}
+              maxDate={null}
+            />
+          </div>
+        </div>
+
+        <div className={styles.itemWrapper}>
+          <p className={styles.itemText}>Тариф</p>
+          <div className={styles.rateList}>
+            {dbRate.isLoading && <Loader />}
+            {dbRate.isFailed && (
+              <div className={styles.errorMessage}>Не удалось загрузить тарифы</div>
+            )}
+            {dbRate.isOk &&
+              dbRate.data.map((rate) => (
+                <ButtonRadio
+                  key={rate.id}
+                  name={`${rate.rateTypeId.name}, ${rate.price} \u20bd/${rate.rateTypeId.unit}`}
+                  onClick={handleRateClick(rate)}
+                  active={curentRate ? rate.id === curentRate.id : false}
+                  className={styles.rateItem}
+                />
+              ))}
+          </div>
+        </div>
+
+        <div className={styles.itemWrapper}>
+          <p className={styles.itemText}>Доп услуги</p>
+          <div className={styles.optionsList}>
+            {Object.entries(options).map(([option, value]) => (
+              <ButtonCheckBox
+                key={option}
+                text={value.name}
+                checked={value.checked}
+                onClick={handleOptionClick(option)}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
