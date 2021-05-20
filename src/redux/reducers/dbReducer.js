@@ -4,18 +4,21 @@ import {
   FETCH_CATEGORY,
   FETCH_CARS,
   FETCH_RATE,
+  FETCH_STATUS,
+  FETCH_NEW_ORDER,
   SUCCESS_CITIES,
   SUCCESS_POINTS,
   SUCCESS_CATEGORY,
   SUCCESS_CARS,
   SUCCESS_RATE,
+  SUCCESS_STATUS,
+  SUCCESS_NEW_ORDER,
   FAILED_CITIES,
   FAILED_POINTS,
   FAILED_CATEGORY,
   FAILED_CARS,
   FAILED_RATE,
-  FETCH_NEW_ORDER,
-  SUCCESS_NEW_ORDER,
+  FAILED_STATUS,
   FAILED_NEW_ORDER,
 } from 'redux/types';
 
@@ -25,6 +28,7 @@ const dbReducerInit = {
   category: { isLoading: false, isOk: false, isFailed: false, data: [] },
   cars: { isLoading: false, isOk: false, isFailed: false, data: [] },
   rate: { isLoading: false, isOk: false, isFailed: false, data: [] },
+  status: { isLoading: false, isOk: false, isFailed: false, data: null },
   order: { isLoading: false, isOk: false, isFailed: false, data: null },
 };
 
@@ -105,19 +109,34 @@ const dbReducer = (state = dbReducerInit, action) => {
         rate: { isLoading: false, isOk: false, isFailed: true, data: [] },
       };
 
+    case FETCH_STATUS:
+      return { ...state, status: { ...dbReducerInit.status, isLoading: true } };
+
+    case SUCCESS_STATUS:
+      return {
+        ...state,
+        status: { isLoading: false, isOk: true, isFailed: false, data: action.payload },
+      };
+
+    case FAILED_STATUS:
+      return {
+        ...state,
+        status: { isLoading: false, isOk: false, isFailed: true, data: null },
+      };
+
     case FETCH_NEW_ORDER:
-      return { ...state, orderId: { ...state.orderId, isLoading: true } };
+      return { ...state, order: { ...state.order, isLoading: true } };
 
     case SUCCESS_NEW_ORDER:
       return {
         ...state,
-        orderId: { isLoading: false, isOk: true, isFailed: false, data: action.payload },
+        order: { isLoading: false, isOk: true, isFailed: false, data: action.payload },
       };
 
     case FAILED_NEW_ORDER:
       return {
         ...state,
-        orderId: { isLoading: false, isOk: false, isFailed: true, data: null },
+        order: { isLoading: false, isOk: false, isFailed: true, data: null },
       };
 
     default:

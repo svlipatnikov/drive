@@ -10,9 +10,6 @@ import {
   SET_DATE_TO,
   SET_DATE_FROM,
   SET_FINAL_PRICE,
-  FETCH_NEW_ORDER,
-  SUCCESS_NEW_ORDER,
-  FAILED_NEW_ORDER,
 } from 'redux/types';
 
 // clear
@@ -35,8 +32,3 @@ export const setDateFromAction = (date) => ({ type: SET_DATE_FROM, payload: date
 
 // final price
 export const setFinalPriceAction = (date) => ({ type: SET_FINAL_PRICE, payload: date });
-
-// post new order
-export const fetchNewOrderAction = () => ({ type: FETCH_NEW_ORDER });
-export const successNewOrderAction = () => ({ type: SUCCESS_NEW_ORDER });
-export const failedNewOrderAction = () => ({ type: FAILED_NEW_ORDER });

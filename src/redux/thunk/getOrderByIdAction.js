@@ -6,9 +6,10 @@ import {
   successNewOrderAction,
 } from 'redux/actions/dbActions';
 
-const postNewOrderAction = (orderData) => async (dispatch) => {
+const getOrderByIdAction = (id) => async (dispatch) => {
   dispatch(fetchNewOrderAction());
-  const order = await api.postNewOrder(orderData);
+  const order = await api.getOrder(id);
+  console.log('order', order);
   if (order) {
     dispatch(successNewOrderAction(order));
     dispatch(setOrderStepAction('Заказ подтвержден'));
@@ -17,4 +18,4 @@ const postNewOrderAction = (orderData) => async (dispatch) => {
   }
 };
 
-export default postNewOrderAction;
+export default getOrderByIdAction;

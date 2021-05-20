@@ -2,7 +2,7 @@ import ButtonRadio from 'components/ButtonRadio';
 import ButtonCheckBox from 'components/ButtonCheckBox';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setDbRateAction } from 'redux/thunk/thunk';
+import getRateAction from 'redux/thunk/getRateAction';
 import {
   setColorAction,
   setRateAction,
@@ -22,6 +22,7 @@ import {
 import styles from './additionStep.module.scss';
 import DateInput from 'components/DateInput';
 import Loader from 'components/Loader';
+import getStatusAction from 'redux/thunk/getStatusAction';
 
 const AdditionStep = () => {
   const dispatch = useDispatch();
@@ -34,7 +35,8 @@ const AdditionStep = () => {
   const dateTo = useSelector(dateToSelector);
 
   useEffect(() => {
-    dispatch(setDbRateAction());
+    dispatch(getRateAction());
+    dispatch(getStatusAction());
   }, [dispatch]);
 
   const handleColorClick = (color) => () => {

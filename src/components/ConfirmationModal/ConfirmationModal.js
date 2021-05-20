@@ -1,37 +1,44 @@
 import ButtonAccent from 'components/ButtonAccent';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { orderSelector } from 'redux/selectors/orderSelectors';
+import { dbOrderSelector, dbStatusSelector } from 'redux/selectors/dbSelectors';
 import postNewOrderAction from 'redux/thunk/postNewOrder';
 import styles from './confirmationModal.module.scss';
+import { setOrderStepAction } from 'redux/actions/mainActions';
 
 const ConfirmationModal = ({ setOpen }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { location, car, addition, finalPrice } = useSelector(orderSelector);
+  const status = useSelector(dbStatusSelector);
+  const dbOrder = useSelector(dbOrderSelector);
 
   const getOrderData = () => ({
-    orderStatusId: {}, /// ??
-    cityId: location.city, // {}
-    pointId: location.point, // {}
-    carId: car.model, // {}
+    orderStatusId: status.data[0],
+    cityId: location.city,
+    pointId: location.point,
+    carId: car.model,
     color: addition.color,
     dateFrom: addition.dateFrom.getTime(),
     dateTo: addition.dateTo.getTime(),
-    rateId: addition.rate, //{}
+    rateId: addition.rate,
     price: finalPrice,
     isFullTank: addition.options.fullTank.checked,
     isNeedChildChair: addition.options.babyChair.checked,
     isRightWheel: addition.options.rightSteering.checked,
   });
 
-  console.log('getOrderData', getOrderData());
-  console.log('getOrderData', JSON.stringify(getOrderData()));
+  useEffect(() => {
+    if (dbOrder.data) {
+      history.push(`/order/result/${dbOrder.data.id}`);
+      dispatch(setOrderStepAction('Заказ подтвержден'));
+      setOpen(false);
+    }
+  }, [dbOrder, dispatch, history, setOpen]);
 
   const handleAccept = () => {
-    setOpen(false);
-    history.push('/order/result');
     const newOrder = getOrderData();
     dispatch(postNewOrderAction(newOrder));
   };

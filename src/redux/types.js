@@ -40,3 +40,7 @@ export const FAILED_CARS = 'FAILED_CARS';
 export const FETCH_RATE = 'FETCH_RATE';
 export const SUCCESS_RATE = 'SUCCESS_RATE';
 export const FAILED_RATE = 'FAILED_RATE';
+
+export const FETCH_STATUS = 'FETCH_STATUS';
+export const SUCCESS_STATUS = 'SUCCESS_STATUS';
+export const FAILED_STATUS = 'FAILED_STATUS';

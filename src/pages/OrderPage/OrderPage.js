@@ -8,7 +8,8 @@ import BreadCrumbs from 'components/BreadCrumbs';
 import LocationStep from 'pages/OrderPage/LocationStep';
 import CarStep from 'pages/OrderPage/CarStep';
 import AdditionStep from 'pages/OrderPage/AdditionStep';
-import OrderResult from './OrderResult';
+import OrderConfirmStep from './OrderConfirmStep';
+import ResultStep from './ResultStep';
 
 import OrderInfo from 'pages/OrderPage/OrderInfo';
 import styles from './orderPage.module.scss';
@@ -62,7 +63,7 @@ const OrderPage = () => {
 
           <div className={cn(styles.container, styles.navBar)}>
             <Switch>
-              <Route path="/order/result" exact component={OrderNumber} />
+              <Route path="/order/result/:orderId" exact component={OrderNumber} />
               <Route path="/order" component={BreadCrumbs} />
             </Switch>
             <ButtonOrder />
@@ -76,10 +77,8 @@ const OrderPage = () => {
             <Route path="/order/location" exact component={LocationStep} />
             <Route path="/order/car" exact component={CarStep} />
             <Route path="/order/addition" exact component={AdditionStep} />
-            <Route path="/order/confirm" exact component={OrderResult} />
-            <Route path="/order/result">
-              <OrderResult acceptConfirmation />
-            </Route>
+            <Route path="/order/confirm" exact component={OrderConfirmStep} />
+            <Route path="/order/result/:orderId" component={ResultStep} />
             <Redirect to="/order/location" />
           </Switch>
 

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setDbCarsAction, setDbCategoryAction } from 'redux/thunk/thunk';
 import { dbCarsSelector, dbCategorySelector } from 'redux/selectors/dbSelectors';
 import { categorySelector, modelSelector } from 'redux/selectors/orderSelectors';
 import ButtonRadio from 'components/ButtonRadio';
@@ -8,6 +7,8 @@ import styles from './carStep.module.scss';
 import CarCard from 'components/CarCard';
 import { setCategoryAction } from 'redux/actions/orderActions';
 import Loader from 'components/Loader';
+import getCategoryAction from 'redux/thunk/getCategoryAction';
+import getCarsAction from 'redux/thunk/getCarsAction';
 
 const CarStep = () => {
   const dispatch = useDispatch();
@@ -17,8 +18,8 @@ const CarStep = () => {
   const curentModel = useSelector(modelSelector);
 
   useEffect(() => {
-    dispatch(setDbCategoryAction());
-    dispatch(setDbCarsAction());
+    dispatch(getCategoryAction());
+    dispatch(getCarsAction());
   }, [dispatch]);
 
   const handleClick = (category) => () => {

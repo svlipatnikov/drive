@@ -5,9 +5,11 @@ import { dbOrderSelector } from 'redux/selectors/dbSelectors';
 import styles from './orderNumber.module.scss';
 
 const OrderNumber = () => {
-  const { id } = useSelector(dbOrderSelector); ///TODO
+  const { data, isOk, isFailed } = useSelector(dbOrderSelector);
 
-  return <div className={styles.orderNum}>{`Заказ номер ${id || ''}`}</div>;
+  if (!isOk || isFailed) return null;
+
+  return <div className={styles.orderNum}>{`Заказ номер ${data.id || ''}`}</div>;
 };
 
 export default OrderNumber;

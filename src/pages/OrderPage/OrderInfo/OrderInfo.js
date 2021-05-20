@@ -65,11 +65,11 @@ const OrderInfo = ({ setOpen, open }) => {
     if (orderStep === 'Итого') {
       setConfirmation(true);
     } else {
+      dispatch(setOrderStepAction(getNextStep(orderStep)));
+      history.push(getNextLink(orderStep));
       if (orderStep === 'Заказ подтвержден') {
         dispatch(clearOrderAction());
       }
-      dispatch(setOrderStepAction(getNextStep(orderStep)));
-      history.push(getNextLink(orderStep));
     }
   };
 
@@ -88,7 +88,9 @@ const OrderInfo = ({ setOpen, open }) => {
       <div className={styles.title}>Ваш заказ:</div>
 
       <ul className={styles.itemList}>
-        {city && <OrderItem name="Пункт выдачи" items={[city, point]} />}
+        {city && (
+          <OrderItem name="Пункт выдачи" items={[city.name, point ? point.address : null]} />
+        )}
         {model.name && <OrderItem name="Модель" items={[model.name]} />}
         {color && color !== 'Любой' && <OrderItem name="Цвет" items={[color]} />}
         {dateFrom && dateTo && (
