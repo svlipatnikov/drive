@@ -1,11 +1,19 @@
 @import '../../../styles/variables.scss';
 
 .wrapper {
+  overflow: hidden;
+}
+
+.scrollContainer {
+  overflow: auto;
+
+  max-height: 100%;
+  margin-right: -22px;
+  padding-right: 22px;
   padding: 32px 0;
-  height: max-content;
 
   @media screen and (max-width: $mobile) {
-    padding: 16px 0;
+    padding: 24px 0;
   }
 }
 

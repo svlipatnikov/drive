@@ -2,14 +2,22 @@
 @import '../../../styles/mixins.scss';
 
 .wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.scrollContainer {
+  overflow: auto;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: max-content;
+
+  max-height: 100%;
+  margin-right: -22px;
+  padding-right: 22px;
   padding: 32px 0;
 
   @media screen and (max-width: $mobile) {
-    padding: 16px 0;
+    padding: 24px 0;
   }
 }
 
