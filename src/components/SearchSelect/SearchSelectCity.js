@@ -6,14 +6,14 @@ import { citySelector } from 'redux/selectors/orderSelectors';
 import { setCityAction } from 'redux/actions/orderActions';
 import { dbCitiesSelector } from 'redux/selectors/dbSelectors';
 import Loader from 'components/Loader';
-import { setDbCitiesAction } from 'redux/thunk/thunk';
+import getCitiesAction from 'redux/thunk/getCitiesAction';
 
 const SearchSelectCity = () => {
   const dispatch = useDispatch();
   const listRef = useRef();
   const { data, isLoading, isOk, isFailed } = useSelector(dbCitiesSelector);
   const city = useSelector(citySelector);
-  const [input, setInput] = useState(city);
+  const [input, setInput] = useState(city ? city.name : '');
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const SearchSelectCity = () => {
       }
     };
 
-    dispatch(setDbCitiesAction());
+    dispatch(getCitiesAction());
     window.addEventListener('click', handleClose);
     return () => {
       window.removeEventListener('click', handleClose);
@@ -39,10 +39,10 @@ const SearchSelectCity = () => {
   const handleOpen = () => {
     if (city) {
       setInput('');
-      dispatch(setCityAction(''));
+      dispatch(setCityAction(null));
     }
     if (!isOk && !isLoading) {
-      dispatch(setDbCitiesAction());
+      dispatch(getCitiesAction());
     }
     setOpen(true);
   };
@@ -50,13 +50,13 @@ const SearchSelectCity = () => {
   const handleClear = () => {
     setInput('');
     setOpen(false);
-    dispatch(setCityAction(''));
+    dispatch(setCityAction(null));
   };
 
-  const handleChoice = (name) => () => {
-    setInput(name);
+  const handleCityChoice = (city) => () => {
+    setInput(city.name);
     setOpen(false);
-    dispatch(setCityAction(name));
+    dispatch(setCityAction(city));
   };
 
   return (
@@ -83,18 +83,18 @@ const SearchSelectCity = () => {
           {isLoading && <Loader />}
           {isOk &&
             data
-              .filter((item) => {
+              .filter((city) => {
                 if (!input) return true;
                 if (!input.length) return true;
-                if (input === item.name) {
+                if (input === city.name) {
                   dispatch(setCityAction(input));
                   setOpen(false);
                 }
-                return item.name.toLowerCase().includes(input.toLowerCase());
+                return city.name.toLowerCase().includes(input.toLowerCase());
               })
-              .map((item) => (
-                <div className={styles.selectItem} onClick={handleChoice(item.name)} key={item.id}>
-                  {item.name}
+              .map((city) => (
+                <div className={styles.selectItem} onClick={handleCityChoice(city)} key={city.id}>
+                  {city.name}
                 </div>
               ))}
           {isFailed && (

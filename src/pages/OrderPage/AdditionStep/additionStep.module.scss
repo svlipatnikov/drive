@@ -5,48 +5,53 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-top: 32px;
+  height: max-content;
+  padding: 32px 0;
+
+  @media screen and (max-width: $mobile) {
+    padding: 16px 0;
+  }
 }
 
 .itemWrapper {
   max-width: max-content;
   margin-bottom: 32px;
-}
 
-.text {
-  @include font-text();
-  margin: 0;
+  @media screen and (max-width: $mobile) {
+    margin-bottom: 24px;
+  }
+
+  .itemText {
+    @include font-text();
+    margin: 0 0 8px;
+  }
 }
 
 .colorList {
-  margin: 8px 0 0;
   display: flex;
   flex-wrap: wrap;
-}
 
-.colorItem {
-  margin-top: 8px;
+  .colorItem {
+    margin-top: 8px;
+  }
 }
 
 .dateWrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin-top: 8px;
 }
 
 .rateList {
-  margin: 8px 0 0;
   display: flex;
   flex-direction: column;
-}
 
-.rateItem {
-  margin-top: 8px;
+  .rateItem {
+    margin-top: 8px;
+  }
 }
 
 .optionsList {
-  margin: 8px 0 0;
   display: flex;
   flex-direction: column;
 }

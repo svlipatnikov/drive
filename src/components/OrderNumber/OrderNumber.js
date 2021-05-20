@@ -1,12 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { orderIdSelector } from 'redux/selectors/orderSelectors';
+import { dbOrderSelector } from 'redux/selectors/dbSelectors';
+
 import styles from './orderNumber.module.scss';
 
 const OrderNumber = () => {
-  const orderId = useSelector(orderIdSelector);
+  const { data, isOk, isFailed } = useSelector(dbOrderSelector);
 
-  return <div className={styles.orderNum}>{`Заказ номер ${orderId || ''}`}</div>;
+  if (!isOk || isFailed) return null;
+
+  return <div className={styles.orderNum}>{`Заказ номер ${data.id || ''}`}</div>;
 };
 
 export default OrderNumber;

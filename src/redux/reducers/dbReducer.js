@@ -4,16 +4,23 @@ import {
   FETCH_CATEGORY,
   FETCH_CARS,
   FETCH_RATE,
+  FETCH_STATUS,
+  FETCH_NEW_ORDER,
   SUCCESS_CITIES,
   SUCCESS_POINTS,
   SUCCESS_CATEGORY,
   SUCCESS_CARS,
   SUCCESS_RATE,
+  SUCCESS_STATUS,
+  SUCCESS_NEW_ORDER,
   FAILED_CITIES,
   FAILED_POINTS,
   FAILED_CATEGORY,
   FAILED_CARS,
   FAILED_RATE,
+  FAILED_STATUS,
+  FAILED_NEW_ORDER,
+  CLEAR_DB_ORDER,
 } from 'redux/types';
 
 const dbReducerInit = {
@@ -21,7 +28,9 @@ const dbReducerInit = {
   points: { isLoading: false, isOk: false, isFailed: false, data: [] },
   category: { isLoading: false, isOk: false, isFailed: false, data: [] },
   cars: { isLoading: false, isOk: false, isFailed: false, data: [] },
-  rate: [],
+  rate: { isLoading: false, isOk: false, isFailed: false, data: [] },
+  status: { isLoading: false, isOk: false, isFailed: false, data: null },
+  order: { isLoading: false, isOk: false, isFailed: false, data: null },
 };
 
 const dbReducer = (state = dbReducerInit, action) => {
@@ -100,6 +109,39 @@ const dbReducer = (state = dbReducerInit, action) => {
         ...state,
         rate: { isLoading: false, isOk: false, isFailed: true, data: [] },
       };
+
+    case FETCH_STATUS:
+      return { ...state, status: { ...dbReducerInit.status, isLoading: true } };
+
+    case SUCCESS_STATUS:
+      return {
+        ...state,
+        status: { isLoading: false, isOk: true, isFailed: false, data: action.payload },
+      };
+
+    case FAILED_STATUS:
+      return {
+        ...state,
+        status: { isLoading: false, isOk: false, isFailed: true, data: null },
+      };
+
+    case FETCH_NEW_ORDER:
+      return { ...state, order: { ...state.order, isLoading: true } };
+
+    case SUCCESS_NEW_ORDER:
+      return {
+        ...state,
+        order: { isLoading: false, isOk: true, isFailed: false, data: action.payload },
+      };
+
+    case FAILED_NEW_ORDER:
+      return {
+        ...state,
+        order: { isLoading: false, isOk: false, isFailed: true, data: null },
+      };
+
+    case CLEAR_DB_ORDER:
+      return { ...state, order: { ...dbReducerInit.order } };
 
     default:
       return state;

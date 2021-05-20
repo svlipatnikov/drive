@@ -2,7 +2,7 @@ import ButtonRadio from 'components/ButtonRadio';
 import ButtonCheckBox from 'components/ButtonCheckBox';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setDbRateAction } from 'redux/thunk/thunk';
+import getRateAction from 'redux/thunk/getRateAction';
 import {
   setColorAction,
   setRateAction,
@@ -22,6 +22,7 @@ import {
 import styles from './additionStep.module.scss';
 import DateInput from 'components/DateInput';
 import Loader from 'components/Loader';
+import getStatusAction from 'redux/thunk/getStatusAction';
 
 const AdditionStep = () => {
   const dispatch = useDispatch();
@@ -34,7 +35,8 @@ const AdditionStep = () => {
   const dateTo = useSelector(dateToSelector);
 
   useEffect(() => {
-    dispatch(setDbRateAction());
+    dispatch(getRateAction());
+    dispatch(getStatusAction());
   }, [dispatch]);
 
   const handleColorClick = (color) => () => {
@@ -56,7 +58,7 @@ const AdditionStep = () => {
   return (
     <section className={styles.wrapper}>
       <div className={styles.itemWrapper}>
-        <p className={styles.text}>Цвет</p>
+        <p className={styles.itemText}>Цвет</p>
         <div className={styles.colorList}>
           <ButtonRadio
             name="Любой"
@@ -79,7 +81,7 @@ const AdditionStep = () => {
       </div>
 
       <div className={styles.itemWrapper}>
-        <p className={styles.text}>Дата аренды</p>
+        <p className={styles.itemText}>Дата аренды</p>
         <div className={styles.dateWrapper}>
           <DateInput
             label="С"
@@ -99,7 +101,7 @@ const AdditionStep = () => {
       </div>
 
       <div className={styles.itemWrapper}>
-        <p className={styles.text}>Тариф</p>
+        <p className={styles.itemText}>Тариф</p>
         <div className={styles.rateList}>
           {dbRate.isLoading && <Loader />}
           {dbRate.isFailed && (
@@ -119,7 +121,7 @@ const AdditionStep = () => {
       </div>
 
       <div className={styles.itemWrapper}>
-        <p className={styles.text}>Доп услуги</p>
+        <p className={styles.itemText}>Доп услуги</p>
         <div className={styles.optionsList}>
           {Object.entries(options).map(([option, value]) => (
             <ButtonCheckBox

@@ -1,19 +1,46 @@
 import ButtonAccent from 'components/ButtonAccent';
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
-import { setOrderStepAction } from 'redux/actions/mainActions';
+import { orderSelector } from 'redux/selectors/orderSelectors';
+import { dbOrderSelector, dbStatusSelector } from 'redux/selectors/dbSelectors';
+import postNewOrderAction from 'redux/thunk/postNewOrder';
 import styles from './confirmationModal.module.scss';
+import { setOrderStepAction } from 'redux/actions/mainActions';
 
 const ConfirmationModal = ({ setOpen }) => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const { location, car, addition, finalPrice } = useSelector(orderSelector);
+  const status = useSelector(dbStatusSelector);
+  const dbOrder = useSelector(dbOrderSelector);
+
+  const getOrderData = () => ({
+    orderStatusId: status.data[0],
+    cityId: location.city,
+    pointId: location.point,
+    carId: car.model,
+    color: addition.color,
+    dateFrom: addition.dateFrom.getTime(),
+    dateTo: addition.dateTo.getTime(),
+    rateId: addition.rate,
+    price: finalPrice,
+    isFullTank: addition.options.fullTank.checked,
+    isNeedChildChair: addition.options.babyChair.checked,
+    isRightWheel: addition.options.rightSteering.checked,
+  });
+
+  useEffect(() => {
+    if (dbOrder.data) {
+      history.push(`/order/result/${dbOrder.data.id}`);
+      dispatch(setOrderStepAction('Заказ подтвержден'));
+      setOpen(false);
+    }
+  }, [dbOrder, dispatch, history, setOpen]);
 
   const handleAccept = () => {
-    setOpen(false);
-    dispatch(setOrderStepAction('Заказ подтвержден'));
-    history.push('/order/result');
-    //TODO send order
+    const newOrder = getOrderData();
+    dispatch(postNewOrderAction(newOrder));
   };
 
   const handleCancel = () => {

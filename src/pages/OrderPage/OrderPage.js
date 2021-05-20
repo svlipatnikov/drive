@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Switch, Route, Redirect, useHistory } from 'react-router';
+import { Switch, Route, Redirect } from 'react-router';
 import SideBar from 'components/SideBar';
 import ButtonMenu from 'components/ButtonMenu';
 import Header from 'components/Header';
@@ -8,7 +8,8 @@ import BreadCrumbs from 'components/BreadCrumbs';
 import LocationStep from 'pages/OrderPage/LocationStep';
 import CarStep from 'pages/OrderPage/CarStep';
 import AdditionStep from 'pages/OrderPage/AdditionStep';
-import OrderResult from './OrderResult';
+import OrderConfirmStep from './OrderConfirmStep';
+import ResultStep from './ResultStep';
 
 import OrderInfo from 'pages/OrderPage/OrderInfo';
 import styles from './orderPage.module.scss';
@@ -22,7 +23,6 @@ import ButtonOrder from 'components/ButtonOrder';
 
 const OrderPage = () => {
   const pageRef = useRef(null);
-  const history = useHistory();
   const dispatch = useDispatch();
   const pageSize = useSelector(pageSizeSelector);
 
@@ -45,10 +45,6 @@ const OrderPage = () => {
     };
   }, [dispatch, pageSize]);
 
-  useEffect(() => {
-    history.push('/order/location');
-  }, [history]);
-
   return (
     <div className={styles.wrapper} ref={pageRef}>
       <ButtonMenu />
@@ -62,7 +58,7 @@ const OrderPage = () => {
 
           <div className={cn(styles.container, styles.navBar)}>
             <Switch>
-              <Route path="/order/result" exact component={OrderNumber} />
+              <Route path="/order/result/:orderId" exact component={OrderNumber} />
               <Route path="/order" component={BreadCrumbs} />
             </Switch>
             <ButtonOrder />
@@ -76,10 +72,8 @@ const OrderPage = () => {
             <Route path="/order/location" exact component={LocationStep} />
             <Route path="/order/car" exact component={CarStep} />
             <Route path="/order/addition" exact component={AdditionStep} />
-            <Route path="/order/confirm" exact component={OrderResult} />
-            <Route path="/order/result">
-              <OrderResult acceptConfirmation />
-            </Route>
+            <Route path="/order/confirm" exact component={OrderConfirmStep} />
+            <Route path="/order/result/:orderId" component={ResultStep} />
             <Redirect to="/order/location" />
           </Switch>
 

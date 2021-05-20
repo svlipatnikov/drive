@@ -1,11 +1,11 @@
 import React from 'react';
 import { format } from 'date-fns';
-import getImageSrc from 'helpers/getImageSrc';
 import { useSelector } from 'react-redux';
 import { dateFromSelector, modelSelector, optionsSelector } from 'redux/selectors/orderSelectors';
-import styles from './orderResult.module.scss';
+import styles from './orderConfirmStep.module.scss';
+import getImageSrc from 'helpers/getImageSrc';
 
-const OrderResult = ({ acceptConfirmation }) => {
+const OrderConfirmStep = () => {
   const model = useSelector(modelSelector);
   const dateFrom = useSelector(dateFromSelector);
   const { fullTank } = useSelector(optionsSelector);
@@ -13,11 +13,9 @@ const OrderResult = ({ acceptConfirmation }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.infoBlock}>
-        {acceptConfirmation && <h2 className={styles.header}>Ваш заказ подтвержден</h2>}
-
         <div className={styles.name}>{model.name}</div>
 
-        <div className={styles.licensePlate}>{model.number}</div>
+        <div className={styles.licensePlate}>{model.number || 'нет данных'}</div>
 
         <p className={styles.paramItem}>
           <span className={styles.paramTitle}>{'Топливо '}</span>
@@ -40,4 +38,4 @@ const OrderResult = ({ acceptConfirmation }) => {
   );
 };
 
-export default OrderResult;
+export default OrderConfirmStep;

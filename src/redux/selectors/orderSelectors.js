@@ -1,3 +1,5 @@
+export const orderSelector = (store) => store.orderReducer;
+
 // location
 export const locationSelector = (store) => store.orderReducer.location;
 export const citySelector = (store) => store.orderReducer.location.city;
@@ -18,9 +20,6 @@ export const dateToSelector = (store) => store.orderReducer.addition.dateTo;
 
 // finalPrice
 export const finalPriceSelector = (store) => store.orderReducer.finalPrice;
-
-// finalPrice
-export const orderIdSelector = (store) => store.orderReducer.orderId;
 
 // is filled
 export const locationIsFilledSelector = (store) =>

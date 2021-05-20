@@ -36,3 +36,12 @@ export const FAILED_CARS = 'FAILED_CARS';
 export const FETCH_RATE = 'FETCH_RATE';
 export const SUCCESS_RATE = 'SUCCESS_RATE';
 export const FAILED_RATE = 'FAILED_RATE';
+
+export const FETCH_STATUS = 'FETCH_STATUS';
+export const SUCCESS_STATUS = 'SUCCESS_STATUS';
+export const FAILED_STATUS = 'FAILED_STATUS';
+
+export const FETCH_NEW_ORDER = 'FETCH_NEW_ORDER';
+export const SUCCESS_NEW_ORDER = 'SUCCESS_NEW_ORDER';
+export const FAILED_NEW_ORDER = 'FAILED_NEW_ORDER';
+export const CLEAR_DB_ORDER = 'CLEAR_DB_ORDER';
