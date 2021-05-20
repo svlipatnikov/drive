@@ -20,6 +20,7 @@ import {
   FAILED_RATE,
   FAILED_STATUS,
   FAILED_NEW_ORDER,
+  CLEAR_DB_ORDER,
 } from 'redux/types';
 
 const dbReducerInit = {
@@ -138,6 +139,9 @@ const dbReducer = (state = dbReducerInit, action) => {
         ...state,
         order: { isLoading: false, isOk: false, isFailed: true, data: null },
       };
+
+    case CLEAR_DB_ORDER:
+      return { ...state, order: { ...dbReducerInit.order } };
 
     default:
       return state;

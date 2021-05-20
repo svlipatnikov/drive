@@ -17,9 +17,9 @@ const SearchSelectPoint = () => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   setInput(point.address);
-  // }, [city, point.address]);
+  useEffect(() => {
+    setInput('');
+  }, [city]);
 
   useEffect(() => {
     const handleClose = (event) => {

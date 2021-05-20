@@ -13,7 +13,6 @@ const ResultStep = () => {
   const { orderId } = useParams();
 
   useEffect(() => {
-    console.log('orderId', orderId);
     if (!data) dispatch(getOrderByIdAction(orderId));
   }, [data, dispatch, orderId]);
 
@@ -26,7 +25,7 @@ const ResultStep = () => {
 
         <div className={styles.name}>{data.carId.name}</div>
 
-        <div className={styles.licensePlate}>{data.carId.number}</div>
+        <div className={styles.licensePlate}>{data.carId.number || 'нет данных'}</div>
 
         <p className={styles.paramItem}>
           <span className={styles.paramTitle}>{'Топливо '}</span>

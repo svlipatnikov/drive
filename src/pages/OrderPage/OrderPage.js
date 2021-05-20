@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Switch, Route, Redirect, useHistory } from 'react-router';
+import { Switch, Route, Redirect } from 'react-router';
 import SideBar from 'components/SideBar';
 import ButtonMenu from 'components/ButtonMenu';
 import Header from 'components/Header';
@@ -23,7 +23,6 @@ import ButtonOrder from 'components/ButtonOrder';
 
 const OrderPage = () => {
   const pageRef = useRef(null);
-  const history = useHistory();
   const dispatch = useDispatch();
   const pageSize = useSelector(pageSizeSelector);
 
@@ -45,10 +44,6 @@ const OrderPage = () => {
       window.removeEventListener('resize', hanldeResize);
     };
   }, [dispatch, pageSize]);
-
-  useEffect(() => {
-    history.push('/order/location');
-  }, [history]);
 
   return (
     <div className={styles.wrapper} ref={pageRef}>

@@ -9,7 +9,6 @@ import {
 const getOrderByIdAction = (id) => async (dispatch) => {
   dispatch(fetchNewOrderAction());
   const order = await api.getOrder(id);
-  console.log('order', order);
   if (order) {
     dispatch(successNewOrderAction(order));
     dispatch(setOrderStepAction('Заказ подтвержден'));

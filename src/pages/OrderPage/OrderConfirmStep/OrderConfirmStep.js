@@ -15,7 +15,7 @@ const OrderConfirmStep = () => {
       <div className={styles.infoBlock}>
         <div className={styles.name}>{model.name}</div>
 
-        <div className={styles.licensePlate}>{model.number}</div>
+        <div className={styles.licensePlate}>{model.number || 'нет данных'}</div>
 
         <p className={styles.paramItem}>
           <span className={styles.paramTitle}>{'Топливо '}</span>

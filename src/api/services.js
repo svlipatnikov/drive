@@ -36,7 +36,7 @@ const postNewOrder = async (order) => {
 };
 
 const getOrder = async (orderId) => {
-  const request = await sendRequest(`/db/rate/${orderId}`, 'GET');
+  const request = await sendRequest(`/db/order/${orderId}`, 'GET');
   if (request) return request.data;
 };
 

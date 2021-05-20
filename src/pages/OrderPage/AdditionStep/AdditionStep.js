@@ -58,7 +58,7 @@ const AdditionStep = () => {
   return (
     <section className={styles.wrapper}>
       <div className={styles.itemWrapper}>
-        <p className={styles.text}>Цвет</p>
+        <p className={styles.itemText}>Цвет</p>
         <div className={styles.colorList}>
           <ButtonRadio
             name="Любой"
@@ -81,7 +81,7 @@ const AdditionStep = () => {
       </div>
 
       <div className={styles.itemWrapper}>
-        <p className={styles.text}>Дата аренды</p>
+        <p className={styles.itemText}>Дата аренды</p>
         <div className={styles.dateWrapper}>
           <DateInput
             label="С"
@@ -101,7 +101,7 @@ const AdditionStep = () => {
       </div>
 
       <div className={styles.itemWrapper}>
-        <p className={styles.text}>Тариф</p>
+        <p className={styles.itemText}>Тариф</p>
         <div className={styles.rateList}>
           {dbRate.isLoading && <Loader />}
           {dbRate.isFailed && (
@@ -121,7 +121,7 @@ const AdditionStep = () => {
       </div>
 
       <div className={styles.itemWrapper}>
-        <p className={styles.text}>Доп услуги</p>
+        <p className={styles.itemText}>Доп услуги</p>
         <div className={styles.optionsList}>
           {Object.entries(options).map(([option, value]) => (
             <ButtonCheckBox

@@ -71,24 +71,24 @@
   margin-bottom: 32px;
 }
 
-.nextBtn {
-  visibility: visible;
-  z-index: 100;
-  width: 288px;
+// .nextBtn {
+//   visibility: visible;
+//   z-index: 100;
+//   width: 288px;
 
-  @media screen and (max-width: $tablet) {
-    position: fixed;
+//   @media screen and (max-width: $tablet) {
+//     position: fixed;
 
-    bottom: 16px;
-    right: calc(50% - 144px);
-    box-shadow: 0 0 32px 16px $color-white;
-  }
+//     bottom: 16px;
+//     right: calc(50% - 144px);
+//     box-shadow: 0 0 32px 16px $color-white;
+//   }
 
-  @media screen and (max-width: $mobile) {
-    bottom: 0;
-    right: 0;
+//   @media screen and (max-width: $mobile) {
+//     bottom: 0;
+//     right: 0;
 
-    width: 100%;
-    border-radius: 0;
-  }
-}
+//     width: 100%;
+//     border-radius: 0;
+//   }
+// }

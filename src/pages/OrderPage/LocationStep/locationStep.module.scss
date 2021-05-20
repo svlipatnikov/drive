@@ -1,23 +1,41 @@
 @import '../../../styles/variables.scss';
 
-.container {
+.wrapper {
+  padding: 32px 0;
+  height: max-content;
+
+  @media screen and (max-width: $mobile) {
+    padding: 16px 0;
+  }
+}
+
+.location {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin: 32px 0;
   max-width: max-content;
-}
+  margin-bottom: 32px;
 
-.mapText {
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 16px;
-  color: $color-black;
-  margin: 0;
+  @media screen and (max-width: $mobile) {
+    margin-bottom: 16px;
+  }
 }
 
 .map {
-  margin-top: 16px;
-  width: 100%;
-  max-width: 736px;
+  display: flex;
+  flex-direction: column;
+
+  .mapText {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    color: $color-black;
+    margin: 0;
+  }
+
+  .mapImg {
+    margin-top: 16px;
+    width: 100%;
+    max-width: 736px;
+  }
 }

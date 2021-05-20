@@ -20,6 +20,7 @@ import {
   FAILED_RATE,
   FAILED_STATUS,
   FAILED_NEW_ORDER,
+  CLEAR_DB_ORDER,
 } from 'redux/types';
 
 export const fetchCities = () => ({ type: FETCH_CITIES });
@@ -49,3 +50,5 @@ export const failedStatus = () => ({ type: FAILED_STATUS });
 export const fetchNewOrderAction = () => ({ type: FETCH_NEW_ORDER });
 export const successNewOrderAction = (order) => ({ type: SUCCESS_NEW_ORDER, payload: order });
 export const failedNewOrderAction = () => ({ type: FAILED_NEW_ORDER });
+
+export const clearDbOrderAction = () => ({ type: CLEAR_DB_ORDER });
