@@ -23,6 +23,21 @@
   line-height: 28px;
 }
 
-.button {
-  margin: 8px;
+.btnContainer {
+  display: flex;
+
+  @media screen and (max-width: $mobile) {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .button {
+    margin: 8px;
+
+    @media screen and (max-width: $mobile) {
+      width: 100%;
+      margin: 16px 0;
+      border-radius: 0;
+    }
+  }
 }

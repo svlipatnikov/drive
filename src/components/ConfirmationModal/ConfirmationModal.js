@@ -50,7 +50,7 @@ const ConfirmationModal = ({ setOpen }) => {
   return (
     <div className={styles.wrapper}>
       <p className={styles.text}>Подтвердить заказ</p>
-      <div>
+      <div className={styles.btnContainer}>
         <ButtonAccent
           className={styles.button}
           text={'Подтвердить'}
