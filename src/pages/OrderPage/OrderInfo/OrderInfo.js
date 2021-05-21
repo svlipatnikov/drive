@@ -59,9 +59,7 @@ const OrderInfo = ({ setOpen, open }) => {
           <CloseBtn />
         </button>
       )}
-
       <div className={styles.title}>Ваш заказ:</div>
-
       <ul className={styles.itemList}>
         {itemCity && <OrderItem name="Пункт выдачи" items={[itemCity, itemPoint]} />}
         {itemModel && <OrderItem name="Модель" items={[itemModel]} />}
@@ -80,11 +78,19 @@ const OrderInfo = ({ setOpen, open }) => {
         {itemRightSteering && <OrderItem name="Правый руль" items={['Да']} />}
       </ul>
 
-      {itemPrice && <div className={styles.finalPrice}>{`Цена: ${itemPrice} \u20bd`}</div>}
+      {itemPrice && (
+        <div className={styles.price}>
+          <span className={styles.priceText}>{'Цена: '}</span>
+          <span className={styles.priceValue}>{`${itemPrice} \u20bd`}</span>
+        </div>
+      )}
 
       {!itemPrice && model.priceMin && model.priceMax && (
-        <div className={styles.finalPrice}>
-          {`Цена: ${model.priceMin} - ${model.priceMax} \u20bd`}
+        <div className={styles.price}>
+          <span className={styles.priceText}>{'Цена: '}</span>
+          <span className={styles.priceValue}>
+            {`${model.priceMin} - ${model.priceMax} \u20bd`}
+          </span>
         </div>
       )}
 
