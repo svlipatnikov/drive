@@ -97,7 +97,7 @@ const YandexMap = () => {
               geometry={points[index]}
               onClick={handleClick(index)}
               options={{
-                preset: 'islands#icon',
+                preset: 'islands#circleIcon',
                 iconColor: '#0ec261',
               }}
             />
