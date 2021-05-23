@@ -1,4 +1,4 @@
-import { api } from 'api/services';
+import { api } from 'api/dbServices';
 import { fetchCars, successCars, failedCars } from 'redux/actions/dbActions';
 
 const getCarsAction = () => async (dispatch) => {

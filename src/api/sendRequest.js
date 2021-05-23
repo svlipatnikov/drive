@@ -1,9 +1,6 @@
-export const imagesUrl = 'https://api-factory.simbirsoft1.com';
-export const apiUrl = 'https://api-factory.simbirsoft1.com/api';
-
 const sendRequest = async (url, method, body) => {
   try {
-    const response = await fetch(apiUrl + url, {
+    const response = await fetch(url, {
       method,
       headers: {
         'Content-Type': 'application/json',
@@ -28,6 +25,7 @@ const sendRequest = async (url, method, body) => {
     // TODO
     console.log('error response', error.response);
     console.log('error text', error.text);
+    return null;
   }
 };
 

@@ -22,6 +22,12 @@ const SearchSelectPoint = () => {
   }, [city]);
 
   useEffect(() => {
+    if (point) {
+      setInput(point.address);
+    }
+  }, [point]);
+
+  useEffect(() => {
     const handleClose = (event) => {
       if (listRef.current) {
         if (!listRef.current.contains(event.target)) {

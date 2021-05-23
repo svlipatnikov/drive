@@ -1,4 +1,4 @@
-import { api } from 'api/services';
+import { api } from 'api/dbServices';
 import { failedPoints, fetchPoints, successPoints } from 'redux/actions/dbActions';
 
 const getPointsAction = () => async (dispatch) => {

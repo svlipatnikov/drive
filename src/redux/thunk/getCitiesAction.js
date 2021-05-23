@@ -1,4 +1,4 @@
-import { api } from 'api/services';
+import { api } from 'api/dbServices';
 import { failedCities, fetchCities, successCities } from 'redux/actions/dbActions';
 
 const getCitiesAction = () => async (dispatch) => {
