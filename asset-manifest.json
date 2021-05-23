@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/simbirsoft-practicum/static/css/main.dd05e00f.chunk.css",
-    "main.js": "/simbirsoft-practicum/static/js/main.427d0956.chunk.js",
-    "main.js.map": "/simbirsoft-practicum/static/js/main.427d0956.chunk.js.map",
+    "main.js": "/simbirsoft-practicum/static/js/main.614378b8.chunk.js",
+    "main.js.map": "/simbirsoft-practicum/static/js/main.614378b8.chunk.js.map",
     "runtime-main.js": "/simbirsoft-practicum/static/js/runtime-main.c80e0b35.js",
     "runtime-main.js.map": "/simbirsoft-practicum/static/js/runtime-main.c80e0b35.js.map",
     "static/js/2.c41ec094.chunk.js": "/simbirsoft-practicum/static/js/2.c41ec094.chunk.js",
@@ -36,6 +36,6 @@
     "static/js/runtime-main.c80e0b35.js",
     "static/js/2.c41ec094.chunk.js",
     "static/css/main.dd05e00f.chunk.css",
-    "static/js/main.427d0956.chunk.js"
+    "static/js/main.614378b8.chunk.js"
   ]
 }
