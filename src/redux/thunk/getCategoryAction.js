@@ -1,4 +1,4 @@
-import { api } from 'api/services';
+import { api } from 'api/dbServices';
 import { fetchCategory, successCategory, failedCategory } from 'redux/actions/dbActions';
 
 const getCategoryAction = () => async (dispatch) => {

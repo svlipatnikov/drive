@@ -1,4 +1,4 @@
-import { api } from 'api/services';
+import { api } from 'api/dbServices';
 import { fetchStatus, successStatus, failedStatus } from 'redux/actions/dbActions';
 
 const getStatusAction = () => async (dispatch) => {

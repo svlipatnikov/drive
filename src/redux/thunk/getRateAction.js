@@ -1,4 +1,4 @@
-import { api } from 'api/services';
+import { api } from 'api/dbServices';
 import { fetchRate, successRate, failedRate } from 'redux/actions/dbActions';
 
 const getRateAction = () => async (dispatch) => {
