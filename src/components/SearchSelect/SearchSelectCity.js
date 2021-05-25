@@ -17,6 +17,18 @@ const SearchSelectCity = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    if (!input && city && !open) {
+      setInput(city.name);
+    }
+  }, [input, open, city]);
+
+  useEffect(() => {
+    if (city) {
+      setInput(city.name);
+    }
+  }, [city]);
+
+  useEffect(() => {
     const handleClose = (event) => {
       if (listRef.current) {
         if (!listRef.current.contains(event.target)) {
@@ -39,7 +51,6 @@ const SearchSelectCity = () => {
   const handleOpen = () => {
     if (city) {
       setInput('');
-      dispatch(setCityAction(null));
     }
     if (!isOk && !isLoading) {
       dispatch(getCitiesAction());

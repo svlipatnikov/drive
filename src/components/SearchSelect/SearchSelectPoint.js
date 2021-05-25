@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { citySelector, pointSelector } from 'redux/selectors/orderSelectors';
-import { setPointAction } from 'redux/actions/orderActions';
+import { setCityAction, setPointAction } from 'redux/actions/orderActions';
 import { ReactComponent as CloseBtn } from 'assets/svg/closeBtn.svg';
-import { dbPointsSelector } from 'redux/selectors/dbSelectors';
+import { dbCitiesSelector, dbPointsSelector } from 'redux/selectors/dbSelectors';
 import styles from './searchSelect.module.scss';
 import Loader from 'components/Loader';
 import getPointsAction from 'redux/thunk/getPointAction';
@@ -11,11 +11,18 @@ import getPointsAction from 'redux/thunk/getPointAction';
 const SearchSelectPoint = () => {
   const city = useSelector(citySelector);
   const point = useSelector(pointSelector);
+  const dbCities = useSelector(dbCitiesSelector);
   const listRef = useRef();
   const { data, isLoading, isOk, isFailed } = useSelector(dbPointsSelector);
   const [input, setInput] = useState(point ? point.address : '');
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!input && point && !open) {
+      setInput(point.address);
+    }
+  }, [input, open, point]);
 
   useEffect(() => {
     setInput('');
@@ -50,7 +57,6 @@ const SearchSelectPoint = () => {
   const handleOpen = () => {
     if (point) {
       setInput('');
-      dispatch(setPointAction(null));
     }
     if (!isOk && !isLoading) {
       dispatch(getPointsAction());
@@ -67,6 +73,7 @@ const SearchSelectPoint = () => {
   const handlePointChoice = (point) => () => {
     setInput(point.address);
     setOpen(false);
+    dispatch(setCityAction(dbCities.data.find((city) => city.id === point.cityId.id)));
     dispatch(setPointAction(point));
   };
 

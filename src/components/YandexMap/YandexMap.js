@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { pageSizeSelector } from 'redux/selectors/mainSelectors';
 import { INIT_ZOOM, CITY_ZOOM, POINT_ZOOM, YANDEX_API_KEY } from 'api/const';
 import { citySelector, pointSelector } from 'redux/selectors/orderSelectors';
-import { dbPointsSelector } from 'redux/selectors/dbSelectors';
+import { dbCitiesSelector, dbPointsSelector } from 'redux/selectors/dbSelectors';
 import styles from './yandexMap.module.scss';
-import { setPointAction } from 'redux/actions/orderActions';
+import { setCityAction, setPointAction } from 'redux/actions/orderActions';
 
 const mapInit = {
   zoom: INIT_ZOOM,
@@ -23,6 +23,7 @@ const YandexMap = () => {
   const curentCity = useSelector(citySelector);
   const curentPoint = useSelector(pointSelector);
   const dbPoints = useSelector(dbPointsSelector);
+  const dbCities = useSelector(dbCitiesSelector);
 
   useEffect(() => {
     if (ymaps && curentCity) {
@@ -64,9 +65,7 @@ const YandexMap = () => {
   useEffect(() => {
     if (ymaps && dbPoints.data) {
       Promise.all(
-        dbPoints.data.map((point) =>
-          ymaps.geocode(`${point.cityId ? point.cityId.name + ',' : ''}${point.address}`)
-        )
+        dbPoints.data.map((point) => ymaps.geocode(`${point.cityId.name},${point.address}`))
       )
         .then((responses) =>
           responses.map((response) => response.geoObjects.get(0).geometry.getCoordinates())
@@ -78,6 +77,9 @@ const YandexMap = () => {
   }, [dbPoints, ymaps]);
 
   const handleClick = (index) => () => {
+    dispatch(
+      setCityAction(dbCities.data.find((city) => city.id === dbPoints.data[index].cityId.id))
+    );
     dispatch(setPointAction(dbPoints.data[index]));
   };
 
@@ -108,4 +110,4 @@ const YandexMap = () => {
   );
 };
 
-export default YandexMap;
+export default React.memo(YandexMap);

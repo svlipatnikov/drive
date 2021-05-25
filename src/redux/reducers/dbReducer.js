@@ -56,7 +56,12 @@ const dbReducer = (state = dbReducerInit, action) => {
     case SUCCESS_POINTS:
       return {
         ...state,
-        points: { isLoading: false, isOk: true, isFailed: false, data: action.payload },
+        points: {
+          isLoading: false,
+          isOk: true,
+          isFailed: false,
+          data: action.payload.filter((point) => !!point.cityId),
+        },
       };
 
     case FAILED_POINTS:
