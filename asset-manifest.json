@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/simbirsoft-practicum/static/css/main.4d2fe23a.chunk.css",
-    "main.js": "/simbirsoft-practicum/static/js/main.614378b8.chunk.js",
-    "main.js.map": "/simbirsoft-practicum/static/js/main.614378b8.chunk.js.map",
+    "main.css": "/simbirsoft-practicum/static/css/main.8893c83f.chunk.css",
+    "main.js": "/simbirsoft-practicum/static/js/main.f5b9bfaa.chunk.js",
+    "main.js.map": "/simbirsoft-practicum/static/js/main.f5b9bfaa.chunk.js.map",
     "runtime-main.js": "/simbirsoft-practicum/static/js/runtime-main.c80e0b35.js",
     "runtime-main.js.map": "/simbirsoft-practicum/static/js/runtime-main.c80e0b35.js.map",
     "static/js/2.c41ec094.chunk.js": "/simbirsoft-practicum/static/js/2.c41ec094.chunk.js",
     "static/js/2.c41ec094.chunk.js.map": "/simbirsoft-practicum/static/js/2.c41ec094.chunk.js.map",
     "index.html": "/simbirsoft-practicum/index.html",
-    "static/css/main.4d2fe23a.chunk.css.map": "/simbirsoft-practicum/static/css/main.4d2fe23a.chunk.css.map",
+    "static/css/main.8893c83f.chunk.css.map": "/simbirsoft-practicum/static/css/main.8893c83f.chunk.css.map",
     "static/js/2.c41ec094.chunk.js.LICENSE.txt": "/simbirsoft-practicum/static/js/2.c41ec094.chunk.js.LICENSE.txt",
     "static/media/arrowLeft.1752ae91.svg": "/simbirsoft-practicum/static/media/arrowLeft.1752ae91.svg",
     "static/media/arrowRight.7591c327.svg": "/simbirsoft-practicum/static/media/arrowRight.7591c327.svg",
@@ -35,7 +35,7 @@
   "entrypoints": [
     "static/js/runtime-main.c80e0b35.js",
     "static/js/2.c41ec094.chunk.js",
-    "static/css/main.4d2fe23a.chunk.css",
-    "static/js/main.614378b8.chunk.js"
+    "static/css/main.8893c83f.chunk.css",
+    "static/js/main.f5b9bfaa.chunk.js"
   ]
 }
