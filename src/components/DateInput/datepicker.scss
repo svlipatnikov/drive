@@ -18,6 +18,11 @@ $datepicker__margin: 0.5rem;
 $datepicker__navigation-size: 0.5rem;
 $datepicker__triangle-size: 8px;
 
-// li.react-datepicker__time-list-item {
-//   height: max-content !important;
-// }
+li.react-datepicker__time-list-item {
+  height: max-content !important;
+}
+
+@media screen and (max-width: $mobile-compact) {
+  $datepicker__item-size: 1.2rem;
+  $datepicker__margin: 0.3rem;
+}

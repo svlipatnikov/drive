@@ -6,7 +6,7 @@
   margin-left: 32px;
   padding-top: 32px;
   padding-left: 32px;
-  min-width: 320px;
+  width: 320px;
 
   display: flex;
   flex-direction: column;
@@ -15,19 +15,32 @@
   position: relative;
 
   @media screen and (max-width: $tablet) {
+    width: 50%;
     position: fixed;
     right: 0;
     top: 0;
     height: 100vh;
 
+    transition: right 0.3s;
+
     background-color: $color-white;
     padding: 32px;
+  }
+
+  @media screen and (max-width: $mobile) {
+    width: 100%;
   }
 }
 
 .notOpen {
   visibility: hidden;
+  right: -320px;
+
+  @media screen and (max-width: $mobile) {
+    right: -100%;
+  }
 }
+
 .closeBtn {
   position: absolute;
   top: 28px;
@@ -50,30 +63,20 @@
   padding: 0;
 }
 
-.finalPrice {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 16px;
-
+.price {
   margin-bottom: 32px;
-}
 
-.nextBtn {
-  visibility: visible;
-  z-index: 100;
-
-  @media screen and (max-width: $tablet) {
-    position: fixed;
-    bottom: 16px;
-    right: calc(50% - 144px);
-    box-shadow: 0 0 24px 32px $color-white;
+  .priceText {
+    color: $color-black;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
   }
 
-  @media screen and (max-width: $mobile) {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    border-radius: 0;
+  .priceValue {
+    color: $color-black;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 16px;
   }
 }

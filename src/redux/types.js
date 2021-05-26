@@ -4,6 +4,7 @@ export const SET_ORDER_STEP = 'SET_ORDER_STEP';
 export const SET_PAGE_SIZE = 'SET_PAGE_SIZE';
 
 // orderReducer
+export const CLEAR_ORDER = 'CLEAR_ORDER';
 export const SET_CITY = 'SET_CITY';
 export const SET_POINT = 'SET_POINT';
 export const SET_CAR_CATEGORY = 'SET_CAR_CATEGORY';
@@ -35,3 +36,12 @@ export const FAILED_CARS = 'FAILED_CARS';
 export const FETCH_RATE = 'FETCH_RATE';
 export const SUCCESS_RATE = 'SUCCESS_RATE';
 export const FAILED_RATE = 'FAILED_RATE';
+
+export const FETCH_STATUS = 'FETCH_STATUS';
+export const SUCCESS_STATUS = 'SUCCESS_STATUS';
+export const FAILED_STATUS = 'FAILED_STATUS';
+
+export const FETCH_NEW_ORDER = 'FETCH_NEW_ORDER';
+export const SUCCESS_NEW_ORDER = 'SUCCESS_NEW_ORDER';
+export const FAILED_NEW_ORDER = 'FAILED_NEW_ORDER';
+export const CLEAR_DB_ORDER = 'CLEAR_DB_ORDER';

@@ -1,4 +1,5 @@
 import {
+  CLEAR_ORDER,
   SET_CITY,
   SET_POINT,
   SET_CAR_CATEGORY,
@@ -13,8 +14,8 @@ import {
 
 const orderReducerInit = {
   location: {
-    city: '',
-    point: '',
+    city: null,
+    point: null,
   },
   car: {
     category: 'Все модели',
@@ -36,8 +37,11 @@ const orderReducerInit = {
 
 const orderReducer = (state = orderReducerInit, action) => {
   switch (action.type) {
+    case CLEAR_ORDER:
+      return { ...orderReducerInit };
+
     case SET_CITY:
-      return { ...orderReducerInit, location: { city: action.payload, point: '' } };
+      return { ...orderReducerInit, location: { city: action.payload, point: null } };
 
     case SET_POINT:
       return { ...orderReducerInit, location: { ...state.location, point: action.payload } };

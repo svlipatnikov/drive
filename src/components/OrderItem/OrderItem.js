@@ -7,8 +7,8 @@ const OrderItem = ({ name, items }) => {
       <div className={styles.itemName}>{name}</div>
       <div className={styles.dots} />
       <div className={styles.items}>
-        {items.map((value) => (
-          <div key={value} className={styles.itemValue}>
+        {items.map((value, index) => (
+          <div key={value + index} className={styles.itemValue}>
             {value}
           </div>
         ))}

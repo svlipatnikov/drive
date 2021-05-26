@@ -1,3 +1,5 @@
+export const orderSelector = (store) => store.orderReducer;
+
 // location
 export const locationSelector = (store) => store.orderReducer.location;
 export const citySelector = (store) => store.orderReducer.location.city;

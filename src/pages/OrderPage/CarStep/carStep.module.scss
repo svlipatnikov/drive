@@ -1,0 +1,47 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.category {
+  margin: 24px 0 32px;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: $mobile) {
+    margin: 8px 0 16px;
+  }
+}
+
+.categoryItem {
+  margin-top: 8px;
+}
+
+.container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.models {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+
+  max-height: 100%;
+  margin-right: -22px;
+  padding-right: 22px;
+  padding-bottom: 16px;
+
+  @media screen and (max-width: $mobile-compact) {
+    display: block;
+  }
+}
+
+.errorMessage {
+  @include font-text($color-gray);
+}

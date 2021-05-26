@@ -1,0 +1,50 @@
+@import '../../../styles/variables.scss';
+
+.wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.scrollContainer {
+  overflow: auto;
+
+  max-height: 100%;
+  margin-right: -22px;
+  padding-right: 22px;
+  padding: 32px 0;
+
+  @media screen and (max-width: $mobile) {
+    padding: 24px 0;
+  }
+}
+
+.location {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: max-content;
+  margin-bottom: 32px;
+
+  @media screen and (max-width: $mobile) {
+    margin-bottom: 16px;
+  }
+}
+
+.map {
+  display: flex;
+  flex-direction: column;
+
+  .mapText {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    color: $color-black;
+    margin: 0 0 16px;
+  }
+
+  .mapImg {
+    margin-top: 16px;
+    width: 100%;
+    max-width: 736px;
+  }
+}

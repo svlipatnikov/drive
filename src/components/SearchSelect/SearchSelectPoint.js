@@ -1,25 +1,38 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { citySelector, pointSelector } from 'redux/selectors/orderSelectors';
-import { setPointAction } from 'redux/actions/orderActions';
+import { setCityAction, setPointAction } from 'redux/actions/orderActions';
 import { ReactComponent as CloseBtn } from 'assets/svg/closeBtn.svg';
-import { dbPointsSelector } from 'redux/selectors/dbSelectors';
+import { dbCitiesSelector, dbPointsSelector } from 'redux/selectors/dbSelectors';
 import styles from './searchSelect.module.scss';
-import { setDbPointsAction } from 'redux/thunk/thunk';
 import Loader from 'components/Loader';
+import getPointsAction from 'redux/thunk/getPointAction';
 
 const SearchSelectPoint = () => {
   const city = useSelector(citySelector);
   const point = useSelector(pointSelector);
+  const dbCities = useSelector(dbCitiesSelector);
   const listRef = useRef();
   const { data, isLoading, isOk, isFailed } = useSelector(dbPointsSelector);
-  const [input, setInput] = useState(point);
+  const [input, setInput] = useState(point ? point.address : '');
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setInput(point);
-  }, [city, point]);
+    if (!input && point && !open) {
+      setInput(point.address);
+    }
+  }, [input, open, point]);
+
+  useEffect(() => {
+    setInput('');
+  }, [city]);
+
+  useEffect(() => {
+    if (point) {
+      setInput(point.address);
+    }
+  }, [point]);
 
   useEffect(() => {
     const handleClose = (event) => {
@@ -30,7 +43,7 @@ const SearchSelectPoint = () => {
       }
     };
 
-    dispatch(setDbPointsAction());
+    dispatch(getPointsAction());
     window.addEventListener('click', handleClose);
     return () => {
       window.removeEventListener('click', handleClose);
@@ -44,10 +57,9 @@ const SearchSelectPoint = () => {
   const handleOpen = () => {
     if (point) {
       setInput('');
-      dispatch(setPointAction(''));
     }
     if (!isOk && !isLoading) {
-      dispatch(setDbPointsAction());
+      dispatch(getPointsAction());
     }
     setOpen(true);
   };
@@ -55,13 +67,14 @@ const SearchSelectPoint = () => {
   const handleClear = () => {
     setInput('');
     setOpen(false);
-    dispatch(setPointAction(''));
+    dispatch(setPointAction(null));
   };
 
-  const handleChoice = (name) => () => {
-    setInput(name);
+  const handlePointChoice = (point) => () => {
+    setInput(point.address);
     setOpen(false);
-    dispatch(setPointAction(name));
+    dispatch(setCityAction(dbCities.data.find((city) => city.id === point.cityId.id)));
+    dispatch(setPointAction(point));
   };
 
   return (
@@ -88,23 +101,23 @@ const SearchSelectPoint = () => {
           {isLoading && <Loader />}
           {isOk &&
             data
-              .filter((item) => {
+              .filter((point) => {
                 if (!city) return true;
-                if (!item.cityId) return true;
-                return item.cityId.name === city;
+                if (!point.cityId) return true;
+                return point.cityId.id === city.id;
               })
-              .filter((item) => {
+              .filter((point) => {
                 if (!input) return true;
                 if (input.length < 2) return true;
-                return item.address.toLowerCase().includes(input.toLowerCase());
+                return point.address.toLowerCase().includes(input.toLowerCase());
               })
-              .map((item) => (
+              .map((point) => (
                 <div
                   className={styles.selectItem}
-                  onClick={handleChoice(item.address)}
-                  key={item.id}
+                  onClick={handlePointChoice(point)}
+                  key={point.id}
                 >
-                  {item.address}
+                  {point.address}
                 </div>
               ))}
           {isFailed && (

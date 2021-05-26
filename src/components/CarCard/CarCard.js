@@ -3,7 +3,8 @@ import styles from './carCard.module.scss';
 import cn from 'classnames';
 import { useDispatch } from 'react-redux';
 import { setModelAction } from 'redux/actions/orderActions';
-import { imagesUrl } from 'api/sendRequest';
+import getImageSrc from 'helpers/getImageSrc';
+import defaultCarImg from 'assets/images/defaultCar.png';
 
 const CarCard = ({ carData, active }) => {
   const dispatch = useDispatch();
@@ -17,9 +18,9 @@ const CarCard = ({ carData, active }) => {
     dispatch(setModelAction(carData));
   };
 
-  const getImageSrc = (path) => {
-    if (path.indexOf('base64') !== -1) return path;
-    return imagesUrl + path;
+  const imageError = (event) => {
+    console.log('Error => ', event.target.src);
+    event.target.src = defaultCarImg;
   };
 
   return (
@@ -28,7 +29,12 @@ const CarCard = ({ carData, active }) => {
         <div className={styles.model}>{carData.name}</div>
         <div className={styles.price}>{`${carData.priceMin} - ${carData.priceMax} \u20bd`}</div>
       </div>
-      <img className={styles.img} src={getImageSrc(carData.thumbnail.path)} alt="thumbnail" />
+      <img
+        className={styles.img}
+        src={getImageSrc(carData.thumbnail.path)}
+        alt="thumbnail"
+        onError={imageError}
+      />
     </div>
   );
 };

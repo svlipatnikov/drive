@@ -1,0 +1,69 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
+
+.wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.scrollContainer {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+
+  max-height: 100%;
+  margin-right: -22px;
+  padding-right: 22px;
+  padding: 32px 0;
+
+  @media screen and (max-width: $mobile) {
+    padding: 24px 0;
+  }
+}
+
+.itemWrapper {
+  max-width: max-content;
+  margin-bottom: 32px;
+
+  @media screen and (max-width: $mobile) {
+    margin-bottom: 24px;
+  }
+
+  .itemText {
+    @include font-text();
+    margin: 0 0 8px;
+  }
+}
+
+.colorList {
+  display: flex;
+  flex-wrap: wrap;
+
+  .colorItem {
+    margin-top: 8px;
+  }
+}
+
+.dateWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.rateList {
+  display: flex;
+  flex-direction: column;
+
+  .rateItem {
+    margin-top: 8px;
+  }
+}
+
+.optionsList {
+  display: flex;
+  flex-direction: column;
+}
+
+.errorMessage {
+  @include font-text($color-gray);
+}

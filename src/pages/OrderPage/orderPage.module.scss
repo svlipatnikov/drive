@@ -3,19 +3,22 @@
 .wrapper {
   height: 100vh;
   width: 100vw;
-  display: flex;
   position: relative;
   overflow: hidden;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .content {
   width: 100%;
-  padding-top: 32px;
+  margin-top: 32px;
   display: flex;
   flex-direction: column;
 
   @media screen and (max-width: $mobile) {
-    padding: 16px 0;
+    margin-top: 16px;
   }
 }
 
@@ -39,6 +42,17 @@
 
 .navBlock {
   margin-top: 32px;
+
+  .navBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .horizontLine {
+    background-color: $color-gray-light;
+    height: 1px;
+  }
 }
 
 .order {
@@ -46,11 +60,15 @@
   justify-content: space-between;
   flex-grow: 1;
 
-  max-height: calc(100vh - 133px);
+  height: calc(100vh - 133px);
   overflow-y: auto;
-}
+  overflow-x: hidden;
 
-.horizontLine {
-  background-color: $color-gray-light;
-  height: 1px;
+  @media screen and (max-width: $mobile) {
+    height: calc(100vh - 166px - 48px);
+  }
+
+  @media screen and (max-width: $mobile-compact) {
+    height: calc(100vh - 156px - 48px);
+  }
 }

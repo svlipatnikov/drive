@@ -1,66 +1,56 @@
-import ButtonAccent from 'components/ButtonAccent';
-import OrderItem from 'components/OrderItem';
-import React, { useMemo } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
-import { setOrderStepAction } from 'redux/actions/mainActions';
-import { orderStepSelector, pageSizeSelector } from 'redux/selectors/mainSelectors';
+import { pageSizeSelector } from 'redux/selectors/mainSelectors';
 import {
   locationSelector,
   carSelector,
   additionSelector,
   optionsSelector,
-  locationIsFilledSelector,
-  carIsFilledSelector,
-  additionIsFilledSelector,
+  finalPriceSelector,
 } from 'redux/selectors/orderSelectors';
 import { ReactComponent as CloseBtn } from 'assets/svg/closeBtn.svg';
+import { setFinalPriceAction } from 'redux/actions/orderActions';
+import getFinalPrice from 'helpers/getFinalPrice';
+import ButtonNextStep from 'components/ButtonNextStep';
+import OrderItem from 'components/OrderItem';
 import styles from './orderInfo.module.scss';
 import cn from 'classnames';
+import getDateRange from 'helpers/getDateRange';
+import { dbOrderSelector } from 'redux/selectors/dbSelectors';
 
 const OrderInfo = ({ setOpen, open }) => {
-  const history = useHistory();
   const dispatch = useDispatch();
-  const orderStep = useSelector(orderStepSelector);
 
   const { city, point } = useSelector(locationSelector);
   const { model } = useSelector(carSelector);
   const { color, rate, dateFrom, dateTo } = useSelector(additionSelector);
   const { fullTank, babyChair, rightSteering } = useSelector(optionsSelector);
   const { tablet } = useSelector(pageSizeSelector);
+  const finalPrice = useSelector(finalPriceSelector);
+  const { data } = useSelector(dbOrderSelector);
 
-  const locationIsFilled = useSelector(locationIsFilledSelector);
-  const carIsFilled = useSelector(carIsFilledSelector);
-  const additionIsFilled = useSelector(additionIsFilledSelector);
-
-  const range = dateFrom && dateTo ? dateTo - dateFrom : null;
-  const daysRange = range ? Math.floor(range / (1000 * 60 * 60 * 24)) : null;
-  const hoursRange = range
-    ? Math.round(((range - daysRange * (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) * 10) / 10
-    : null;
-
-  const btnActive =
-    (orderStep === 'Местоположение' && locationIsFilled) ||
-    (orderStep === 'Модель' && carIsFilled) ||
-    (orderStep === 'Дополнительно' && additionIsFilled);
-
-  const finalPrice = useMemo(() => getFinalPrice(rate, range, fullTank, babyChair, rightSteering), [
-    rate,
-    range,
-    fullTank,
-    babyChair,
-    rightSteering,
-  ]);
-
-  const handleBtnClick = () => {
-    dispatch(setOrderStepAction(getNextStep(orderStep)));
-    history.push(getNextLink(orderStep));
-  };
+  useEffect(() => {
+    const calcPrice = getFinalPrice(rate, dateFrom, dateTo, fullTank, babyChair, rightSteering);
+    dispatch(setFinalPriceAction(calcPrice));
+  }, [dispatch, babyChair, fullTank, rate, rightSteering, dateFrom, dateTo]);
 
   const handleClose = () => {
     setOpen(false);
   };
+
+  const itemCity = (data && data.cityId.name) || (city && city.name);
+  const itemPoint = (data && data.pointId.address) || (point && point.address);
+  const itemModel = (data && data.carId.name) || (model && model.name);
+  const itemColor = (data && data.color !== 'Любой' && data.color) || (color !== 'Любой' && color);
+  const itemDateRange =
+    (data && getDateRange(data.dateFrom, data.dateTo)) ||
+    (dateFrom && dateTo && getDateRange(dateFrom, dateTo));
+  const itemRate = (data && data.rateId.rateTypeId.name) || (rate && rate.rateTypeId.name);
+  const itemFullTank = (data && data.isFullTank) || fullTank.checked;
+  const itemBabyChair = (data && data.isNeedChildChair) || babyChair.checked;
+  const itemRightSteering = (data && data.isRightWheel) || rightSteering.checked;
+  const itemPrice = (data && data.price) || finalPrice;
 
   return (
     <section className={cn({ [styles.wrapper]: true, [styles.notOpen]: !open })}>
@@ -69,115 +59,44 @@ const OrderInfo = ({ setOpen, open }) => {
           <CloseBtn />
         </button>
       )}
-
       <div className={styles.title}>Ваш заказ:</div>
-
       <ul className={styles.itemList}>
-        {city && <OrderItem name="Пункт выдачи" items={[city, point]} />}
-        {model.name && <OrderItem name="Модель" items={[model.name]} />}
-        {color && color !== 'Любой' && <OrderItem name="Цвет" items={[color]} />}
-        {dateFrom && dateTo && (
-          <OrderItem name="Длительность аренды" items={[daysRange + 'д ' + hoursRange + 'ч']} />
+        {itemCity && <OrderItem name="Пункт выдачи" items={[itemCity, itemPoint]} />}
+        {itemModel && <OrderItem name="Модель" items={[itemModel]} />}
+        {itemColor && <OrderItem name="Цвет" items={[itemColor]} />}
+
+        {itemDateRange && (
+          <OrderItem
+            name="Длительность аренды"
+            items={[itemDateRange[1] + 'д ' + itemDateRange[2] + 'ч']}
+          />
         )}
-        {rate && <OrderItem name="Тариф" items={[rate.rateTypeId.name]} />}
-        {fullTank.checked && <OrderItem name="Полный бак" items={['Да']} />}
-        {babyChair.checked && <OrderItem name="Детское кресло" items={['Да']} />}
-        {rightSteering.checked && <OrderItem name="Правый руль" items={['Да']} />}
+
+        {itemRate && <OrderItem name="Тариф" items={[itemRate]} />}
+        {itemFullTank && <OrderItem name="Полный бак" items={['Да']} />}
+        {itemBabyChair && <OrderItem name="Детское кресло" items={['Да']} />}
+        {itemRightSteering && <OrderItem name="Правый руль" items={['Да']} />}
       </ul>
 
-      {finalPrice && <div className={styles.finalPrice}>{`Цена: ${finalPrice} \u20bd`}</div>}
-
-      {!finalPrice && model.priceMin && model.priceMax && (
-        <div className={styles.finalPrice}>
-          {`Цена: ${model.priceMin} - ${model.priceMax} \u20bd`}
+      {itemPrice && (
+        <div className={styles.price}>
+          <span className={styles.priceText}>{'Цена: '}</span>
+          <span className={styles.priceValue}>{`${itemPrice} \u20bd`}</span>
         </div>
       )}
 
-      <ButtonAccent
-        text={getBtnText(orderStep)}
-        active={btnActive}
-        onClick={handleBtnClick}
-        className={styles.nextBtn}
-      />
+      {!itemPrice && model.priceMin && model.priceMax && (
+        <div className={styles.price}>
+          <span className={styles.priceText}>{'Цена: '}</span>
+          <span className={styles.priceValue}>
+            {`${model.priceMin} - ${model.priceMax} \u20bd`}
+          </span>
+        </div>
+      )}
+
+      <ButtonNextStep />
     </section>
   );
 };
 
 export default OrderInfo;
-
-const getBtnText = (step) => {
-  switch (step) {
-    case 'Местоположение':
-      return 'Выбрать модель';
-
-    case 'Модель':
-      return 'Дополнительно';
-
-    case 'Дополнительно':
-      return 'Итого';
-
-    default:
-      return '';
-  }
-};
-
-const getNextStep = (step) => {
-  switch (step) {
-    case 'Местоположение':
-      return 'Модель';
-
-    case 'Модель':
-      return 'Дополнительно';
-
-    case 'Дополнительно':
-      return 'Итого';
-
-    default:
-      return 'Местоположение';
-  }
-};
-
-const getNextLink = (step) => {
-  switch (step) {
-    case 'Местоположение':
-      return '/order/car';
-
-    case 'Модель':
-      return '/order/addition';
-
-    case 'Дополнительно':
-      return '/order/result';
-
-    default:
-      return 'Местоположение';
-  }
-};
-
-const getFinalPrice = (rate, range, fullTank, babyChair, rightSteering) => {
-  if (!rate || !range) return null;
-
-  let price = 0;
-  if (fullTank.checked) price += 500;
-  if (babyChair.checked) price += 200;
-  if (rightSteering.checked) price += 1600;
-
-  switch (rate.rateTypeId.unit) {
-    case 'мин':
-      price += rate.price * Math.ceil(range / (1000 * 60));
-      break;
-
-    case 'сутки':
-      price += rate.price * Math.ceil(range / (1000 * 60 * 60 * 24));
-      break;
-
-    case '7 дней':
-      price += rate.price * Math.ceil(range / (1000 * 60 * 60 * 24 * 7));
-      break;
-
-    default:
-      price += 0;
-      break;
-  }
-
-  return price;
-};
