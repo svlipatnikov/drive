@@ -2,6 +2,7 @@
 
 .btn {
   border: none;
+  outline: none;
   border-radius: 8px;
   height: 48px;
 
@@ -14,6 +15,7 @@
 }
 
 .activeBtn {
+  cursor: pointer;
   background: linear-gradient(
     90deg,
     $color-main-accent 2.61%,
@@ -39,6 +41,7 @@
 }
 
 .negativeBtn {
+  cursor: pointer;
   background: linear-gradient(90deg, darken($color-negative, 10%) 0%, $color-negative 100%);
 
   &:hover {
