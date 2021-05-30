@@ -6,20 +6,19 @@ import { ReactComponent as CheckMark } from 'assets/svg/checkMark.svg';
 const ButtonCheckBox = ({ text, checked, className, onClick }) => {
   const checkBoxStyle = cn({
     [styles.checkBox]: true,
-    [styles.checked]: checked,
+    [styles.checkBoxChecked]: checked,
   });
 
-  const textStyle = cn({
-    [styles.text]: true,
-    [styles.textChecked]: checked,
+  const labelStyle = cn({
+    [styles.label]: true,
+    [styles.labelChecked]: checked,
   });
 
   return (
-    <button className={cn(styles.button, className)} onClick={onClick}>
-      <div className={checkBoxStyle} />
-      <div className={textStyle}>{text}</div>
-      {checked && <CheckMark className={styles.checkMark} />}
-    </button>
+    <div className={cn(styles.wrapper, className)} onClick={onClick}>
+      <div className={checkBoxStyle}>{checked && <CheckMark className={styles.checkMark} />}</div>
+      <div className={labelStyle}>{text}</div>
+    </div>
   );
 };
 
