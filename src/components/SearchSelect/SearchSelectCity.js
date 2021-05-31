@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './searchSelect.module.scss';
-import { ReactComponent as CloseBtn } from 'assets/svg/closeBtn.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { citySelector } from 'redux/selectors/orderSelectors';
 import { setCityAction } from 'redux/actions/orderActions';
 import { dbCitiesSelector } from 'redux/selectors/dbSelectors';
+import ButtonClose from 'components/ButtonClose';
 import Loader from 'components/Loader';
 import getCitiesAction from 'redux/thunk/getCitiesAction';
 
@@ -84,9 +84,7 @@ const SearchSelectCity = () => {
       />
 
       {!!input && (
-        <button className={styles.closeBtn} onClick={handleClear}>
-          <CloseBtn />
-        </button>
+        <ButtonClose dark size="small" className={styles.closeBtn} onClick={handleClear} />
       )}
 
       {open && (

@@ -1,4 +1,3 @@
-import React from 'react';
 import ButtonAccent from './ButtonAccent';
 
 export default {

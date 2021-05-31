@@ -36,16 +36,7 @@
 
 .closeBtn {
   position: absolute;
-  background: none;
-  width: 1em;
-  height: 1em;
-  stroke: $color-black;
   right: 4px;
-
-  svg {
-    width: 1em;
-    height: 1em;
-  }
 }
 
 .selectList {

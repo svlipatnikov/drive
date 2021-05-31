@@ -9,7 +9,6 @@ import {
   optionsSelector,
   finalPriceSelector,
 } from 'redux/selectors/orderSelectors';
-import { ReactComponent as CloseBtn } from 'assets/svg/closeBtn.svg';
 import { setFinalPriceAction } from 'redux/actions/orderActions';
 import getFinalPrice from 'helpers/getFinalPrice';
 import ButtonNextStep from 'components/ButtonNextStep';
@@ -18,6 +17,7 @@ import styles from './orderInfo.module.scss';
 import cn from 'classnames';
 import getDateRange from 'helpers/getDateRange';
 import { dbOrderSelector } from 'redux/selectors/dbSelectors';
+import ButtonClose from 'components/ButtonClose';
 
 const OrderInfo = ({ setOpen, open }) => {
   const dispatch = useDispatch();
@@ -54,11 +54,8 @@ const OrderInfo = ({ setOpen, open }) => {
 
   return (
     <section className={cn({ [styles.wrapper]: true, [styles.notOpen]: !open })}>
-      {tablet && (
-        <button className={styles.closeBtn} onClick={handleClose}>
-          <CloseBtn />
-        </button>
-      )}
+      {tablet && <ButtonClose dark className={styles.closeBtn} onClick={handleClose} />}
+
       <div className={styles.title}>Ваш заказ:</div>
       <ul className={styles.itemList}>
         {itemCity && <OrderItem name="Пункт выдачи" items={[itemCity, itemPoint]} />}
@@ -77,14 +74,12 @@ const OrderInfo = ({ setOpen, open }) => {
         {itemBabyChair && <OrderItem name="Детское кресло" items={['Да']} />}
         {itemRightSteering && <OrderItem name="Правый руль" items={['Да']} />}
       </ul>
-
       {itemPrice && (
         <div className={styles.price}>
           <span className={styles.priceText}>{'Цена: '}</span>
           <span className={styles.priceValue}>{`${itemPrice} \u20bd`}</span>
         </div>
       )}
-
       {!itemPrice && model.priceMin && model.priceMax && (
         <div className={styles.price}>
           <span className={styles.priceText}>{'Цена: '}</span>
@@ -93,7 +88,6 @@ const OrderInfo = ({ setOpen, open }) => {
           </span>
         </div>
       )}
-
       <ButtonNextStep />
     </section>
   );

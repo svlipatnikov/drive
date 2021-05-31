@@ -2,10 +2,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { citySelector, pointSelector } from 'redux/selectors/orderSelectors';
 import { setCityAction, setPointAction } from 'redux/actions/orderActions';
-import { ReactComponent as CloseBtn } from 'assets/svg/closeBtn.svg';
 import { dbCitiesSelector, dbPointsSelector } from 'redux/selectors/dbSelectors';
-import styles from './searchSelect.module.scss';
+import ButtonClose from 'components/ButtonClose';
 import Loader from 'components/Loader';
+import styles from './searchSelect.module.scss';
 import getPointsAction from 'redux/thunk/getPointAction';
 
 const SearchSelectPoint = () => {
@@ -91,9 +91,7 @@ const SearchSelectPoint = () => {
       />
 
       {!!input && (
-        <button className={styles.closeBtn} onClick={handleClear}>
-          <CloseBtn />
-        </button>
+        <ButtonClose dark size="small" className={styles.closeBtn} onClick={handleClear} />
       )}
 
       {open && (

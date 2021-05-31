@@ -36,6 +36,19 @@
   background-color: $background-color-menu;
 }
 
+.closeBtn {
+  position: absolute;
+  margin: 32px 16px;
+
+  @media screen and (max-width: $desktop-min) {
+    margin: 28px 16px;
+  }
+
+  @media screen and (max-width: $mobile) {
+    margin: 20px 20px;
+  }
+}
+
 .menu {
   position: absolute;
   align-self: center;

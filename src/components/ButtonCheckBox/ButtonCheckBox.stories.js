@@ -1,4 +1,3 @@
-import React from 'react';
 import ButtonCheckBox from './ButtonCheckBox';
 
 export default {
@@ -11,8 +10,14 @@ export default {
 
 const Template = (args) => <ButtonCheckBox {...args} />;
 
+export const Checked = Template.bind({});
+Checked.args = {
+  text: 'Option text',
+  checked: true,
+};
+
 export const Default = Template.bind({});
 Default.args = {
-  text: 'Default text',
+  text: 'Option text',
   checked: false,
 };

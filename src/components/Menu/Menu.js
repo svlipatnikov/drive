@@ -29,7 +29,7 @@ const Menu = ({ setOpen }) => {
 
   return (
     <nav className={wrapperStyle}>
-      <ButtonClose handleClose={handleClose} />
+      <ButtonClose onClick={handleClose} className={styles.closeBtn} />
 
       <div className={styles.menu}>
         <ul className={styles.navList}>
