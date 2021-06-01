@@ -1,7 +1,10 @@
-@import '../../styles/variables.scss';
+@import '../../../styles/variables.scss';
 
 .languageBtn {
   background: none;
+  border: none;
+  outline: none;
+
   color: $color-main-accent;
   border-radius: 50%;
   width: 48px;
